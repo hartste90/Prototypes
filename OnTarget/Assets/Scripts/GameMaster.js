@@ -11,6 +11,7 @@ function Update () {
 function onReplay ()
 {
 	Debug.Log("REPLAYING THIS LEVEL");
+	Application.LoadLevel(Application.loadedLevel);
 }
 
 

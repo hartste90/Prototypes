@@ -18,6 +18,7 @@ function onReplay ()
 function onLevels ()
 {
 	Debug.Log("GOING TO LEVEL SCREEN");
+	Application.LoadLevel("LevelSelect");
 
 
 }

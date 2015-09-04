@@ -1,5 +1,12 @@
 ﻿#pragma strict
 
+var level:int;
+
+function Awake() 
+{
+	DontDestroyOnLoad (this);
+}
+
 function Start () {
 
 }

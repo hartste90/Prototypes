@@ -29,7 +29,7 @@ function ApplyDamage ( damage: float )
 	if (health <= 0)
 	{
 		Destroy(gameObject);
-		var recap = GameObject.Find("Recap");
+		var recap = GameObject.Find("Recap Menu");
 		var canvas = recap.GetComponent(Canvas);
 		canvas.enabled = true;
 		//disable the Next button since they failed the level

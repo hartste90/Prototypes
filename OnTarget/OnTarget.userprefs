@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/distractor_straight.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameMaster.js">
     <Files>
-      <File FileName="Assets/Scripts/GameMaster.js" Line="36" Column="12" />
-      <File FileName="Assets/Scripts/LevelSelectMaster.js" Line="12" Column="1" />
-      <File FileName="Assets/Scripts/target.js" Line="17" Column="29" />
-      <File FileName="Assets/Scripts/distractor_straight.js" Line="49" Column="50" />
+      <File FileName="Assets/Scripts/GameMaster.js" Line="40" Column="2" />
+      <File FileName="Assets/Scripts/LevelSelectMaster.js" Line="13" Column="73" />
+      <File FileName="Assets/Scripts/target.js" Line="39" Column="22" />
+      <File FileName="Assets/Scripts/distractor_straight.js" Line="45" Column="77" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

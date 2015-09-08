@@ -26,22 +26,28 @@ function OnCollisionEnter2D( coll: Collision2D )
 {
 	if (coll.gameObject.tag == "Bullet")
 	{
+		Destroy(coll.gameObject);
 		ApplyDamage(10.0f);
-		Destroy(coll.gameObject); 
+		 
 	}
 		
 }
 
 function ApplyDamage ( damage: float )
 {
-	health -= damage;
-	if (health <= 0)
+	var in_trial = 	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
+	Debug.Log(in_trial);
+	if (in_trial)
 	{
-		Destroy(gameObject);
-		var canvas = GameObject.Find("Recap Menu").GetComponent(Canvas);
-		canvas.enabled = true;
+		health -= damage;
+		if (health <= 0)
+		{
+			Destroy(gameObject);
+			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
+			var canvas = GameObject.Find("Recap Menu").GetComponent(Canvas);
+			canvas.enabled = true;
+		}
+		gameObject.GetComponent(SpriteRenderer).color = new Color(.25,.25,.25,.85); 
+		tint_timer = Time.time + tint_time;
 	}
-	gameObject.GetComponent(SpriteRenderer).color = new Color(.25,.25,.25,.85); 
-	tint_timer = Time.time + tint_time;
-	
 }

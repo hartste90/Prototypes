@@ -35,18 +35,23 @@ function OnCollisionEnter2D( coll: Collision2D )
 
 function ApplyDamage ( damage: float )
 {
-	health -= damage;
-	if (health <= 0)
+	var in_trial = 	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
+	if (in_trial)
 	{
-		Destroy(gameObject);
-		var recap = GameObject.Find("Recap Menu");
-		var canvas = recap.GetComponent(Canvas);
-		canvas.enabled = true;
-		//disable the Next button since they failed the level
-		GameObject.Find("Next Level Button").GetComponent(UI.Button).interactable = false;
-	}
-	gameObject.GetComponent(SpriteRenderer).color.b = health / 10 * .1;
-	gameObject.GetComponent(SpriteRenderer).color.g = health / 10 * .1;
+		health -= damage;
+		if (health <= 0)
+		{
+			Destroy(gameObject);
+			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
 
+			var recap = GameObject.Find("Recap Menu");
+			var canvas = recap.GetComponent(Canvas);
+			canvas.enabled = true;
+			//disable the Next button since they failed the level
+			GameObject.Find("Next Level Button").GetComponent(UI.Button).interactable = false;
+		}
+		gameObject.GetComponent(SpriteRenderer).color.b = health / 10 * .1;
+		gameObject.GetComponent(SpriteRenderer).color.g = health / 10 * .1;
+	}
 	
 }

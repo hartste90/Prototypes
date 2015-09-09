@@ -2,11 +2,15 @@
 var health : float;
 var tint_time : float;
 var lerp_speed : float = 2;
+var sound_hit: AudioClip;
+var sound_explode: AudioClip; 
+ 
+
 
 private var tint_timer : float;
-
 private var current_color : Color;
 private var original_position : Vector2;
+
 
 
 function Start () {
@@ -35,8 +39,10 @@ function OnCollisionEnter2D( coll: Collision2D )
 	{
 		Destroy(coll.gameObject);
 		//visual target feedback
-		transform.position.y = transform.position.y + .1;
-		
+		transform.position.y = transform.position.y + Random.Range(.05, .15);
+		//audio feedback
+		transform.GetComponent(AudioSource).clip = sound_hit;
+		transform.GetComponent(AudioSource).Play();
 		//apply damage in model
 		ApplyDamage(10.0f);
 		
@@ -53,8 +59,14 @@ function ApplyDamage ( damage: float )
 		health -= damage;
 		if (health <= 0)
 		{
-			Destroy(gameObject);
+			transform.GetComponent(AudioSource).clip = sound_explode;
+			transform.GetComponent(AudioSource).Play();
+			transform.GetComponent(SpriteRenderer).enabled = false;
+			transform.GetComponent(Collider2D).enabled = false;
+
+			//Destroy(gameObject);
 			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
+			yield WaitForSeconds(1);
 			var canvas = GameObject.Find("Recap Menu").GetComponent(Canvas);
 			canvas.enabled = true;
 		}

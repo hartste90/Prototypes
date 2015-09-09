@@ -19,7 +19,7 @@ function Update () {
 function onReplay ()
 {
 	Debug.Log("REPLAYING THIS LEVEL");
-	in_trial = true;
+	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = true;
 	Application.LoadLevel(Application.loadedLevel);
 }
 
@@ -27,7 +27,7 @@ function onReplay ()
 function onLevels ()
 {
 	Debug.Log("GOING TO LEVEL SCREEN");
-	in_trial = true;
+	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = true;
 	Application.LoadLevel("LevelSelect");
 
 
@@ -36,9 +36,13 @@ function onLevels ()
 function onNewGame ()
 {
 	Debug.Log("GOING TO NEW Game");
-	level = 1;
-	in_trial = true;
-	//Application.LoadLevel("1");
+	Debug.Log(in_trial);
+	Debug.Log(level);
+	GameObject.Find("Game Master").GetComponent(GameMaster).level = 1;
+	Debug.Log(level);
+
+	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = true;
+	Application.LoadLevel("1");
 
 
 }
@@ -47,8 +51,8 @@ function onNewGame ()
 function onNext ()
 {
 	Debug.Log("GOING TO NEXT LEVEL");
-	level = level + 1;
-	in_trial = true;
-	Application.LoadLevel(level.ToString());
+	GameObject.Find("Game Master").GetComponent(GameMaster).level = GameObject.Find("Game Master").GetComponent(GameMaster).level + 1;
+	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = true;
+	Application.LoadLevel(GameObject.Find("Game Master").GetComponent(GameMaster).level.ToString());
 
 }

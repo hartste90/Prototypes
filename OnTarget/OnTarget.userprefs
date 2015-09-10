@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameMaster.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Distractor.js">
     <Files>
-      <File FileName="Assets/Scripts/GameMaster.js" Line="45" Column="1" />
+      <File FileName="Assets/Scripts/Distractor.js" Line="8" Column="28" />
+      <File FileName="Assets/Scripts/GameMaster.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/LevelSelectMaster.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/target.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/target.js" Line="38" Column="2" />
       <File FileName="Assets/Scripts/distractor_straight.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

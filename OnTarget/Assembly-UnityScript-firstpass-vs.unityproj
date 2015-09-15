@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2A22036B-2226-816C-373B-7363BCD402C2}</ProjectGuid>
+	<ProjectGuid>{662B4B92-F7C8-D7C8-057B-69266BF1C52D}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-UnityScript-firstpass</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,15 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Distractor.js" />
-     <Compile Include="Assets\Scripts\GameMaster.js" />
-     <Compile Include="Assets\Scripts\LevelSelectMaster.js" />
-     <Compile Include="Assets\Scripts\bullet.js" />
-     <Compile Include="Assets\Scripts\distractor_straight.js" />
-     <Compile Include="Assets\Scripts\gunship_fire.js" />
-     <Compile Include="Assets\Scripts\orbit.js" />
-     <Compile Include="Assets\Scripts\screen_edge.js" />
-     <Compile Include="Assets\Scripts\target.js" />
+     <Compile Include="Assets\Standard Assets\Distractor.js" />
+     <Compile Include="Assets\Standard Assets\GameMaster.js" />
+     <Compile Include="Assets\Standard Assets\LevelSelectMaster.js" />
+     <Compile Include="Assets\Standard Assets\bullet.js" />
+     <Compile Include="Assets\Standard Assets\distractor_straight.js" />
+     <Compile Include="Assets\Standard Assets\gunship_fire.js" />
+     <Compile Include="Assets\Standard Assets\screen_edge.js" />
+     <Compile Include="Assets\Standard Assets\target.js" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>

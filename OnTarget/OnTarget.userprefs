@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/distractor.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/orbit.js">
     <Files>
-      <File FileName="Assets/Scripts/distractor.js" Line="19" Column="21" />
+      <File FileName="Assets/Scripts/orbit.js" Line="3" Column="25" />
+      <File FileName="Assets/Scripts/gunship_fire.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/screen_edge.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

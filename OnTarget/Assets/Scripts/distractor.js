@@ -9,6 +9,8 @@ public class Distractor extends MonoBehaviour
 	public var sound_hit: AudioClip;
 	public var sound_explode: AudioClip; 
 	public var original_position: Vector3;
+	
+	public var health_alert: float = 10;
     
     public function Distractor()
     {
@@ -61,8 +63,8 @@ public class Distractor extends MonoBehaviour
 		{
 			Explode();
 		}
-		gameObject.GetComponent(SpriteRenderer).color.b -= .1;
-		gameObject.GetComponent(SpriteRenderer).color.g -= .1;
+		gameObject.GetComponent(SpriteRenderer).color.b -= 10;
+		gameObject.GetComponent(SpriteRenderer).color.g -= 10;
 
 		
 	}

@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/distractor.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Distractor.js">
     <Files>
-      <File FileName="Assets/Scripts/distractor.js" Line="19" Column="21" />
+      <File FileName="Assets/orbit.js" Line="13" Column="72" />
+      <File FileName="Assets/Scripts/Distractor.js" Line="57" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

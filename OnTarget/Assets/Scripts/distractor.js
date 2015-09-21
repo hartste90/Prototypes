@@ -1,14 +1,11 @@
-﻿#pragma strict
+﻿
 
-public class Distractor extends MonoBehaviour
+public class Distractor extends Obstacle
 {
 
-    public var health : float;
 	public var tint_timer : float;
-	public var lerp_speed : float = 2;
 	public var sound_hit: AudioClip;
 	public var sound_explode: AudioClip; 
-	public var original_position: Vector3;
 	
 	public var health_alert: float = 10;
     
@@ -24,7 +21,6 @@ public class Distractor extends MonoBehaviour
 	public function Start () 
 	{
 		tint_timer = Time.time;
-		original_position = transform.position;
 	}
 	public function Update () 
 	{
@@ -32,27 +28,12 @@ public class Distractor extends MonoBehaviour
 		{
 			gameObject.GetComponent(SpriteRenderer).color = new Color(1,1,1,1); 
 		}
-		if (transform.position != original_position)
-		{
-			transform.position = Vector2.Lerp(transform.position, original_position, Time.deltaTime * lerp_speed);
-		}
+
 	}
 
 	public function OnCollisionEnter2D( coll: Collision2D ) 
 	{
-		if (coll.gameObject.tag == "Bullet")
-		{
-			Destroy(coll.gameObject);
-			//visual target feedback
-			transform.position.y = transform.position.y + Random.Range(.05, .15);
-			//audio feedback
-			transform.GetComponent(AudioSource).clip = sound_hit;
-			transform.GetComponent(AudioSource).Play();
-			//apply damage in model
-			ApplyDamage(10.0f);
-			
-			 
-		}
+		super.OnCollisionEnter2D (coll);
 			
 	}
 

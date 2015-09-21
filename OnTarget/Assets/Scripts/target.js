@@ -1,7 +1,10 @@
 ﻿
 var health : float;
 var tint_time : float;
+var lerp_position : boolean;
+var lerp_scale : boolean;
 var lerp_speed : float = 2;
+var lerp_size : float = 1.5;
 var sound_hit: AudioClip;
 var sound_explode: AudioClip; 
  
@@ -10,12 +13,15 @@ var sound_explode: AudioClip;
 private var tint_timer : float;
 private var current_color : Color;
 private var original_position : Vector2;
+private var original_scale : Vector2;
 
 
 
 function Start () {
 	tint_timer = Time.time;
+	lerp_position = false;
 	original_position = transform.position;
+	original_scale = transform.localScale;
 }
 
 function Update () {
@@ -24,10 +30,13 @@ function Update () {
 	{
 		gameObject.GetComponent(SpriteRenderer).color = new Color(1,1,1,1); 
 	}
-	if (transform.position != original_position)
+	if (lerp_position && transform.position != original_position)
 	{
-		Debug.Log("Lerping");
 		transform.position = Vector2.Lerp(transform.position, original_position, Time.deltaTime * lerp_speed);
+	}
+	if (lerp_scale && transform.localScale != original_scale)
+	{
+		transform.localScale = Vector2.Lerp(transform.localScale, original_scale, Time.deltaTime * lerp_speed);
 	}
 
 
@@ -39,7 +48,15 @@ function OnCollisionEnter2D( coll: Collision2D )
 	{
 		Destroy(coll.gameObject);
 		//visual target feedback
-		transform.position.y = transform.position.y + Random.Range(.05, .15);
+		if (lerp_position)
+		{
+			transform.position.y = transform.position.y + Random.Range(.05, .15);
+		}
+		if (lerp_scale)
+		{
+			transform.localScale.x += transform.localScale.x * .5;
+			transform.localScale.y += transform.localScale.y * .5;
+		}
 		//audio feedback
 		transform.GetComponent(AudioSource).clip = sound_hit;
 		transform.GetComponent(AudioSource).Play();

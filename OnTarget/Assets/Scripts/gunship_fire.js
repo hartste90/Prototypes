@@ -8,15 +8,22 @@ var max_fire_rate : float;
 
 private var nextFire : float = 0.0;
 
+private var original_y : float;
+private var max_kickback : float = 2;
+private var kickback_speed : float;
+private var sprite : GameObject;
+
 function Start ()
 {
+	sprite = transform.FindChild("Sprite").gameObject;
 	current_fire_rate = min_fire_rate;
+	original_y = sprite.transform.position.y;
 }	
 function Update () 
 {
 	//move the gunship to the touch location
 	var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	transform.position = new Vector3 ( pos.x, transform.position.y, 0);
+	transform.position.x = pos.x;
 	//fire bullet
 	if (Input.GetButton("Fire1") && Time.time > nextFire) 
 	{
@@ -30,10 +37,29 @@ function Update ()
 			current_fire_rate = max_fire_rate;
 		}
 		var bullet = Instantiate(projectile, transform.position, transform.rotation);
+		Kickback( 10.0 );
 	}
 	if (Input.GetButtonUp("Fire1"))
 	{
 		current_fire_rate = min_fire_rate;
+	}
+	//lerp back to original y position
+	if (sprite.transform.position.y != original_y)
+	{	
+		var original_position = new Vector2 (sprite.transform.position.x, original_y);
+		sprite.transform.position = Vector2.Lerp(sprite.transform.position, original_position, Time.deltaTime * 15);
+	}
+
+}
+
+//shows gun kickback for the gunship when bullet fired
+function Kickback ( percent : float )
+{	
+	sprite.transform.position.y -= (percent/100) * max_kickback;
+	//cap kickback to reasonable amount
+	if ( sprite.transform.position.y < (original_y - max_kickback ))
+	{
+		sprite.transform.position.y = original_y - max_kickback;
 	}
 }
 //

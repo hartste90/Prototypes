@@ -1,15 +1,16 @@
 ﻿#pragma strict
 
-var XrotationSpeed = 100;
-var YrotationSpeed = 50;
+var xSpeed = 100;
+var ySpeed = 100;
+var zSpeed = 100;
 
-private var delta = 0;
-function Update() 
+function Start () 
 {
-    transform.Rotate(XrotationSpeed * Time.deltaTime * delta, YrotationSpeed * Time.deltaTime, 0);
-//    delta = delta + 1;
-//    if (delta > 100)
-//    {
-//    	delta = 0;
-//    }
+
+}
+
+function Update () 
+{
+	transform.Rotate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, zSpeed * Time.deltaTime);
+
 }

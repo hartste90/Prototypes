@@ -3,7 +3,6 @@
 public class Distractor extends Obstacle
 {
 
-	public var tint_timer : float;
 	public var sound_hit: AudioClip;
 	public var sound_explode: AudioClip; 
 	

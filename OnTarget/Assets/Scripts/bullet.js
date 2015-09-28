@@ -1,16 +1,34 @@
 ﻿#pragma strict
 
 
-var speed : float = 0.5;
+var speed : float = 10f;
+var damage : float = 1f;
+var fired : boolean = false;
 
 
-
-function Start () {
-
+function Start () 
+{
+	fired = false;
+	speed = 0;
 }
 
-function Update () {
-	transform.position = new Vector3( transform.position.x, transform.position.y + (speed), 0);
+function Update () 
+{
+	if (fired)
+	{
+		transform.position = new Vector3( transform.position.x, transform.position.y + speed, 0);
+	}
+	
+}
 
+public function fire( speed, damage )
+{
+	fired = true;
+	this.speed = speed;
+	this.damage = damage;
+}
 
+public function getDamage()
+{
+	return damage;
 }

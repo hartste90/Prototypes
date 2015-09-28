@@ -1,93 +1,32 @@
-﻿
-var health : float;
-var tint_time : float;
-var lerp_position : boolean;
-var lerp_scale : boolean;
-var lerp_speed : float = 2;
-var lerp_size : float = 1.5;
-var sound_hit: AudioClip;
-var sound_explode: AudioClip; 
- 
+﻿import UnityEngine.UI;
+/**
+Obstacle:
+Any item that reacts to a bullet hit
 
+**/
 
-private var tint_timer : float;
-private var current_color : Color;
-private var original_position : Vector2;
-private var original_scale : Vector2;
-
-
-
-function Start () {
-	tint_timer = Time.time;
-	lerp_position = false;
-	original_position = transform.position;
-	original_scale = transform.localScale;
-}
-
-function Update () {
-
-	if (Time.time > tint_timer)
-	{
-		gameObject.GetComponent(SpriteRenderer).color = new Color(1,1,1,1); 
-	}
-	if (lerp_position && transform.position != original_position)
-	{
-		transform.position = Vector2.Lerp(transform.position, original_position, Time.deltaTime * lerp_speed);
-	}
-	if (lerp_scale && transform.localScale != original_scale)
-	{
-		transform.localScale = Vector2.Lerp(transform.localScale, original_scale, Time.deltaTime * lerp_speed);
-	}
-
-
-}
-
-function OnCollisionEnter2D( coll: Collision2D ) 
+public class Target extends Obstacle
 {
-	if (coll.gameObject.tag == "Bullet")
-	{
-		Destroy(coll.gameObject);
-		//visual target feedback
-		if (lerp_position)
-		{
-			transform.position.y = transform.position.y + Random.Range(.05, .15);
-		}
-		if (lerp_scale)
-		{
-			transform.localScale.x += transform.localScale.x * .5;
-			transform.localScale.y += transform.localScale.y * .5;
-		}
-		//audio feedback
-		transform.GetComponent(AudioSource).clip = sound_hit;
-		transform.GetComponent(AudioSource).Play();
-		//apply damage in model
-		ApplyDamage(10.0f);
-		
-		 
-	}
-		
-}
 
-function ApplyDamage ( damage: float )
-{
-	var in_trial = 	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
-	if (in_trial)
+	public var explosion : GameObject;
+	
+	function Untint ()
 	{
-		health -= damage;
+		super.Untint();
+		transform.FindChild("inner_target").GetComponent(SpriteRenderer).color = original_color;
+
+	}
+	
+
+	function ApplyDamage ( damage: float )
+	{
+		Debug.Log("APPLYING DMG TO tARGET");
+		super.ApplyDamage(damage);
 		if (health <= 0)
 		{
-			transform.GetComponent(AudioSource).clip = sound_explode;
-			transform.GetComponent(AudioSource).Play();
-			transform.GetComponent(SpriteRenderer).enabled = false;
-			transform.GetComponent(Collider2D).enabled = false;
-
-			//Destroy(gameObject);
-			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
-			yield WaitForSeconds(1);
-			var canvas = GameObject.Find("Recap Menu").GetComponent(Canvas);
-			canvas.enabled = true;
+			Debug.Log("ENABLING NEXT LEVEL");
+			Instantiate(explosion, transform.position, transform.rotation);
+			GameObject.Find("Recap Menu").Find("Panel").Find("Next Level Button").GetComponent(Button).interactable = true;
 		}
-		gameObject.GetComponent(SpriteRenderer).color = new Color(.25,.25,.25,.85); 
-		tint_timer = Time.time + tint_time;
 	}
 }

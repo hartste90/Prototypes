@@ -33,19 +33,21 @@ function Start ()
 
 function Update () 
 {
-	
-	ChargeBullet();	
-	LerpMovement();
-	ReleaseBullet();
-	LerpKickback();
+	var in_trial = 	true;//GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
+	if (in_trial)
+	{
+		ChargeBullet();	
+		LerpMovement();
+		ReleaseBullet();
+		LerpKickback();
+	}
 	
 }
 
 function ChargeBullet()
 {
 	//move the gunship to the touch location
-	var in_trial = 	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
-	if (Input.GetButton("Fire1") && in_trial)
+	if (Input.GetButton("Fire1"))
 	{
 		pos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 		//if theres no bullet, create one
@@ -55,13 +57,6 @@ function ChargeBullet()
 			var bullet_position = transform.FindChild("bullet_zone").transform.position;
 			bullet = Instantiate(projectile, bullet_position, transform.rotation);
 		}
-		//if there is already a bullet, charge it more
-//		else if (bullet.transform.localScale.x <= max_bullet_size)
-//		{
-//			bullet.transform.localScale.x += .005;
-//			bullet.transform.localScale.y += .005;
-//			
-//		}
 	}
 }
 

@@ -14,6 +14,7 @@ public class Obstacle_straight extends Obstacle
 
 	function Start () {
 		super.Start();
+		start_position = transform.position;
 		transform.position.x = start_position.x;
 		transform.position.y = start_position.y;
 	}
@@ -28,12 +29,15 @@ public class Obstacle_straight extends Obstacle
 	}
 	function OnCollisionEnter2D( coll: Collision2D ) 
 	{
-		super.OnCollisionEnter2D(coll);
+		Debug.Log(coll.gameObject.tag);
 		if (coll.gameObject.tag == "Screen Edge")
 		{
+			Debug.Log("Moving");
 			transform.position.x = start_position.x;
 			transform.position.y = start_position.y;
 		}
+		super.OnCollisionEnter2D(coll);
+		
 			
 	}
 

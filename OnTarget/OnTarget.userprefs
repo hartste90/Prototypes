@@ -1,14 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gunship.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../workspace/UnityGames/LumosityPartyPrototypes/Assets/Code/SpaceCritters/OnePlanet/PostGameScreen.cs">
     <Files>
-      <File FileName="Assets/Scripts/Gunship.js" Line="36" Column="1" />
-      <File FileName="Assets/Scripts/Obstacle.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Target.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Distractor.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/distractor_straight.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameMaster.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Bullet.js" Line="1" Column="1" />
+      <File FileName="../../../../workspace/UnityGames/LumosityPartyPrototypes/Assets/Code/SpaceCritters/OnePlanet/PostGameScreen.cs" Line="24" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

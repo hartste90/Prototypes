@@ -81,7 +81,6 @@ public class Obstacle extends MonoBehaviour
 			//audio feedback - explode
 			PlaySound("explode");
 			transform.GetComponent(SpriteRenderer).enabled = false;
-			transform.FindChild("inner_target").GetComponent(SpriteRenderer).enabled = false;
 			transform.GetComponent(Collider2D).enabled = false;
 
 			//Destroy(gameObject);

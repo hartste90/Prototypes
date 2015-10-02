@@ -47,14 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.js" />
-     <Compile Include="Assets\Scripts\Distractor.js" />
      <Compile Include="Assets\Scripts\GameMaster.js" />
      <Compile Include="Assets\Scripts\Gunship.js" />
      <Compile Include="Assets\Scripts\LevelSelectMaster.js" />
+     <Compile Include="Assets\Scripts\MoveStraight.js" />
      <Compile Include="Assets\Scripts\Obstacle.js" />
-     <Compile Include="Assets\Scripts\Obstacle_straight.js" />
      <Compile Include="Assets\Scripts\Target.js" />
-     <Compile Include="Assets\Scripts\distractor_straight.js" />
      <Compile Include="Assets\Scripts\orbit.js" />
      <Compile Include="Assets\Scripts\screen_edge.js" />
  <Reference Include="UnityEngine.UI">

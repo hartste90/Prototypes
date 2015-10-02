@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2A22036B-2226-816C-373B-7363BCD402C2}</ProjectGuid>
+	<ProjectGuid>{D7E54A4E-4F93-8F5D-7360-D3E6A7A5FB3D}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,15 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bullet.js" />
-     <Compile Include="Assets\Scripts\GameMaster.js" />
-     <Compile Include="Assets\Scripts\Gunship.js" />
-     <Compile Include="Assets\Scripts\LevelSelectMaster.js" />
-     <Compile Include="Assets\Scripts\MoveStraight.js" />
-     <Compile Include="Assets\Scripts\Obstacle.js" />
-     <Compile Include="Assets\Scripts\Target.js" />
-     <Compile Include="Assets\Scripts\orbit.js" />
-     <Compile Include="Assets\Scripts\screen_edge.js" />
+     <Compile Include="Assets\Scripts\MoveStraight.js.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

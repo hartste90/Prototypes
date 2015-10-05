@@ -1,5 +1,4 @@
-﻿#pragma strict
-
+﻿
 var projectile : GameObject;
 var min_fire_rate : float;
 var current_fire_rate : float;

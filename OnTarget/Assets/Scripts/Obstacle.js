@@ -7,7 +7,7 @@ Any item that reacts to a bullet hit
 
 public class Obstacle extends MonoBehaviour
 {
-
+	
 		
 	public var health : float = 10;
 	public var tint_time : float = 0.1;
@@ -16,10 +16,13 @@ public class Obstacle extends MonoBehaviour
 	public var sound_hit: AudioClip;
 	public var sound_explode: AudioClip; 
 	 
+	public var recapMenu : GameObject;
+	 
 	protected var tint_timer : float;
 	protected var original_color : Color;
 	protected var current_color : Color;
 	protected var original_scale : Vector2;
+
 
 
 
@@ -39,7 +42,6 @@ public class Obstacle extends MonoBehaviour
 		//if the item has been scaled after hit, lerp it back to normal size
 		if (transform.localScale != original_scale)
 		{
-		Debug.Log("shrinking...");
 			transform.localScale = Vector2.Lerp(transform.localScale, original_scale, Time.deltaTime * lerp_speed);
 		}
 		
@@ -85,10 +87,9 @@ public class Obstacle extends MonoBehaviour
 
 			//Destroy(gameObject);
 			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
-			yield WaitForSeconds(1);
-			var canvas = GameObject.Find("Recap Menu").GetComponent(Canvas);
-			canvas.enabled = true;
-			//GameObject.Find("Recap Menu").Find("Panel").Find("Next Level Button").GetComponent(Button).interactable = false;
+			yield WaitForSeconds(2);
+			var canvas = Instantiate(recapMenu);
+			//canvas.transform.Find("TopMenu").GetComponent(RectTransform).position.y = 800;
 		}
 	}
 	

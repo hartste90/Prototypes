@@ -28,8 +28,6 @@ public class Target extends Obstacle
 			Instantiate(explosion, transform.position, transform.rotation);
 			innerSprite.enabled = false;
 			outterSprite.enabled = false;
-
-			GameObject.Find("Recap Menu").Find("Panel").Find("Next Level Button").GetComponent(Button).interactable = true;
 		}
 	}
 }

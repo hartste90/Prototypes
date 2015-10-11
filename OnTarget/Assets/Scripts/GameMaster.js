@@ -35,12 +35,8 @@ function onLevels ()
 
 function onNewGame ()
 {
-	Debug.Log("GOING TO NEW Game");
-	Debug.Log(in_trial);
-	Debug.Log(level);
+	Debug.Log("GOING TO NEW GAME");
 	GameObject.Find("Game Master").GetComponent(GameMaster).level = 1;
-	Debug.Log(level);
-
 	GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = true;
 	Application.LoadLevel("1");
 

@@ -87,7 +87,7 @@ public class Obstacle extends MonoBehaviour
 
 			//Destroy(gameObject);
 			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
-			yield WaitForSeconds(2);
+			yield WaitForSeconds(1);
 			var canvas = Instantiate(recapMenu);
 			//canvas.transform.Find("TopMenu").GetComponent(RectTransform).position.y = 800;
 		}
@@ -96,7 +96,6 @@ public class Obstacle extends MonoBehaviour
 	function Tint ( )
 	{
 		gameObject.GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
-		transform.FindChild("inner_target").GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
 		tint_timer = Time.time + tint_time;
 	}
 	

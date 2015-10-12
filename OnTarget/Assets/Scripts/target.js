@@ -19,6 +19,12 @@ public class Target extends Obstacle
 
 	}
 	
+	function Tint ()
+	{
+		super.Tint();
+		transform.FindChild("inner_target").GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
+	}
+	
 
 	function ApplyDamage ( damage: float )
 	{

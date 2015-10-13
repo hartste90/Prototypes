@@ -9,7 +9,7 @@ public class Obstacle extends MonoBehaviour
 {
 	
 		
-	public var health : float = 10;
+	public var health : float;
 	public var tint_time : float = 0.1;
 	public var lerp_speed : float = 15;
 	public var lerp_size : float = 1.5;
@@ -17,6 +17,8 @@ public class Obstacle extends MonoBehaviour
 	public var sound_explode: AudioClip; 
 	 
 	public var recapMenu : GameObject;
+	public var explosion : GameObject;
+
 	 
 	protected var tint_timer : float;
 	protected var original_color : Color;
@@ -82,12 +84,13 @@ public class Obstacle extends MonoBehaviour
 		{
 			//audio feedback - explode
 			PlaySound("explode");
+			Instantiate(explosion, transform.position, transform.rotation);
 			transform.GetComponent(SpriteRenderer).enabled = false;
 			transform.GetComponent(Collider2D).enabled = false;
-
+		
 			//Destroy(gameObject);
 			GameObject.Find("Game Master").GetComponent(GameMaster).in_trial = false;
-			yield WaitForSeconds(2);
+			yield WaitForSeconds(1);
 			var canvas = Instantiate(recapMenu);
 			//canvas.transform.Find("TopMenu").GetComponent(RectTransform).position.y = 800;
 		}
@@ -96,7 +99,6 @@ public class Obstacle extends MonoBehaviour
 	function Tint ( )
 	{
 		gameObject.GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
-		transform.FindChild("inner_target").GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
 		tint_timer = Time.time + tint_time;
 	}
 	

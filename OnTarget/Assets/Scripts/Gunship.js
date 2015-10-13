@@ -5,6 +5,8 @@ var current_fire_rate : float;
 var delta_fire_rate : float;
 var max_fire_rate : float;
 
+
+public var gameMaster : GameMaster;
 public var ship_speed : float = 20;
 
 private var nextFire : float = 0.0;
@@ -24,6 +26,7 @@ private var max_bullet_speed : float = 0.08f;
 private var bullet : GameObject;
 function Start ()
 {
+	gameMaster = GameObject.Find("Game Master").GetComponent(GameMaster);
 	sprite = transform.FindChild("Sprite").gameObject;
 	current_fire_rate = min_fire_rate;
 	pos = transform.position;
@@ -32,8 +35,7 @@ function Start ()
 
 function Update () 
 {
-	var in_trial = 	true;//GameObject.Find("Game Master").GetComponent(GameMaster).in_trial;
-	if (in_trial)
+	if (gameMaster.in_trial)
 	{
 		ChargeBullet();	
 		LerpMovement();

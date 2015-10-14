@@ -2,6 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gunship.js">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets/Scripts/Gunship.js" Line="14" Column="44" />
       <File FileName="Assets/Scripts/Obstacle.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Target.js" Line="1" Column="1" />
@@ -9,6 +10,21 @@
       <File FileName="../../../../workspace/LumosityParty/LPUnity/Assets/Code/Server/fakeServerData.json" Line="1" Column="1" />
       <File FileName="../../../../workspace/LumosityParty/LPUnity/Assets/Code/Server/ServerTest.cs" Line="1" Column="1" />
       <File FileName="../../../../workspace/LumosityParty/LPUnity/Assets/Code/Server/ServerResponse.cs" Line="1" Column="1" />
+=======
+<<<<<<< HEAD
+      <File FileName="Assets/Scripts/GameMaster.js" Line="38" Column="33" />
+      <File FileName="Assets/Scripts/Gunship.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Target.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Obstacle.js" Line="90" Column="26" />
+      <File FileName="Assets/Scripts/MoveStraight.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/orbit.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/bullet.js" Line="1" Column="1" />
+=======
+      <File FileName="Assets/Scripts/Gunship.js" Line="80" Column="56" />
+      <File FileName="Assets/Scripts/Obstacle.js" Line="93" Column="26" />
+      <File FileName="Assets/Scripts/Target.js" Line="33" Column="4" />
+>>>>>>> origin/master
+>>>>>>> 3331b932f89f08ccc28d0ddc6d700adb5d345c78
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

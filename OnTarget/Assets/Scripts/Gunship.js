@@ -9,7 +9,9 @@ var max_fire_rate : float;
 public var gameMaster : GameMaster;
 public var ship_speed : float = 20;
 
-private var nextFire : float = 0.0;
+private var nextFire : float = 0.0f;
+private var lastFire : float = 0.0f;
+public var timeBetweenBullets : float = .2f;
 public var sound_bullet: AudioClip;
 
 
@@ -31,6 +33,7 @@ function Start ()
 	current_fire_rate = min_fire_rate;
 	pos = transform.position;
 	original_y = sprite.transform.position.y;
+	charging = false;
 }	
 
 function Update () 
@@ -52,7 +55,7 @@ function ChargeBullet()
 	{
 		pos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 		//if theres no bullet, create one
-		if (!charging)
+		if (!charging && (Time.time - lastFire > timeBetweenBullets))
 		{
 			charging = true;
 			var bullet_position = transform.FindChild("bullet_zone").transform.position;
@@ -83,6 +86,7 @@ function ReleaseBullet()
 		charging = false;
 		transform.GetComponent(AudioSource).clip = sound_bullet;
 		transform.GetComponent(AudioSource).Play();
+		lastFire = Time.time;
 	}
 }
 

@@ -22,10 +22,6 @@ public class Target extends Obstacle
 	{
 		super.Tint();
 		transform.FindChild("inner_target").GetComponent(SpriteRenderer).color = new Color(.9,.9,.9,.85); 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 	}
 	
 

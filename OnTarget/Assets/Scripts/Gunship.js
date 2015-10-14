@@ -75,7 +75,7 @@ function LerpMovement ()
 
 function ReleaseBullet()
 {
-	if (Input.GetButtonUp("Fire1"))
+	if (Input.GetButtonUp("Fire1") && charging)
 	{
 		//current_fire_rate = min_fire_rate;
 		Kickback( 100.0 );

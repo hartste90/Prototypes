@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+public var explosion : GameObject;
 
 var speed : float = 10f;
 var damage : float = 1f;
@@ -30,5 +31,7 @@ public function fire( speed, damage )
 
 public function getDamage()
 {
+	Instantiate(explosion, transform.position, transform.rotation);
 	return damage;
+	
 }

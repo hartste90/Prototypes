@@ -29,7 +29,7 @@ private var bullet : GameObject;
 function Start ()
 {
 	gameMaster = GameObject.Find("Game Master").GetComponent(GameMaster);
-	sprite = transform.FindChild("Sprite").gameObject;
+	sprite = transform.FindChild("Sprite").FindChild("Handle").gameObject;
 	current_fire_rate = min_fire_rate;
 	pos = transform.position;
 	original_y = sprite.transform.position.y;
@@ -47,7 +47,7 @@ function Update ()
 	}
 	
 }
-
+ 
 function ChargeBullet()
 {
 	//move the gunship to the touch location

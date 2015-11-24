@@ -6,10 +6,12 @@ public class ActiveCircle : MonoBehaviour {
 	public float growRate;
 
 	protected bool isGrowing;
+	protected Vector3 originalScale;
 
 	// Use this for initialization
 	void Start () {
 		isGrowing = true;
+		originalScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -31,6 +33,19 @@ public class ActiveCircle : MonoBehaviour {
 		}
 
 	
+	}
+
+	public void ResetSize ()
+	{
+		transform.localScale = originalScale;
+	}
+
+	public void OnTriggerEnter2D ( Collider2D coll )
+	{
+		if ( coll.gameObject.tag == "Screen Edge" )
+		{
+			ResetSize ();
+		}
 	}
 
 }

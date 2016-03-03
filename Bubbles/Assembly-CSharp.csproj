@@ -45,7 +45,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Circle.cs" />
+     <Compile Include="Assets\Code\Bubble.cs" />
+     <Compile Include="Assets\Code\BubbleGenerator.cs" />
+     <Compile Include="Assets\Code\Circle.cs" />
+     <Compile Include="Assets\Code\Fall.cs" />
+     <Compile Include="Assets\Code\GameManager.cs" />
+     <Compile Include="Assets\Code\GameMaster.cs" />
      <None Include="Assets\CircleClipLocalSpace.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

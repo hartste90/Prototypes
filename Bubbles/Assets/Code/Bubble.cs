@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bubble : MonoBehaviour {
+public class Bubble : MonoBehaviour 
+{
 
+	public SpriteRenderer bubble;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,4 +21,17 @@ public class Bubble : MonoBehaviour {
 	{
 		Debug.Log ("Clicked bubble");
 	}
+
+	public void OnMouseOver()
+	{
+
+		UIManager.instance.ChangeCurrentColor(bubble.color);
+
+		UIManager.instance.IncreaseScore (100);
+
+		Destroy (gameObject);
+	}
+
+
+
 }

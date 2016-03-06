@@ -2,10 +2,8 @@
 {
     Properties
     {
-        _MainTex ("Base (RGB), Alpha (A)", 2D) = "white" {}
-        _Edge ("Edge", Float) = 2
-        _Strength ("Strength", Range(0,1)) = 0.5
-     }
+		_Color ("Color Tint", Color) = (1,0,0,1)
+    }
  
     SubShader
     {
@@ -19,7 +17,7 @@
             Lighting Off
             ZWrite Off
            
-            Fog { Color (0,0,0,0) }
+            //Fog { Color (0,0,0,0) }
  
             CGPROGRAM
             #pragma exclude_renderers d3d11 xbox360
@@ -29,7 +27,7 @@
             #pragma glsl
             #include "UnityCG.cginc"
  
-        sampler2D _MainTex;
+        	sampler2D _MainTex;
             float4 _MainTex_ST;
             float _Edge;
             float _Strength;
@@ -39,8 +37,9 @@
                 half4 vertex : POSITION;
                 half2 texcoord : TEXCOORD0;
                 half2 savedVertices : TEXCOORD1;
-                fixed4 color : COLOR;
                 half2 texUV : TEXCOORD2;  
+                fixed4 color : COLOR;
+
             };
  
             struct appdata_t
@@ -62,7 +61,8 @@
                 v2f o;
                 o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
                 o.texcoord = v.texcoord - half2(0.5,0.5);
-                o.color = v.color;
+//                v.color = new Color(0.3f, 0.3f, 0.3f, 0.3f);
+                o.color = (.2,.5,.7,1);
                 o.texUV = v.savedVertices * _MainTex_ST.xy + _MainTex_ST.w;
                
                 return o;
@@ -70,7 +70,7 @@
            
             half4 frag (v2f IN) : COLOR
             {
-                fixed4 col = Overlay(IN.color, tex2D(_MainTex, IN.texUV) * _Strength);
+                fixed4 col = (.2,.5,.7,1);  //Overlay((.2,.5,.7,1), tex2D(_MainTex, IN.texUV) * _Strength);
                 fixed4 transparent = fixed4(col.xyz,0);
                 float l = length(IN.texcoord);
                 float thresholdWidth = length(float2(ddx(l),ddy(l))) * _Edge;

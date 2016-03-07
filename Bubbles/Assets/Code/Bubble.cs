@@ -5,6 +5,9 @@ public class Bubble : MonoBehaviour
 {
 
 	public SpriteRenderer bubble;
+
+	[SerializeField]
+	protected GameObject bubblePopEffect;
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,6 +31,8 @@ public class Bubble : MonoBehaviour
 		UIManager.instance.ChangeCurrentColor(bubble.color);
 
 		UIManager.instance.IncreaseScore (100);
+
+		Instantiate (UIManager.instance.bubblePopEffectPrefab);
 
 		Destroy (gameObject);
 	}

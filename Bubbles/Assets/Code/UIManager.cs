@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
 	protected Text scoreText;
 	[SerializeField]
 	protected Image currentColorImage;
+	[SerializeField]
+	public GameObject bubblePopEffectPrefab;
+
 		
 	//--------------------
 	

@@ -1,12 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Bubble.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Materials/CircleClipLocalSpace.shader">
     <Files>
-      <File FileName="Assets/Code/Circle.cs" Line="3" Column="27" />
-      <File FileName="Assets/Code/BubbleGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Code/Bubble.cs" Line="35" Column="56" />
-      <File FileName="Assets/Code/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Code/UIManager.cs" Line="17" Column="41" />
+      <File FileName="Assets/Materials/CircleClipLocalSpace.shader" Line="88" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -2,9 +2,9 @@
 {
     Properties
     {
-		_Color ("Color Tint", Color) = (1,0,0,1)
-    }
- 
+		_Color ("Color Tint", Color) = (1,1,1,1)
+
+ 	}
     SubShader
     {
  
@@ -31,6 +31,7 @@
             float4 _MainTex_ST;
             float _Edge;
             float _Strength;
+            fixed4 _Color;
                      
             struct v2f
             {
@@ -70,7 +71,7 @@
            
             half4 frag (v2f IN) : COLOR
             {
-                fixed4 col = (.2,.5,.7,1);  //Overlay((.2,.5,.7,1), tex2D(_MainTex, IN.texUV) * _Strength);
+                fixed4 col = fixed4 (_Color);  //Overlay((.2,.5,.7,1), tex2D(_MainTex, IN.texUV) * _Strength);
                 fixed4 transparent = fixed4(col.xyz,0);
                 float l = length(IN.texcoord);
                 float thresholdWidth = length(float2(ddx(l),ddy(l))) * _Edge;

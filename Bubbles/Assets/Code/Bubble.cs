@@ -31,8 +31,7 @@ public class Bubble : MonoBehaviour
 		UIManager.instance.ChangeCurrentColor(bubble.color);
 
 		UIManager.instance.IncreaseScore (100);
-
-		Instantiate (UIManager.instance.bubblePopEffectPrefab);
+		Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity);
 
 		Destroy (gameObject);
 	}

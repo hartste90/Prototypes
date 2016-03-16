@@ -27,11 +27,23 @@ public class Bubble : MonoBehaviour
 
 	public void OnMouseOver()
 	{
+		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity) as GameObject;
 
-		UIManager.instance.ChangeCurrentColor(bubble.color);
+		if (UIManager.GetCurrentColor() != bubble.color)
+		{
+			UIManager.instance.SetCurrentColor(bubble.color);
+			UIManager.instance.ResetCount();
+		}
+		else
+		{
+
+		}
+
 
 		UIManager.instance.IncreaseScore (100);
-		Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity);
+
+
+		UIManager.instance.IncreaseCount (1);
 
 		Destroy (gameObject);
 	}

@@ -8,9 +8,13 @@ public class UIManager : MonoBehaviour
 	public static UIManager instance = null;              
          
 	protected int score = 0;
+	protected int count = 0;
+
 
 	[SerializeField]
 	protected Text scoreText;
+	[SerializeField]
+	protected Text countText;
 	[SerializeField]
 	protected Image currentColorImage;
 	[SerializeField]
@@ -37,7 +41,7 @@ public class UIManager : MonoBehaviour
 		scoreText.text = "0";
 	}
 	
-	public void ChangeCurrentColor( Color newColor )
+	public void SetCurrentColor( Color newColor )
 	{
 		currentColorImage.color = newColor;
 	}
@@ -45,7 +49,34 @@ public class UIManager : MonoBehaviour
 	public void IncreaseScore ( int deltaScore )
 	{
 		score += deltaScore;
+		RefreshScoreText();
+	}
+	public void DecreaseScore ( int deltaScore )
+	{
+		score -= deltaScore;
+		RefreshScoreText();
+	}
+
+	protected void RefreshScoreText()
+	{
 		scoreText.text = score.ToString();
+	}
+
+	public void IncreaseCount (int deltaCount )
+	{
+		count += deltaCount;
+		countText.text = count.ToString();
+	}
+
+	public void ResetCount ()
+	{
+		count = 0;
+		countText.text = count.ToString();
+	}
+
+	public Color GetCurrentColor()
+	{
+		return currentColorImage.color;
 	}
 
 }

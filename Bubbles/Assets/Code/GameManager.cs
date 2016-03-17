@@ -10,6 +10,8 @@ namespace Completed
 		public static GameManager instance = null;              
 
 		[SerializeField]
+		protected float SIZEMODIFIER = 1.1f;
+		[SerializeField]
 		protected GameObject bubbleGeneratorPrefab;
 		[SerializeField]
 		protected float fallSpeed = 1.0f;
@@ -17,7 +19,6 @@ namespace Completed
 
 		protected Color currentColor;
 		protected GameObject bubbleGenerator;                             
-
 		//--------------------
 
 		void Awake()
@@ -50,5 +51,32 @@ namespace Completed
 		{
 			
 		}
+
+		public void GrowOtherBubbles( Color Color )
+		{
+
+		}
+
+		//increases the size of all objects passed in
+		protected void IncreaseAllSizes( GameObject[] objects )
+		{
+			foreach (GameObject obj in objects )
+			{
+				IncreaseSize (obj);
+			}
+		}
+
+		public void ResetSize()
+		{
+			gameObject.transform.localScale.Set(1,1,1);
+		}
+		
+		public void IncreaseSize( GameObject obj )
+		{
+			float x = gameObject.transform.localScale.x * SIZEMODIFIER;
+			float y = gameObject.transform.localScale.y * SIZEMODIFIER;
+			gameObject.transform.localScale.Set(x, y, 1);
+		}
+
 	}
 }

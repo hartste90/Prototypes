@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField]
 	protected Text countText;
 	[SerializeField]
-	protected Image currentColorImage;
+	public Image currentColorImage;
 	[SerializeField]
 	public GameObject bubblePopEffectPrefab;
 
@@ -77,6 +77,11 @@ public class UIManager : MonoBehaviour
 	public Color GetCurrentColor()
 	{
 		return currentColorImage.color;
+	}
+
+	public int GetCount()
+	{
+		return count;
 	}
 
 }

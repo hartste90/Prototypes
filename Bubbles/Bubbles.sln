@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{BAA62349-A24A-7796-1167-85784F54B149}") = "Bubbles", "Assembly-CSharp.csproj", "{D9F50AB2-2748-6F05-143C-9523C9C6E41E}"
 EndProject
+Project("{BAA62349-A24A-7796-1167-85784F54B149}") = "Bubbles", "Assembly-CSharp-Editor.csproj", "{5C2786D3-9C1F-11AE-0B84-667D94640006}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{D9F50AB2-2748-6F05-143C-9523C9C6E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F50AB2-2748-6F05-143C-9523C9C6E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9F50AB2-2748-6F05-143C-9523C9C6E41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2786D3-9C1F-11AE-0B84-667D94640006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2786D3-9C1F-11AE-0B84-667D94640006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2786D3-9C1F-11AE-0B84-667D94640006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2786D3-9C1F-11AE-0B84-667D94640006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																												GlobalSection(MonoDevelopProperties) = preSolution
+																																																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

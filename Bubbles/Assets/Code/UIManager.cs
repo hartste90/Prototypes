@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
          
 	protected int score = 0;
 	protected int count = 0;
+	protected float currentTime = 0;
+
+	protected float MAXTIME = 30f;
 
 
 	[SerializeField]
@@ -17,6 +20,8 @@ public class UIManager : MonoBehaviour
 	protected Text countText;
 	[SerializeField]
 	public Image currentColorImage;
+	[SerializeField]
+	protected TimerView timerView;
 	[SerializeField]
 	public GameObject bubblePopEffectPrefab;
 
@@ -39,6 +44,13 @@ public class UIManager : MonoBehaviour
 	void Start () 
 	{
 		scoreText.text = "0";
+		currentTime = MAXTIME;
+	}
+
+	void Update ()
+	{
+		currentTime -= Time.deltaTime;
+		timerView.SetClock(currentTime, MAXTIME);
 	}
 	
 	public void SetCurrentColor( Color newColor )
@@ -54,8 +66,26 @@ public class UIManager : MonoBehaviour
 	public void DecreaseScore ( int deltaScore )
 	{
 		score -= deltaScore;
+		currentTime -= 0.5f;
+
 		RefreshScoreText();
 	}
+
+	public void AddTime ( float deltaTime )
+	{
+		if (currentTime < MAXTIME)
+		{
+			currentTime += deltaTime;
+		}
+	}
+	public void SubtractTime ( float deltaTime )
+	{
+		if (currentTime > 0)
+		{
+			currentTime -= deltaTime;
+		}
+	}
+
 
 	protected void RefreshScoreText()
 	{

@@ -33,12 +33,14 @@ public class Bubble : MonoBehaviour
 		if (UIManager.instance.GetCurrentColor() == bubble.color)
 		{
 			UIManager.instance.IncreaseScore (100);
+			UIManager.instance.AddTime();
 		}
 		else
 		{
 			UIManager.instance.DecreaseScore(200);
 			UIManager.instance.SetCurrentColor(bubble.color);
 			UIManager.instance.ResetCount();
+			UIManager.instance.SubtractTime();
 		}
 
 		UIManager.instance.IncreaseCount (1);

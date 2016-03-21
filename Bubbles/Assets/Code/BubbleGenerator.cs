@@ -39,7 +39,7 @@ public class BubbleGenerator : MonoBehaviour
 	protected void SpawnBubble()
 	{
 		GameObject bubble = Instantiate (this.bubblePrefab);
-		bubble.GetComponent<Bubble> ().bubble.color = GetRandomColor ();
+		bubble.GetComponent<Bubble> ().image.color = GetRandomColor ();
 		bubble.transform.position = GetRandomPosition ();
 	}
 

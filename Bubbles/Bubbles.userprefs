@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Cursor.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Bubble.cs">
     <Files>
-      <File FileName="Assets/Code/Bubble.cs" Line="25" Column="1" />
+      <File FileName="Assets/Code/Bubble.cs" Line="14" Column="41" />
       <File FileName="Assets/Code/UIManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/ParticleSystemAutoDestroy.cs" Line="1" Column="1" />
-      <File FileName="Assets/Code/Cursor.cs" Line="11" Column="36" />
+      <File FileName="Assets/Code/Cursor.cs" Line="51" Column="52" />
+      <File FileName="Assets/Code/BubbleGenerator.cs" Line="42" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

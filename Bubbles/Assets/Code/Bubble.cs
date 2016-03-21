@@ -4,10 +4,13 @@ using System.Collections;
 public class Bubble : MonoBehaviour 
 {
 
+	public SpriteRenderer image;
+
+	[SerializeField]
+	protected GameObject bubblePopEffect;
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-	
 	}
 	
 	// Update is called once per frame

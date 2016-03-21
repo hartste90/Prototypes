@@ -3,22 +3,13 @@ using System.Collections;
 
 public class Cursor : MonoBehaviour {
 
-
-	public GameObject projectile;
 	public AudioClip shootSound;
-	
+
 	
 	private float throwSpeed = 2000f;
 	private AudioSource source;
 	private float volLowRange = .5f;
 	private float volHighRange = 1.0f;
-
-	
-	public SpriteRenderer bubble;
-	
-	[SerializeField]
-	protected GameObject bubblePopEffect;
-
 
 	// Use this for initialization
 	void Start () {
@@ -44,13 +35,20 @@ public class Cursor : MonoBehaviour {
 
 
 	}
-	source.PlayOneShot(shootSound,vol);
 
-	protected void OnCursorTouch ()
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Bubble")
+		{
+			OnBubbleTouch( coll.gameObject.GetComponent<Bubble>() );
+		}
+	}
+
+	protected void OnBubbleTouch ( Bubble bubble)
 	{
 		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity) as GameObject;
-		effect.GetComponent<ParticleSystem>().startColor = bubble.color;
-		if (UIManager.instance.GetCurrentColor() == bubble.color)
+		effect.GetComponent<ParticleSystem>().startColor = bubble.image.color;
+		if (UIManager.instance.GetCurrentColor() == bubble.image.color)
 		{
 			UIManager.instance.IncreaseScore (100);
 			UIManager.instance.AddTime(1.0f);
@@ -58,7 +56,7 @@ public class Cursor : MonoBehaviour {
 		else
 		{
 			UIManager.instance.DecreaseScore(200);
-			UIManager.instance.SetCurrentColor(bubble.color);
+			UIManager.instance.SetCurrentColor(bubble.image.color);
 			UIManager.instance.ResetCount();
 			UIManager.instance.SubtractTime(.5f);
 		}
@@ -69,16 +67,11 @@ public class Cursor : MonoBehaviour {
 			UIManager.instance.ResetCount();
 			UIManager.instance.IncreaseScore (500);
 		}
-		
-		Destroy (gameObject);
+		source.PlayOneShot(shootSound,100);
+
+		Destroy (bubble.gameObject);
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
-	{
-		if (coll.gameObject.tag == "Cursor")
-		{
-			OnCursorTouch();
-		}
-	}
+
 
 }

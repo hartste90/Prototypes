@@ -54,9 +54,9 @@
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\GameManager2.cs" />
      <Compile Include="Assets\Code\GameMaster.cs" />
+     <Compile Include="Assets\Code\ParticleSystemAutoDestroy.cs" />
      <Compile Include="Assets\Code\TimerView.cs" />
      <Compile Include="Assets\Code\UIManager.cs" />
-     <Compile Include="Assets\ParticleSystemAutoDestroy.cs" />
      <None Include="Assets\Materials\CircleClipLocalSpace.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

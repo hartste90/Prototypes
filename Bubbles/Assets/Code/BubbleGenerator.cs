@@ -5,6 +5,10 @@ public class BubbleGenerator : MonoBehaviour
 {
 
 	[SerializeField]
+	protected float minSize = 0.5f;
+	[SerializeField]
+	protected float maxSize = 2.0f;
+	[SerializeField]
 	protected Color[] colors;
 	[SerializeField]
 	protected GameObject bubblePrefab;
@@ -39,6 +43,8 @@ public class BubbleGenerator : MonoBehaviour
 	protected void SpawnBubble()
 	{
 		GameObject bubble = Instantiate (this.bubblePrefab);
+		float size = Random.Range(minSize, maxSize);
+		bubble.transform.localScale = new Vector2 (size, size);
 		bubble.GetComponent<Bubble> ().image.color = GetRandomColor ();
 		bubble.transform.position = GetRandomPosition ();
 	}

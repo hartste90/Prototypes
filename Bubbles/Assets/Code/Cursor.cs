@@ -46,7 +46,7 @@ public class Cursor : MonoBehaviour {
 
 	protected void OnBubbleTouch ( Bubble bubble)
 	{
-		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity) as GameObject;
+		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, bubble.transform.position, Quaternion.identity) as GameObject;
 		effect.GetComponent<ParticleSystem>().startColor = bubble.image.color;
 		if (UIManager.instance.GetCurrentColor() == bubble.image.color)
 		{

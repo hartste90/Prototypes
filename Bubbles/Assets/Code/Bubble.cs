@@ -19,12 +19,27 @@ public class Bubble : MonoBehaviour
 	
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+	void OnTriggerEnter2D(Collider2D coll) 
 	{
 		if (coll.gameObject.tag == "Boundary")
 		{
 			Destroy(gameObject);
 		}
+		if (coll.gameObject.tag == "Bubble")
+		{
+			Debug.Log("MOVING");
+			transform.position = GetRandomPosition();
+		}
+	}
+
+	public Vector3 GetRandomPosition ()
+	{
+		Vector3 screenPosition =
+			Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0,Screen.width), 
+			                                           (Screen.height), 
+			                                           Camera.main.farClipPlane/2));
+		return screenPosition;
+		
 	}
 
 

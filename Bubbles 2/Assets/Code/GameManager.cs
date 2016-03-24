@@ -36,7 +36,7 @@ namespace Completed
 		// Use this for initialization
 		void Start () 
 		{
-			bubbleGenerator = Instantiate( bubbleGeneratorPrefab );
+			//bubbleGenerator = Instantiate( bubbleGeneratorPrefab );
 		}
 		
 		
@@ -56,6 +56,7 @@ namespace Completed
 		{
 
 		}
+
 
 		//increases the size of all objects passed in
 		protected void IncreaseAllSizes( GameObject[] objects )

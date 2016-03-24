@@ -4,6 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	[SerializeField]
+	protected GameObject obstaclePrefab;
+
+	[SerializeField]
 	protected float horizSpeed = 5f;
 	protected string direction = "left";
 
@@ -59,6 +62,9 @@ public class Player : MonoBehaviour {
 			direction = "left";
 			currentVelocity = -horizSpeed;
 		}
+
+		GameObject bubble = Instantiate (this.obstaclePrefab);
+		bubble.transform.position = transform.position;
 
 	}
 

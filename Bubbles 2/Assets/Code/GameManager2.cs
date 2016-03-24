@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManager2 : MonoBehaviour
 {
 	[SerializeField]
 	protected GameObject bubbleGeneratorPrefab;

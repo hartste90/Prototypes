@@ -49,17 +49,19 @@
      <Compile Include="Assets\Code\Bubble.cs" />
      <Compile Include="Assets\Code\BubbleGenerator.cs" />
      <Compile Include="Assets\Code\Circle.cs" />
+     <Compile Include="Assets\Code\Coin.cs" />
      <Compile Include="Assets\Code\Cursor.cs" />
      <Compile Include="Assets\Code\Fall.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\GameManager2.cs" />
      <Compile Include="Assets\Code\GameMaster.cs" />
+     <Compile Include="Assets\Code\LowerBoundary.cs" />
+     <Compile Include="Assets\Code\Mine.cs" />
+     <Compile Include="Assets\Code\Obstacle.cs" />
      <Compile Include="Assets\Code\ParticleSystemAutoDestroy.cs" />
+     <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\TimerView.cs" />
      <Compile Include="Assets\Code\UIManager.cs" />
-     <Compile Include="Assets\LowerBoundary.cs" />
-     <Compile Include="Assets\Obstacle.cs" />
-     <Compile Include="Assets\Player.cs" />
      <None Include="Assets\Materials\CircleClipLocalSpace.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

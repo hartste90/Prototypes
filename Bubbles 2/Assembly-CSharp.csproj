@@ -59,6 +59,7 @@
      <Compile Include="Assets\Code\UIManager.cs" />
      <Compile Include="Assets\LowerBoundary.cs" />
      <Compile Include="Assets\Obstacle.cs" />
+     <Compile Include="Assets\Player.cs" />
      <None Include="Assets\Materials\CircleClipLocalSpace.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

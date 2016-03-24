@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	protected GameObject obstaclePrefab;
 
 	[SerializeField]
-	protected float horizSpeed = 5f;
+	protected float horizSpeed;
 	protected string direction = "left";
 
 	protected float currentVelocity = 0f;

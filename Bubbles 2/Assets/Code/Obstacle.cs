@@ -6,16 +6,23 @@ public abstract class Obstacle : MonoBehaviour {
 	[SerializeField]
 	public Transform upperBoundary;
 	protected float startHeight;
+	protected float activeTime;
 
 	// Use this for initialization
 	void Awake()
 	{
+		activeTime = 0f;
 	}
 	void Start ()
 	{
 		startHeight = upperBoundary.position.y;
 		Debug.Log("Startheight: " + startHeight);
 
+	}
+
+	void Update()
+	{
+		activeTime += Time.deltaTime;
 	}
 	
 	void OnTriggerEnter2D (Collider2D coll)
@@ -34,6 +41,8 @@ public abstract class Obstacle : MonoBehaviour {
 	
 	protected void DestroySelf ()
 	{
+		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity) as GameObject;
+		effect.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
 		Destroy (gameObject);
 	}
 

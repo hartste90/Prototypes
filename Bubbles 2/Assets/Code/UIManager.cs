@@ -87,6 +87,17 @@ public class UIManager : MonoBehaviour
 	}
 
 
+	public void CheckGameOver()
+	{
+		//count coins
+		int coinNum = GameObject.FindGameObjectsWithTag("Coin").Length;
+		Debug.Log(coinNum);
+		if (coinNum == 1)
+		{
+			Debug.Log("WINNER - YOU GOT ALL THE COINS!");
+		}
+	}
+
 	protected void RefreshScoreText()
 	{
 		scoreText.text = score.ToString();

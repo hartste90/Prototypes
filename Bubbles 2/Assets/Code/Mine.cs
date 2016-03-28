@@ -14,7 +14,13 @@ public class Mine : Obstacle
 	
 	protected void OnHitPlayer( GameObject player)
 	{
-		Debug.Log ("Mine Hit");
+		if (activeTime > 3)
+		{
+			player.GetComponent<Player>().ChangeDirection();
+			Debug.Log ("Mine Hit");
+			DestroySelf();
+		}
+
 	}
 
 

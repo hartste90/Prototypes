@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
 	protected float horizSpeed;
 	protected string direction = "left";
 	[SerializeField]
-	protected float dampen = 5.0f;
+	protected float dampen = 10.0f;
 
 	protected float currentVelocity = 0f;
 	// Use this for initialization
@@ -25,7 +25,9 @@ public class Player : MonoBehaviour {
 	{
 		CheckStop();
 		CheckJump();
-		ReduceVelocity();
+		IncreaseVelocity();
+
+//		ReduceVelocity();
 //		CheckMove();
 	}
 
@@ -63,16 +65,17 @@ public class Player : MonoBehaviour {
 		{
 			direction = "right";
 			GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (1000, 0, 0));
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (100, 0, 0));
 			currentVelocity = horizSpeed;
 		}
 		else if (direction == "right")
 		{
 			direction = "left";
 			GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-1000, 0, 0));
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-100, 0, 0));
 			currentVelocity = -horizSpeed;
 		}
+		Debug.Log("New direction: " + direction);
 	}
 
 	protected void DropMine()
@@ -93,6 +96,20 @@ public class Player : MonoBehaviour {
 		{
 			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-dampen, 0, 0));
 
+		}
+	}
+
+	protected void IncreaseVelocity ()
+	{
+		//		GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
+		if (direction == "left")
+		{
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-dampen, 0, 0));
+		}
+		else
+		{
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (dampen, 0, 0));
+			
 		}
 	}
 

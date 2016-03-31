@@ -16,7 +16,6 @@ public abstract class Obstacle : MonoBehaviour {
 	void Start ()
 	{
 		startHeight = upperBoundary.position.y;
-		Debug.Log("Startheight: " + startHeight);
 
 	}
 

@@ -16,11 +16,11 @@ public class TextController : MonoBehaviour {
 	void Start () {
 	
 		dialogue.Add("Being a mom is one tough adventure ...");
-		dialogue.Add("you've helped 3 kids move into dorms...");
-		dialogue.Add("you've helped with countless homework assignments ...");
-		dialogue.Add("and kissed away a million boo-boos ...");
-		dialogue.Add("but that's why...");
-		dialogue.Add("you're our HERO!");
+		dialogue.Add("You've helped 3 kids move into dorms...");
+		dialogue.Add("You've helped with countless homework assignments ...");
+		dialogue.Add("And kissed away a million boo-boos ...");
+		dialogue.Add("But that's why...");
+		dialogue.Add("You're our HERO!");
 	}
 	
 	// Update is called once per frame

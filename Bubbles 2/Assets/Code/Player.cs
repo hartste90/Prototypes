@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 
 	[SerializeField]
 	protected float horizSpeed;
-	protected string direction = "left";
+	public string direction = "left";
 	[SerializeField]
 	protected float dampen = 10.0f;
 
@@ -33,14 +33,20 @@ public class Player : MonoBehaviour {
 
 	protected void CheckStop()
 	{
+//		Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x);
 		//at left
 		if (transform.position.x <= Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x && direction == "left")
 		{
-			currentVelocity = 0f;
+//			Debug.Log("STOPPED AT LEFT");
+//			currentVelocity = 0f;
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x, transform.position.y );
 		}
 		else if (transform.position.x >= Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x && direction == "right")
 		{
-			currentVelocity = 0f;
+//			currentVelocity = 0f;
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x, transform.position.y );
 		}
 	}
 
@@ -61,20 +67,21 @@ public class Player : MonoBehaviour {
 
 	public void ChangeDirection()
 	{
+		GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
+
 		if (direction == "left")
 		{
 			direction = "right";
-			GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (100, 0, 0));
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (1000, 0, 0));
 			currentVelocity = horizSpeed;
 		}
 		else if (direction == "right")
 		{
 			direction = "left";
-			GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-100, 0, 0));
+			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-1000, 0, 0));
 			currentVelocity = -horizSpeed;
 		}
+		gameManager.direction = direction;
 		Debug.Log("New direction: " + direction);
 	}
 

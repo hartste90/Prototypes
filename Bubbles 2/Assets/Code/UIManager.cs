@@ -91,7 +91,6 @@ public class UIManager : MonoBehaviour
 	{
 		//count coins
 		int coinNum = GameObject.FindGameObjectsWithTag("Coin").Length;
-		Debug.Log(coinNum);
 		if (coinNum == 1)
 		{
 			Debug.Log("WINNER - YOU GOT ALL THE COINS!");

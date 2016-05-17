@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;              
 
 	[SerializeField]
+	public Player player;
+	[SerializeField]
 	public Transform upperBoundary;
 	[SerializeField]
 	protected Transform lowerBoundary;
@@ -19,9 +21,11 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	protected float fallSpeed = 1.0f;
 	[SerializeField]
-
 	protected Color currentColor;
 	protected GameObject bubbleGenerator;                             
+
+	[SerializeField]
+	public string direction;
 	//--------------------
 
 	void Awake()
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
 	void Start () 
 	{
 		//bubbleGenerator = Instantiate( bubbleGeneratorPrefab );
+		direction = player.direction;
 	}
 	
 	

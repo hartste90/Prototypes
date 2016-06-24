@@ -7,6 +7,7 @@ public abstract class Obstacle : MonoBehaviour {
 	public Transform upperBoundary;
 	protected float startHeight;
 	protected float activeTime;
+	protected float strength;
 
 	// Use this for initialization
 	void Awake()
@@ -15,7 +16,16 @@ public abstract class Obstacle : MonoBehaviour {
 	}
 	void Start ()
 	{
+		upperBoundary = GameObject.FindGameObjectWithTag("Boundary - Upper").transform;
 		startHeight = upperBoundary.position.y;
+		if (gameObject.tag == "StrongObstacle")
+		{
+			strength = 9;
+		}
+		else
+		{
+			strength = 3;
+		}
 
 	}
 
@@ -54,7 +64,19 @@ public abstract class Obstacle : MonoBehaviour {
 
 	protected void OnHitBoundary ()
 	{
+		ReduceStrength();
 		ResetPosition();
+
+	}
+
+	protected void ReduceStrength()
+	{
+		strength --;
+		if (strength <= 0)
+		{
+			Destroy(gameObject);
+		}
+		transform.localScale = new Vector2 (transform.localScale.x *.9f, transform.localScale.y *.9f );
 	}
 
 

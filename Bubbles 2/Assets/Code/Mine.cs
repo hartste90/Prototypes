@@ -19,6 +19,7 @@ public class Mine : Obstacle
 			player.GetComponent<Player>().ChangeDirection();
 			Debug.Log ("Mine Hit");
 			DestroySelf();
+			Application.LoadLevel("GameOver");
 		}
 
 	}

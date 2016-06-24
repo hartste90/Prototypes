@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	public GameObject obstaclePrefab;
 	[SerializeField]
+	public GameObject stillObstaclePrefab;
+	[SerializeField]
 	protected float fallSpeed = 1.0f;
 	[SerializeField]
 	protected Color currentColor;

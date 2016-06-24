@@ -11,42 +11,84 @@ public class Player : MonoBehaviour {
 	public string direction = "left";
 	[SerializeField]
 	protected float dampen = 10.0f;
+	[SerializeField]
+	protected float dropSpeed = 1.0f;
+	protected float timeSinceLastDropped;
 
 	protected float currentVelocity = 0f;
 	// Use this for initialization
 	void Start () {
-		Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(0,Screen.height/4,1));
+		Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2,Screen.height/4,1));
 		transform.position = screenPos;
+		timeSinceLastDropped = 0f;
+		gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+		horizSpeed = GameMaster.fallSpeed * 1.5f;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		CheckStop();
+//		CheckStop();
+		CheckBounce();
 		CheckJump();
-		IncreaseVelocity();
+//		IncreaseVelocity();
+//		CheckDropSpike();
 
 //		ReduceVelocity();
 //		CheckMove();
 	}
 
-	protected void CheckStop()
+	protected void CheckDropSpike()
+	{
+		if (Time.time - timeSinceLastDropped > dropSpeed)
+		{
+			DropStillMine();
+			timeSinceLastDropped = Time.time;
+		}
+	}
+
+	protected void CheckBounce()
 	{
 //		Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x);
 		//at left
 		if (transform.position.x <= Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x && direction == "left")
 		{
-//			Debug.Log("STOPPED AT LEFT");
-//			currentVelocity = 0f;
-			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+			GetComponent<Rigidbody2D>().velocity = new Vector2 ( GetComponent<Rigidbody2D>().velocity.x * -1, 0f);
 			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x, transform.position.y );
+			direction = "right";
+			DropStillMine();
+
 		}
 		else if (transform.position.x >= Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x && direction == "right")
 		{
-//			currentVelocity = 0f;
-			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().velocity = new Vector2 ( GetComponent<Rigidbody2D>().velocity.x * -1, 0f);
 			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x, transform.position.y );
+			direction = "left";
+			DropStillMine();
+
+		}
+	}
+
+	protected void CheckStop()
+	{
+		//		Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x);
+		//at left
+		if (transform.position.x <= Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x && direction == "left")
+		{
+			ChangeDirection();
+//			//			Debug.Log("STOPPED AT LEFT");
+//			//			currentVelocity = 0f;
+//			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+//			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x, transform.position.y );
+		}
+		else if (transform.position.x >= Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x && direction == "right")
+		{
+			ChangeDirection();
+//			//			currentVelocity = 0f;
+//			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+//			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x, transform.position.y );
 		}
 	}
 
@@ -85,9 +127,17 @@ public class Player : MonoBehaviour {
 		Debug.Log("New direction: " + direction);
 	}
 
-	protected void DropMine()
+	protected GameObject DropMine()
 	{
 		GameObject bubble = Instantiate (gameManager.obstaclePrefab);
+		bubble.transform.position = transform.position;
+		bubble.GetComponent<Obstacle>().upperBoundary = gameManager.upperBoundary;
+		return bubble;
+	}
+
+	protected void DropStillMine()
+	{
+		GameObject bubble = Instantiate (gameManager.stillObstaclePrefab);
 		bubble.transform.position = transform.position;
 		bubble.GetComponent<Obstacle>().upperBoundary = gameManager.upperBoundary;
 	}

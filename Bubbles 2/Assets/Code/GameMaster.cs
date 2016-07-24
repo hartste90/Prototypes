@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class GameMaster 
 {
-	public static float fallSpeed = .75f;
+	public static float fallSpeed = 1.0f;
 
 
 }

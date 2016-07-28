@@ -8,17 +8,23 @@ public class PieGraph : MonoBehaviour {
 	protected float[] amounts;
 	[SerializeField]
 	protected Color[] colors;
+	public float[] offsets;
 	[SerializeField]
 	protected Image wedgePrefab;
+
+	public Spinner spinner;
+	public Button stopButton;
 
 	// Use this for initialization
 	void Start () {
 	
 		MakeGraph ();
+		stopButton.onClick.AddListener(() => spinner.isSpinning = false);
 	}
 
 	protected void MakeGraph()
 	{
+		offsets = new float[amounts.Length];
 		float total = 0f;
 		float zRotation = 0f;
 		foreach (float value in amounts) 
@@ -31,8 +37,10 @@ public class PieGraph : MonoBehaviour {
 			newWedge.transform.SetParent (transform, false);
 			newWedge.color = colors[i];
 			newWedge.fillAmount = amounts[i] / total;
-			newWedge.transform.rotation = Quaternion.Euler( new Vector3 (0f, 0f, zRotation));
-			zRotation -= newWedge.fillAmount * 360f;
+			newWedge.transform.rotation = Quaternion.Euler( new Vector3 (0f, 0f, -zRotation));
+
+			zRotation += newWedge.fillAmount * 360f;
+			offsets[i] = zRotation % 360f;
 		}
 
 	}

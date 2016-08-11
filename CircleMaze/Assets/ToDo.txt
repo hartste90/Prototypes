@@ -1,0 +1,5 @@
+﻿	1 - Draw graph with different segments
+	2 - spinner circles graph
+	3 - spinner stops on button click
+4 - game detects which segment spinner stopped at
+5 - grant reward based on segment landed on

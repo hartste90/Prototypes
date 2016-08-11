@@ -32,6 +32,18 @@ public class Spinner: MonoBehaviour {
 
 	}
 
+	public void Activate()
+	{
+		if (isSpinning)
+		{
+			isSpinning = false;
+		}
+		else
+		{
+			isSpinning = true;
+		}
+	}
+
 
 
 }

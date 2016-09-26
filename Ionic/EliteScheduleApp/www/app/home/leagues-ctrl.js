@@ -1,14 +1,19 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular.module('eliteApp').controller('LeaguesCtrl', ['eliteApi', LeaguesCtrl]);
+    angular.module('eliteApp').controller('LeaguesCtrl', ['$state', 'eliteApi', LeaguesCtrl]);
 
-	function LeaguesCtrl(eliteApi) {
-		var vm = this;
+    function LeaguesCtrl($state, eliteApi) {
+        var vm = this;
 
-		var leagues = eliteApi.getLeagues();
-		var leagueData = eliteApi.getLeagueData();
+        eliteApi.getLeagues().then(function(data){
+            vm.leagues = data;
+        });
 
-		console.log(leagues, leagueData);
-	};
+        vm.selectLeague = function(id){
+            eliteApi.setLeagueId(id);
+            $state.go("app.teams");
+        }
+
+    };
 })();

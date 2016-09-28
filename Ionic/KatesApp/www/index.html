@@ -18,7 +18,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -34,37 +34,40 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
-      <ion-header-bar class="header">
-      <div style="height: 170px;" class="bar bar-header bar-calm">
-        <h1 class="logo"></h1>
-        <div class=" nav-button-list">
-        <ul>
-          <li id = "one"> 
-            <a class="nav-button" href="#">Home</a>
-          </li>
-          <li id = "two"> 
-            <a class="nav-button" href="#">About</a>
-          </li>
-          <li id = "three">  
-          <a class="nav-button" href="#">Resumé</a> 
-          </li>
-          <li id = "four"> 
-            <a class="nav-button" href="#">Photos</a>
-          </li>
-          <li id = "five"> 
-            <a class="nav-button" href="#">Contact</a>
-          </li>
+      <div class="header">
 
-
-          </div>
-      </div>        
-      </ion-header-bar>
-
-      <ion-content>
+        <div class="logo"></div>
       
-      </ion-content>
+        <div class="nav-container">
+          <ul class="nav-button-list">
+            <li id = "one"> 
+              <a class="nav-button" href="#">Home</a></li>
+            <li id = "two"> 
+              <a class="nav-button" href="#">About</a></li>
+            <li id = "three">  
+              <a class="nav-button" href="#">Resumé</a></li>
+            <li id = "four"> 
+              <a class="nav-button" href="#">Photos</a></li>
+            <li id = "five"> 
+              <a class="nav-button" href="#">Contact</a></li>
+          </ul>
+        </div>
 
-    </ion-pane>
+      </div>        
+
+      <div class="content">
+        <ul class="welcome-list">
+          <li>
+            <div class="welcome-photo"></div>
+          </li>
+          <li>
+            <div class="welcome-photo"></div>
+          </li>
+          <li>
+            <div class="welcome-photo"></div>
+          </li>
+        </ul>
+      </div>
+
   </body>
 </html>

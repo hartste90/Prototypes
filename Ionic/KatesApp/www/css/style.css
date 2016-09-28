@@ -1,16 +1,31 @@
-/* Empty. Add your own CSS if you like */
+
+
 h1 {
     color: blue;
 }
 
-ul {list-style-type:none;}
-ul li {width:100px;float:left;}
-@media screen and (max-width:600px) {
-    ul li#one {clear:left;}
+/*ul li {width:100px;float:left;}*/
+/*@media screen and (max-width:600px) {
+    .nav-button-list {width:100px;}
+}
+*/
+.header
+{
+	position: relative;
+	background-color: #ddd;
+	height: 170px;
+	display: flex;
+}
+
+body
+{
+	font-family: 'Josefin Slab', serif;
 }
 
 .logo 
 {
+	position: relative;
+	left: 0px;
     background:url(http://placehold.it/350x150) no-repeat;
     width: 350px;
     height: 150px;
@@ -18,17 +33,32 @@ ul li {width:100px;float:left;}
 
 .nav-button-list
 {
-	position: relative;
+	position: absolute;
+	float: left;
 	right: 0px;
 	bottom: 0px;
-	width: 50%;
-	height: 30px;
+	display: flex;
 }
+
 .nav-button
 {
-	list-style-type: none;
-	text-decoration: none;
-	color: white;
 	margin: 10px;
-	width: 75px;
+	text-decoration: none;
+	color: #111;
+/*	font-family: 'Josefin Slab', serif;
+*/
+}
+
+.welcome-list
+{
+	float:left;
+}
+
+.welcome-photo
+{
+	top: 130px;
+	position: relative;
+	width:400px;
+	height:600px;
+	background:url(https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97600&w=400&h=600) no-repeat;
 }

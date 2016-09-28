@@ -1,28 +1,32 @@
-angular.module('eliteApp', ['ionic'])
+angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "google-maps"])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, DSCacheFactory) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
     }
-    if (window.StatusBar) {
+    if(window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    DSCacheFactory("leagueDataCache", { storageMode: "localStorage", maxAge: 360000, deleteOnExpire: "aggressive" });
+    DSCacheFactory("leaguesCache", { storageMode: "localStorage", maxAge: 360000, deleteOnExpire: "aggressive" });
+    DSCacheFactory("myTeamsCache", { storageMode: "localStorage" });
+    DSCacheFactory("staticCache", { storageMode: "localStorage" });
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+
   $stateProvider
 
     .state('home', {
       abstract: true,
-      url: '/home',
-      templateUrl: 'app/home/home.html'
+      url: "/home",
+      templateUrl: "app/home/home.html"
     })
 
     .state('home.leagues', {
@@ -94,16 +98,24 @@ angular.module('eliteApp', ['ionic'])
       }
     })
 
+    .state('app.location-map', {
+      url: "/location-map/:id",
+      views: {
+        'mainContent': {
+          templateUrl: "app/locations/location-map.html"
+        }
+      }
+    })
+
     .state('app.rules', {
       url: "/rules",
       views: {
         'mainContent': {
-          templateUrl: "app/rules/rules.html"
+          templateUrl: "app/rules/rules.html",
         }
       }
     });
 
-    
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/teams');
+    // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/home/leagues');
 });

@@ -1,16 +1,10 @@
+/*body{
+	overflow: scroll; 
+}*/
 
-
-h1 {
-    color: blue;
-}
-
-
-.header
+html 
 {
-	position: relative;
-	background-color: #ddd;
-	height: 170px;
-	display: flex;
+  	overflow-y: scroll;
 }
 
 body
@@ -18,40 +12,90 @@ body
 	font-family: 'Josefin Slab', serif;
 }
 
+
+.header
+{
+	position: relative;
+	/*background-color: #ddd;*/
+	/*padding: 10px;*/
+	display: flex;
+}
+
+
 .logo 
 {
 	position: relative;
-	left: 0px;
-    background:url(http://placehold.it/350x150) no-repeat;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	/*left: 0px;*/
     width: 350px;
     height: 150px;
 }
 
 .logo-subtitle
 {
+	font-family: "Josefin Slab";
+    line-height: 1.4em;
+    text-transform: none;
+    letter-spacing: 3px;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 12px;
+    color: grey;
+    width: 350px;
 	position: absolute;
+	margin-left: 20px;
 	bottom: 0px;
+
+
 }
 .nav-button-list
 {
 	position: absolute;
 	float: left;
-	right: 0px;
+	right: 10px;
 	bottom: 0px;
 	display: flex;
 }
 
-.nav-button
+a.nav-button
 {
 	margin: 10px;
 	text-decoration: none;
 	color: #111;
-/*	font-family: 'Josefin Slab', serif;
-*/
+	text-transform: none;
+    letter-spacing: .04em;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+a.nav-button:active
+{
+	margin: 10px;
+	text-decoration: none;
+	color: #fff;
+}
+a.nav-button:visited
+{
+	margin: 10px;
+	text-decoration: none;
+	color: #ddd;
+}
+a.nav-button:hover
+{
+	margin: 10px;
+	text-decoration: none;
+	color: #ea49b5;
 }
 
-.welcome-list
+.content
 {
+	margin-top: 10px;
+}
+.welcome-list
+{ 
+	width: 100%;
 	display: flex;
 	float:left;
 }
@@ -59,21 +103,47 @@ body
 .welcome-photo
 {
 	position: relative;
-	border-style: solid;
-    border-width: 1px;
+	width: 100%;
+	height:auto;
+}
 
-	width:400px;
-	height:600px;
-	background:url(https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97600&w=400&h=600) no-repeat;
+.footer
+{
+	position: relative;
+	/*padding: 10px;*/
+	display: flex;
+	background-color: #1df;
+	height: 200px;
+
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
 
     .nav-button-list
     {
     	position: relative;
+    	/*margin-top: 20px;
+    	margin-left:10px;*/
     	display: block;
+    }
+    .nav-button
+    {
+    	margin: 10px;
+    }
+    .welcome-list
+    {
+    	display: block;
+    	width: 100%;
+    }
+    .welcome-photo
+    {
+    	max-width:2000px;
+		max-height:2000px;
+		width: 100%;
+		height: auto;
     }
 
 }
+
+

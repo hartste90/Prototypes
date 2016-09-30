@@ -55,13 +55,13 @@ body
 	position: absolute;
 	float: left;
 	right: 10px;
-	bottom: 0px;
+	bottom: 20%;
 	display: flex;
 }
 
 a.nav-button
 {
-	margin: 10px;
+	margin: 20px;
 	text-decoration: none;
 	color: #111;
 	text-transform: none;
@@ -72,19 +72,16 @@ a.nav-button
 }
 a.nav-button:active
 {
-	margin: 10px;
 	text-decoration: none;
 	color: #fff;
 }
 a.nav-button:visited
 {
-	margin: 10px;
 	text-decoration: none;
 	color: #ddd;
 }
 a.nav-button:hover
 {
-	margin: 10px;
 	text-decoration: none;
 	color: #ea49b5;
 }
@@ -110,15 +107,48 @@ a.nav-button:hover
 .footer
 {
 	position: relative;
-	/*padding: 10px;*/
+	padding: 30px 20px;
+	bottom: 0px;
 	display: flex;
-	background-color: #1df;
-	height: 200px;
+	background-color: #fff;
+	width: 100%;
+	height: auto;
+
+}
+
+.social-icon-button-list
+{
+	position: relative;
+	float: left;
+	margin-left: 20px;
+	display: flex;
+}
+
+
+img.social-icon-button
+{
+	margin-left: 10px;
+    width: 25px;
+    height: auto;
+}
+img.social-icon-button:hover
+{
+	text-decoration: none;
+	border-top: 1px dotted #ea49b5;
+}
+
+.footer-text
+{
+	position: absolute;
+	right: 40px;
+	display: flex;
+	text-align: right;
+	color: #2cb192;
 
 }
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
 
     .nav-button-list
     {

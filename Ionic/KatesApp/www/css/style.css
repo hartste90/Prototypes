@@ -12,6 +12,15 @@ body
 	font-family: 'Josefin Slab', serif;
 }
 
+a
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+
+
+
 
 .header
 {
@@ -70,16 +79,12 @@ a.nav-button
     font-style: normal;
     font-size: 15px;
 }
-a.nav-button:active
+a.nav-button.active
 {
 	text-decoration: none;
-	color: #fff;
+	color: #aaa;
 }
-a.nav-button:visited
-{
-	text-decoration: none;
-	color: #ddd;
-}
+
 a.nav-button:hover
 {
 	text-decoration: none;
@@ -89,10 +94,31 @@ a.nav-button:hover
 .content
 {
 	margin-top: 10px;
+	display: flex;
+	width: 96%;
+	min-width: 550px;
+	margin-left: 2%;
+	margin-right: 2%;
+	display: flex;
+	float: left;
 }
+/*
+.width-centered
+{
+	width: 96%;
+	min-width: 550px;
+	margin-left: 2%;
+	margin-right: 2%;
+	display: flex;
+	float: left;
+}
+*/
 .welcome-list
 { 
-	width: 100%;
+	width: 96%;
+	min-width: 550px;
+	margin-left: 2%;
+	margin-right: 2%;
 	display: flex;
 	float:left;
 }
@@ -100,6 +126,7 @@ a.nav-button:hover
 .welcome-photo
 {
 	position: relative;
+	min-width: 300px;
 	width: 100%;
 	height:auto;
 }
@@ -141,10 +168,44 @@ img.social-icon-button:hover
 {
 	position: absolute;
 	right: 40px;
-	display: flex;
+	display: block;
 	text-align: right;
 	color: #2cb192;
 
+}
+
+.about_wrapper
+{
+	width: 96%;
+	min-width: 550px;
+	margin-left: 2%;
+	margin-right: 2%;
+	display: flex;
+	float:left;
+}
+
+.about_photobox
+{
+	vertical-align: middle;
+	/*display: inline-block;*/
+	width: 50%;
+	height: 50%;
+	max-width: 500px;
+	max-height: 500px;
+}
+
+.about_content
+{
+	width: 50%;
+	margin-left: 30px;
+	max-width: 500px;
+	
+	font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6em;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
 }
 
 

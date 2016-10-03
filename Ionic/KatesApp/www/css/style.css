@@ -25,25 +25,26 @@ a
 .header
 {
 	position: relative;
-	/*background-color: #ddd;*/
-	/*padding: 10px;*/
 	display: flex;
 }
 
-
-.logo 
+.logo
 {
 	position: relative;
 	margin-top: 20px;
 	margin-left: 20px;
 	margin-bottom: 10px;
-	/*left: 0px;*/
+}
+
+.logo img
+{
     width: 350px;
     height: 150px;
 }
 
 .logo-subtitle
 {
+	margin-left: 10px;
 	font-family: "Josefin Slab";
     line-height: 1.4em;
     text-transform: none;
@@ -52,10 +53,6 @@ a
     font-style: normal;
     font-size: 12px;
     color: grey;
-    width: 350px;
-	position: absolute;
-	margin-left: 20px;
-	bottom: 0px;
 
 
 }
@@ -72,7 +69,7 @@ a.nav-button
 {
 	margin: 20px;
 	text-decoration: none;
-	color: #111;
+	color: #aaa;
 	text-transform: none;
     letter-spacing: .04em;
     font-weight: 400;
@@ -82,7 +79,7 @@ a.nav-button
 a.nav-button.active
 {
 	text-decoration: none;
-	color: #aaa;
+	color: #111;
 }
 
 a.nav-button:hover
@@ -93,14 +90,15 @@ a.nav-button:hover
 
 .content
 {
+	padding-top: 70px;
 	margin-top: 10px;
-	display: flex;
+	/*display: flex;*/
 	width: 96%;
-	min-width: 550px;
+	/*min-width: 550px;*/
 	margin-left: 2%;
 	margin-right: 2%;
-	display: flex;
-	float: left;
+	/*display: flex;
+	float: left;*/
 }
 /*
 .width-centered
@@ -176,28 +174,34 @@ img.social-icon-button:hover
 
 .about_wrapper
 {
-	width: 96%;
-	min-width: 550px;
-	margin-left: 2%;
-	margin-right: 2%;
 	display: flex;
-	float:left;
+}
+
+.about_subtitle
+{
+	margin-right: 10px;
+	margin-bottom: 30px;
+	text-align: right;
+	color: #2cb192;
+	font-size: 36px;
+	font-family: "Josefin Slab";
+    line-height: 1.4em;
+    text-transform: none;
+    letter-spacing: .04em;
+    font-weight: 300;
+    font-style: normal;
 }
 
 .about_photobox
 {
-	vertical-align: middle;
-	/*display: inline-block;*/
 	width: 50%;
-	height: 50%;
-	max-width: 500px;
-	max-height: 500px;
+	height: 70%;
 }
 
 .about_content
 {
 	width: 50%;
-	margin-left: 30px;
+	margin-left: 40px;
 	max-width: 500px;
 	
 	font-family: "Helvetica Neue", Arial, sans-serif;
@@ -206,6 +210,66 @@ img.social-icon-button:hover
     font-weight: normal;
     font-style: normal;
     font-size: 13px;
+}
+
+.resume_wrapper
+{
+	padding-top: 40px;
+	display: flex;
+}
+
+.resume_content
+{
+	width: 70%;
+}
+
+.resume_subtitle
+{
+	text-align: center;
+	color: #2cb192;
+	font-size: 36px;
+	font-family: "Josefin Slab";
+    line-height: 1.4em;
+    text-transform: none;
+    letter-spacing: .04em;
+    font-weight: 300;
+    font-style: normal;
+    /*margin: 1em 0;*/
+}
+
+.resume_download_links
+{
+	padding-top: 20px;
+	width: 100%;
+	text-align: center;
+}
+.resume_download_links li
+{
+	padding-bottom: 5px;
+}
+.resume_download_links a
+{
+	font-weight: bold; 
+}
+.resume_download_links a:hover
+{
+	font-weight: bold;
+	color: #ea49b5; 
+}
+.resume_image_wrapper img
+{
+	width: 100%;
+
+}
+
+.resume_images_list
+{
+	width: 30%;
+}
+
+.resume_image
+{
+	width: 100%;
 }
 
 

@@ -19,7 +19,10 @@ a
 }
 
 
-
+.right-aligned
+{
+	text-align: right;
+}
 
 
 .header
@@ -239,7 +242,7 @@ img.social-icon-button:hover
 
 .resume_download_links
 {
-	padding-top: 20px;
+	padding-top: 0px;
 	width: 100%;
 	text-align: center;
 }
@@ -250,6 +253,7 @@ img.social-icon-button:hover
 .resume_download_links a
 {
 	font-weight: bold; 
+	color: #aaa;
 }
 .resume_download_links a:hover
 {
@@ -272,6 +276,20 @@ img.social-icon-button:hover
 	width: 100%;
 }
 
+.contact_content
+{
+	width: 50%;
+	max-width: 500px;
+	/*margin-right: 30px;*/
+	font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6em;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
+}
+
+.contact_content
 
 @media only screen and (max-width: 800px) {
 

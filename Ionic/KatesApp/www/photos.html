@@ -6,19 +6,14 @@
     <title></title>
 
     <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.gallery.min.css" type="text/css" rel="stylesheet" />
+
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -30,9 +25,12 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
   </head>
-  <body ng-app="starter">
+  <body>
+
+
 
       <div class="header">
         <div class="logo">
@@ -42,32 +40,33 @@
         <div class="nav-container">
           <ul id = "nav-button-list" class="nav-button-list">
             <li> 
-              <a class="nav-button active" href="#">home</a></li>
+              <a class="nav-button" href="index.html">home</a></li>
             <li> 
               <a class="nav-button" href="about.html">about</a></li>
             <li>  
               <a class="nav-button" href="resume.html">resumé</a></li>
             <li> 
-              <a class="nav-button" href="photos.html">photos</a></li>
+              <a class="nav-button active" href="#">photos</a></li>
             <li> 
               <a class="nav-button" href="contact.html">contact</a></li>
           </ul>
         </div>
-
       </div>        
 
       <div class="content">
-        <ul class="welcome-list">
-          <li>
-            <img class="welcome-photo" src="img/welcome_1.jpg">
-          </li>
-          <li>
-            <img class="welcome-photo" src="img/welcome_2.jpg">
-          </li>
-          <li>
-            <img class="welcome-photo" src="img/welcome_3.jpg">
-          </li>
-        </ul>
+        <a href="img/headshot_1.jpg" data-featherlight="image">Image</a>
+        <a href="img/headshot_2.jpg" data-featherlight="image">Image</a>
+      
+<section
+  data-featherlight-gallery
+  data-featherlight-filter="a"
+>
+  <a href="img/headshot_2.jpg"><img src="photo_thumbnail.jpg"></a>
+  <a href="img/headshot_1.jpg"><img src="other_photo_thumbnail.jpg"></a>
+  
+</section>
+
+
       </div>
 
       <div class="footer">
@@ -77,26 +76,6 @@
               <img class="social-icon-button"  src="img/socialicons/facebook-icon.png">
             </a>
           </li>
-          <!-- <li> 
-            <a href="#">
-              <img class="social-icon-button"  src="img/socialicons/instagram-icon.png">
-            </a>
-          </li>
-          <li> 
-            <a href="#">
-              <img class="social-icon-button"  src="img/socialicons/tumblr-icon.png">
-            </a>
-          </li>
-          <li> 
-            <a href="#">
-              <img class="social-icon-button" src="img/socialicons/twitter-icon.png">
-            </a>
-          </li>
-          <li> 
-            <a href="#">
-              <img class="social-icon-button"  src="img/socialicons/youtube-icon.png">
-            </a>
-          </li> -->
         </ul>
 
         <div class="footer-text">
@@ -106,6 +85,8 @@
         </div>
 
       </div>
-
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.gallery.min.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

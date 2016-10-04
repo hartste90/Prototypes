@@ -6774,12 +6774,12 @@ button.item.item-button-right {
 .button .badge {
   position: relative;
   top: -1px; }
-
+/*/*
 /**
  * Slide Box
  * --------------------------------------------------
  */
-.slider {
+/*.slider {
   position: relative;
   visibility: hidden;
   overflow: hidden; }
@@ -6828,7 +6828,7 @@ button.item.item-button-right {
 .slider-slide.ng-animate,
 .slider-pager-page.ng-animate {
   -webkit-animation: none 0s;
-  animation: none 0s; }
+  animation: none 0s; }*/
 
 /**
  * Swiper 3.2.7

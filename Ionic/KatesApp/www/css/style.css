@@ -289,7 +289,36 @@ img.social-icon-button:hover
     font-size: 13px;
 }
 
-.contact_content
+.photos_subtitle
+{
+	text-align: left;
+	color: #2cb192;
+	font-size: 36px;
+	font-family: "Josefin Slab";
+    line-height: 1.4em;
+    text-transform: none;
+    letter-spacing: .04em;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.photos_thumbnail_list
+{
+	width: 100%;
+	margin-left: 10px;
+}
+
+.photos_thumbnail
+{
+	float: left;
+	width: 100px;
+	margin: 10px;
+}
+
+section img
+{
+	width: 100%;
+}
 
 @media only screen and (max-width: 800px) {
 

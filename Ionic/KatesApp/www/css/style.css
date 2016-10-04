@@ -304,6 +304,7 @@ img.social-icon-button:hover
 
 .photos_thumbnail_list
 {
+	display: flex;
 	width: 100%;
 	margin-left: 10px;
 }
@@ -311,10 +312,14 @@ img.social-icon-button:hover
 .photos_thumbnail
 {
 	float: left;
-	width: 100px;
+	width: 100%;
 	margin: 10px;
 }
 
+section
+{
+	/*display: flex;*/
+}
 section img
 {
 	width: 100%;

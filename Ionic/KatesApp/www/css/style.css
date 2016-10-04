@@ -310,6 +310,12 @@ img.social-icon-button:hover
 	padding-top: .5%;
 }
 
+.contact_content a:hover
+{
+	text-decoration: none;
+	color: #ea49b5;
+}
+
 section img
 {
 	width: 100%;

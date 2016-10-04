@@ -95,25 +95,11 @@ a.nav-button:hover
 {
 	padding-top: 70px;
 	margin-top: 10px;
-	/*display: flex;*/
 	width: 96%;
-	/*min-width: 550px;*/
 	margin-left: 2%;
 	margin-right: 2%;
-	/*display: flex;
-	float: left;*/
 }
-/*
-.width-centered
-{
-	width: 96%;
-	min-width: 550px;
-	margin-left: 2%;
-	margin-right: 2%;
-	display: flex;
-	float: left;
-}
-*/
+
 .welcome-list
 { 
 	width: 96%;
@@ -309,21 +295,28 @@ img.social-icon-button:hover
 	margin-left: 10px;
 }
 
-.photos_thumbnail
+.photos_thumbnail.tall
 {
 	float: left;
 	width: 100%;
 	margin: 10px;
 }
 
-section
+.photos_thumbnail.wide
 {
-	/*display: flex;*/
+	float: left;
+	width: 200%;
+	margin: 10px;
+	padding-top: .5%;
 }
+
 section img
 {
 	width: 100%;
 }
+
+
+/*--------------------------------------------------------- For mobile devices*/
 
 @media only screen and (max-width: 800px) {
 
@@ -353,4 +346,10 @@ section img
 
 }
 
+/*--------------------------------------------------------- Overwritten outside styles */
 
+
+.featherlight-next:hover, .featherlight-previous:hover
+      {
+        background: rgba(255,255,255,0);
+      }

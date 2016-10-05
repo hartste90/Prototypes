@@ -77,12 +77,6 @@
       </div>
 
       <div class="footer">
-
-
-<!-- <button class="btn btn-primary" data-clipboard-text="It worked!">Click me</button>
-<button class="btn btn-primary" data-clipboard-text="It worked again!">Click me</button>
- -->
-
         <ul id = "social-icon-button-list" class="social-icon-button-list">
           <li> 
             <a href=https://www.facebook.com/katherine.marie.735>
@@ -92,25 +86,16 @@
         </ul>
 
         <div class="footer-text">
-          facebook: <a href="https://www.facebook.com/katherine.marie.735">katherine.marie.735</a>
+            <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
           <br>
-<button id="btn" class="btn btn-primary" data-clipboard-text="katherine.marie.hart@gmail.com">katherine.marie.hart @ gmail [dot] com me</button>
+          <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
+            email: katherine.marie.hart @ gmail [dot] com </a>
+          </button>
 
         </div>
 
       </div>
 
-      <script>
-
-        var btn = document.getElementById('btn');
-        var clipboard = new Clipboard(btn);
-        clipboard.on('success', function(e) {
-            console.log("got it");
-        });
-        clipboard.on('error', function(e) {
-            console.log(e);
-        });
-      </script>
 
       <script>
 
@@ -118,7 +103,7 @@
 
 $('button').tooltip({
   trigger: 'click',
-  placement: 'bottom'
+  placement: 'top'
 });
 
 function setTooltip(btn, message) {
@@ -138,7 +123,7 @@ function hideTooltip(btn) {
 var clipboard = new Clipboard('button');
 
 clipboard.on('success', function(e) {
-  setTooltip(e.trigger, 'Copied!');
+  setTooltip(e.trigger, 'Copied to clipboard!');
   hideTooltip(e.trigger);
 });
 

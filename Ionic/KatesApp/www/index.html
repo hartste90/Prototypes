@@ -15,16 +15,22 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -83,9 +89,28 @@
           facebook: <a href="https://www.facebook.com/katherine.marie.735">katherine.marie.735</a>
           <br>
           <a href= "mailto:katherine.marie.hart@gmail.com" target="_top">katherine.marie.hart @ gmail [dot] com</a>
+
+          <button id="btn" title="Copy to clipboard" data-clipboard-text="katherine.marie.hart@gmail.com">
+   
+            <img class="clippy" width="13" src="img/clipboard_icon.svg" alt="Copy to clipboard" >
+
+          </button>
+
         </div>
 
       </div>
+
+      <script>
+
+        var btn = document.getElementById('btn');
+        var clipboard = new Clipboard(btn);
+        clipboard.on('success', function(e) {
+            console.log("got it");
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+      </script>
 
   </body>
 </html>

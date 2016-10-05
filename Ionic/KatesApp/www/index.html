@@ -77,6 +77,12 @@
       </div>
 
       <div class="footer">
+
+
+<!-- <button class="btn btn-primary" data-clipboard-text="It worked!">Click me</button>
+<button class="btn btn-primary" data-clipboard-text="It worked again!">Click me</button>
+ -->
+
         <ul id = "social-icon-button-list" class="social-icon-button-list">
           <li> 
             <a href=https://www.facebook.com/katherine.marie.735>
@@ -88,13 +94,7 @@
         <div class="footer-text">
           facebook: <a href="https://www.facebook.com/katherine.marie.735">katherine.marie.735</a>
           <br>
-          <a href= "mailto:katherine.marie.hart@gmail.com" target="_top">katherine.marie.hart @ gmail [dot] com</a>
-
-          <button id="btn" title="Copy to clipboard" data-clipboard-text="katherine.marie.hart@gmail.com">
-   
-            <img class="clippy" width="13" src="img/clipboard_icon.svg" alt="Copy to clipboard" >
-
-          </button>
+<button id="btn" class="btn btn-primary" data-clipboard-text="katherine.marie.hart@gmail.com">katherine.marie.hart @ gmail [dot] com me</button>
 
         </div>
 
@@ -111,6 +111,42 @@
             console.log(e);
         });
       </script>
+
+      <script>
+
+// Tooltip
+
+$('button').tooltip({
+  trigger: 'click',
+  placement: 'bottom'
+});
+
+function setTooltip(btn, message) {
+  $(btn).tooltip('hide')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(btn) {
+  setTimeout(function() {
+    $(btn).tooltip('hide');
+  }, 1000);
+}
+
+// Clipboard
+
+var clipboard = new Clipboard('button');
+
+clipboard.on('success', function(e) {
+  setTooltip(e.trigger, 'Copied!');
+  hideTooltip(e.trigger);
+});
+
+clipboard.on('error', function(e) {
+  setTooltip(e.trigger, 'Failed!');
+  hideTooltip(e.trigger);
+});
+</script>
 
   </body>
 </html>

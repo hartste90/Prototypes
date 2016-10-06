@@ -43,6 +43,10 @@ button:hover
 }
 
 
+.slicknav_menu {
+	display:none;
+}
+
 .right-aligned
 {
 	text-align: right;
@@ -61,11 +65,13 @@ button:hover
 	margin-top: 20px;
 	margin-left: 20px;
 	margin-bottom: 10px;
+	width: 300px;
+    height: 150px;
 }
 
 .logo img
 {
-    width: 350px;
+    width: 300px;
     height: 150px;
 }
 
@@ -80,6 +86,7 @@ button:hover
     font-style: normal;
     font-size: 12px;
     color: grey;
+    width: 200px;
 
 
 }
@@ -360,17 +367,30 @@ section img
 /*--------------------------------------------------------- For mobile devices*/
 
 @media only screen and (max-width: 800px) {
+	.header
+	{
+		display: block;
+	}
 
+	.logo
+	{
+		margin: 0 auto;
+	}
+
+	.logo-subtitle
+	{
+		margin: 0 auto;
+	}
     .nav-button-list
     {
     	position: relative;
-    	/*margin-top: 20px;
-    	margin-left:10px;*/
+    	/*top: 20px;*/
     	display: block;
+
     }
-    .nav-button
+    .nav-button-list li
     {
-    	margin: 10px;
+    	padding-top: 10px;
     }
     .welcome-list
     {
@@ -384,6 +404,14 @@ section img
 		width: 100%;
 		height: auto;
     }
+
+    .js #menu {
+		display:none;
+	}
+	
+	.js .slicknav_menu {
+		display:block;
+	}
 
 }
 

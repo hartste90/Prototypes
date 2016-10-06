@@ -23,6 +23,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -41,6 +43,15 @@
   <body ng-app="starter">
 
       <div class="header">
+
+      <ul id="menu">
+  <li><a href="#">item 1</a></li>
+  <li><a href="#">item 2</a></li>
+  <li><a href="#">item 3</a></li>
+  <li><a href="#">item 4</a></li>
+</ul>
+
+
         <div class="logo">
           <img src="img/logo.png">
           <div class="logo-subtitle">actor. singer. writer.</div>
@@ -131,6 +142,12 @@ clipboard.on('error', function(e) {
   setTooltip(e.trigger, 'Failed!');
   hideTooltip(e.trigger);
 });
+</script>
+
+<script>
+  $(function(){
+    $('#menu').slicknav();
+  });
 </script>
 
   </body>

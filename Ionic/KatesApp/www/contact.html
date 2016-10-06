@@ -23,7 +23,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -41,6 +42,20 @@
   <body ng-app="starter">
 
       <div class="header">
+
+        <ul id="menu" class="mobile_only">
+          <li> 
+              <a class="nav-button" href="index.html">home</a></li>
+            <li> 
+              <a class="nav-button" href="about.html">about</a></li>
+            <li>  
+              <a class="nav-button" href="resume.html">resumé</a></li>
+            <li> 
+              <a class="nav-button" href="photos.html">photos</a></li>
+            <li> 
+              <a class="nav-button active" href="contact.html">contact</a></li>
+        </ul>
+
         <div class="logo">
           <img src="img/logo.png">
           <div class="logo-subtitle">actor. singer. writer.</div>
@@ -62,49 +77,62 @@
       </div>        
 
       <div class="content">
-        <div class="about_wrapper">
-          <img style="padding-right:2%; padding-left:2%" class="about_photobox" src="img/headshot_2.jpg">
-          <div class="contact_content">
-            <div class="about_subtitle">
-            contact
+        <center>
+          <div class="about_wrapper">
+            <img style="padding-right:2%; padding-left:2%" class="about_photobox" src="img/headshot_2.jpg">
+            <div class="contact_content">
+
+              <div class="about_subtitle">
+              contact
+              </div>
+              <center>
+                <p class="right-aligned">
+                  <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
+                    <strong>e-mail:</strong> katherine.marie.hart @ gmail [dot] com 
+                  </button>
+                </p>
+                <p class="right-aligned">                
+                  <a href="https://www.facebook.com/katherine.marie.735"><strong>facebook:</strong> katherine.marie.735</a>
+                </p>
+                <p class="right-aligned">
+                  <button id="btn" data-clipboard-text="5083612632">
+                    <strong>phone:</strong> 508-361-2632
+                  </button>
+                </p>
+              </center>
+
+
             </div>
-              <p class="right-aligned">
-                <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
-                  <strong>e-mail:</strong> katherine.marie.hart @ gmail [dot] com 
-                </button>
-              </p>
-              <p class="right-aligned">                
-                <a href="https://www.facebook.com/katherine.marie.735"><strong>facebook:</strong> katherine.marie.735</a>
-              </p>
-              <p class="right-aligned">
-                <button id="btn" data-clipboard-text="5083612632">
-                  <strong>phone:</strong> 508-361-2632
-                </button>
-              </p>
-
-
           </div>
-        </div>
+        </center>
       </div>
 
     <div class="footer">
-        <ul id = "social-icon-button-list" class="social-icon-button-list">
-          <li> 
-            <a href=https://www.facebook.com/katherine.marie.735>
-              <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
-            </a>
-          </li>
-        </ul>
+        <div class="footer_wrapper">
+          
+          <center class="mobile_only">
+            <a id="back_to_top_link" href="#logo">Back to Top</a>
+          </center>
+          <div class="footer-text">
+              <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
+            <br>
+            <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
+              email: katherine.marie.hart @ gmail [dot] com </a>
+            </button>
+          </div>
 
-        <div class="footer-text">
-            <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
-          <br>
-          <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
-            email: katherine.marie.hart @ gmail [dot] com </a>
-          </button>
+          <div class="social_icons_wrapper">
+            <ul id = "social-icon-button-list" class="social-icon-button-list">
+              <li> 
+                <a href=https://www.facebook.com/katherine.marie.735>
+                  <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
+                </a>
+              </li>
+            </ul>
+          </div>
+          
 
         </div>
-
       </div>
 
 
@@ -142,6 +170,12 @@ clipboard.on('error', function(e) {
   setTooltip(e.trigger, 'Failed!');
   hideTooltip(e.trigger);
 });
+</script>
+
+<script>
+  $(function(){
+    $('#menu').slicknav();
+  });
 </script>
 
   </body>

@@ -23,9 +23,11 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
+
     -->
 
     <!-- ionic/angularjs js -->
@@ -41,6 +43,20 @@
   <body ng-app="starter">
 
       <div class="header">
+
+        <ul id="menu" class="mobile_only">
+          <li> 
+              <a class="nav-button" href="index.html">home</a></li>
+            <li> 
+              <a class="nav-button active" href="#">about</a></li>
+            <li>  
+              <a class="nav-button" href="resume.html">resumé</a></li>
+            <li> 
+              <a class="nav-button" href="photos.html">photos</a></li>
+            <li> 
+              <a class="nav-button" href="contact.html">contact</a></li>
+        </ul>
+
         <div class="logo">
           <img src="img/logo.png">
           <div class="logo-subtitle">actor. singer. writer.</div>
@@ -62,6 +78,7 @@
       </div>        
 
       <div class="content">
+      <center>
         <div class="about_wrapper">
           <img class="about_photobox" src="img/photobox_1.jpg">
           <div class="about_content">
@@ -81,26 +98,35 @@
 
           </div>
         </div>
+        </center>
       </div>
 
       <div class="footer">
-        <ul id = "social-icon-button-list" class="social-icon-button-list">
-          <li> 
-            <a href=https://www.facebook.com/katherine.marie.735>
-              <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
-            </a>
-          </li>
-        </ul>
+        <div class="footer_wrapper">
+          
+          <center class="mobile_only">
+            <a id="back_to_top_link" href="#0">Back to Top</a>
+          </center>
+          <div class="footer-text">
+              <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
+            <br>
+            <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
+              email: katherine.marie.hart @ gmail [dot] com </a>
+            </button>
+          </div>
 
-        <div class="footer-text">
-            <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
-          <br>
-          <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
-            email: katherine.marie.hart @ gmail [dot] com </a>
-          </button>
+          <div class="social_icons_wrapper">
+            <ul id = "social-icon-button-list" class="social-icon-button-list">
+              <li> 
+                <a href=https://www.facebook.com/katherine.marie.735>
+                  <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
+                </a>
+              </li>
+            </ul>
+          </div>
+          
 
         </div>
-
       </div>
 
 
@@ -140,6 +166,11 @@ clipboard.on('error', function(e) {
 });
 </script>
 
+<script>
+  $(function(){
+    $('#menu').slicknav();
+  });
+</script>
 
   </body>
 </html>

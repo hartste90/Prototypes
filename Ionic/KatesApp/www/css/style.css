@@ -12,9 +12,15 @@ body
 	font-family: 'Josefin Slab', arial;
 }
 
+img
+{
+	/*z-index: -5;*/
+}
+
 a
 {
 	color: inherit;
+	pointer-events: auto;
 }
 a:hover
 {
@@ -22,7 +28,7 @@ a:hover
 	color: #ea49b5;
 }
 
-a:visited
+a:visited,a:focus
 {
 	color: #ea49b5;
 	text-decoration: none;
@@ -35,6 +41,7 @@ button{
 	text-decoration: none;
 	border: none;
 	background-color: rgba(0,0,0,0);
+	pointer-events: auto;
 }
 
 button:hover
@@ -42,9 +49,18 @@ button:hover
 	color: #ea49b5;
 }
 
+.mobile_only
+{
+	display: none;
+}
 
-.slicknav_menu {
-	display:none;
+#menu
+{
+	display: none;
+}
+.slicknav_menu
+{
+	display: none;
 }
 
 .right-aligned
@@ -129,6 +145,7 @@ a.nav-button:hover
 	width: 96%;
 	margin-left: 2%;
 	margin-right: 2%;
+	pointer-events: none;
 }
 
 .welcome-list
@@ -230,6 +247,7 @@ img.social-icon-button:hover
     font-weight: normal;
     font-style: normal;
     font-size: 13px;
+    text-align: left;
 }
 
 .resume_wrapper
@@ -324,6 +342,7 @@ img.social-icon-button:hover
 	display: flex;
 	width: 100%;
 	margin-left: 10px;
+	pointer-events: auto;
 }
 
 .photos_thumbnail.tall
@@ -367,9 +386,12 @@ section img
 /*--------------------------------------------------------- For mobile devices*/
 
 @media only screen and (max-width: 800px) {
+	
+	
 	.header
 	{
 		display: block;
+		margin-top: 60px;
 	}
 
 	.logo
@@ -383,35 +405,199 @@ section img
 	}
     .nav-button-list
     {
-    	position: relative;
-    	/*top: 20px;*/
-    	display: block;
+    	display: none;
 
     }
-    .nav-button-list li
+    .content
     {
-    	padding-top: 10px;
+    	width: 100%;
+    	margin: 0;
     }
     .welcome-list
     {
     	display: block;
-    	width: 100%;
+    	min-width: 100%;
+    	margin: 0;
     }
     .welcome-photo
     {
     	max-width:2000px;
 		max-height:2000px;
+		min-width: 0px;
 		width: 100%;
 		height: auto;
     }
 
-    .js #menu {
-		display:none;
+
+    .footer_wrapper
+    {
+    	display: block;
+    	width: 100%;
+    }
+
+
+
+    .social_icons_wrapper
+    {
+    	margin: 0 auto;
+    	width: 40px;
+    	height: 40px;
+    }
+
+    .social-icon-button-list
+    {
+    	position: relative;
+    	display: inline-block;
+    	margin: 0 auto;
+    	width: 40px;
+    	/*float: none;*/
+    }
+    .social-icon-button-list li
+    {
+    	margin: 10px;
+    	position: relative;
+    	width: 20px;
+    }
+
+    .social-icon-button-list a
+    {
+    	margin: 0 auto;
+    }
+
+    .social-icon-button-list a img
+    {
+    	margin: 0 auto;
+    }
+
+    .footer-text
+    {
+    	position: relative;
+    	right: 0px;
+    	width: 100%;
+    	height: 50px;
+    	text-align: center;
+    	margin-top: 20px;
+    }
+
+	.slicknav_menu
+	{
+		display: block;
+	    position: fixed;
+	    width: 100%;
+	    top: 0px;
+	    z-index: 1;
 	}
-	
-	.js .slicknav_menu {
-		display:block;
+	.slicknav_btn
+	{
+		margin: 0 auto;
 	}
+
+	.about_wrapper
+	{
+		display: block;
+	}
+	.about_subtitle
+	{
+		text-align: center;
+	}
+	.about_photobox
+	{
+		width: 100%;
+		height: 70%;
+	}
+
+	.about_content
+	{
+		width: 100%;
+		margin: 0px;
+		padding: 15px;
+	}
+
+	.resume_wrapper
+	{
+		padding-top: 40px;
+		display: block;
+	}
+
+	.resume_content
+	{
+		width: 100%;
+	}
+
+	.resume_subtitle
+	{
+		text-align: center;
+		color: #2cb192;
+		font-size: 36px;
+		font-family: "Josefin Slab";
+	    line-height: 1.4em;
+	    text-transform: none;
+	    letter-spacing: .04em;
+	    font-weight: 300;
+	    font-style: normal;
+	    /*margin: 1em 0;*/
+	}
+
+	.resume_download_links
+	{
+		padding-top: 0px;
+		width: 100%;
+		text-align: center;
+	}
+	.resume_download_links li
+	{
+		padding-bottom: 5px;
+	}
+	.resume_download_links a
+	{
+		font-weight: bold; 
+		color: #aaa;
+	}
+	.resume_download_links a:hover
+	{
+		font-weight: bold;
+		color: #ea49b5; 
+	}
+	.resume_image_wrapper img
+	{
+		width: 100%;
+
+	}
+
+	.resume_images_list
+	{
+		width: 100%;
+	}
+
+	.resume_image
+	{
+		width: 100%;
+	}
+
+	.contact_content
+	{
+		width: 90%;
+	}
+
+	.photos_subtitle
+	{
+		margin-left: 20px;
+	}
+
+	.web_only
+	{
+		display: none;
+	}
+	.mobile_only
+	{
+		display: block;
+	}
+
+	section
+	{
+		margin-right: 20px;
+	}
+
 
 }
 

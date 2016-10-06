@@ -23,7 +23,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -41,6 +42,20 @@
   <body ng-app="starter">
 
       <div class="header">
+
+        <ul id="menu" class="mobile_only">
+          <li> 
+              <a class="nav-button" href="index.html">home</a></li>
+            <li> 
+              <a class="nav-button" href="about.html">about</a></li>
+            <li>  
+              <a class="nav-button active" href="#">resumé</a></li>
+            <li> 
+              <a class="nav-button" href="photos.html">photos</a></li>
+            <li> 
+              <a class="nav-button" href="contact.html">contact</a></li>
+        </ul>
+
         <div class="logo">
           <img src="img/logo.png">
           <div class="logo-subtitle">actor. singer. writer.</div>
@@ -62,60 +77,70 @@
       </div>        
 
       <div class="content">
-      <hr>
+        <center>
+          <hr>
 
-     
-      <div class="resume_wrapper">
+         
+          <div class="resume_wrapper">
 
 
-        <div class="resume_content">
-          <div class="resume_subtitle">
+            <div class="resume_content">
+              <div class="resume_subtitle">
 
-            theatrical resumé
+                theatrical resumé
+              </div>
+              <ul class="resume_download_links">
+            <li>
+              <a href="docs/resume_Kate_Hart.pdf"> download resumé </a>
+            </li>
+            <li>
+            <a href="docs/headshots_KateHart.zip"> download headshots </a>
+            </li>
+          </ul>
+              <div class="resume_image_wrapper">
+                <img src="docs/resume_Hart_noContactInfo.jpg">
+              </div>
+            </div>
+
+            <ul class="resume_images_list">
+              <li>
+                <img class="resume_image" src="img/resume_headshot_1.jpg">
+              </li>
+              <li>
+                <img class="resume_image" src="img/resume_headshot_2.jpg">
+              </li>
+            </ul>
+           
           </div>
-          <ul class="resume_download_links">
-        <li>
-          <a href="docs/resume_Kate_Hart.pdf"> download resumé </a>
-        </li>
-        <li>
-        <a href="docs/headshots_KateHart.zip"> download headshots </a>
-        </li>
-      </ul>
-          <div class="resume_image_wrapper">
-            <img src="docs/resume_Hart_noContactInfo.jpg">
-          </div>
-        </div>
-
-        <ul class="resume_images_list">
-          <li>
-            <img class="resume_image" src="img/resume_headshot_1.jpg">
-          </li>
-          <li>
-            <img class="resume_image" src="img/resume_headshot_2.jpg">
-          </li>
-        </ul>
-       
-      </div>
+        </center>
       </div>
 
      <div class="footer">
-        <ul id = "social-icon-button-list" class="social-icon-button-list">
-          <li> 
-            <a href=https://www.facebook.com/katherine.marie.735>
-              <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
-            </a>
-          </li>
-        </ul>
+        <div class="footer_wrapper">
+          
+          <center class="mobile_only">
+            <a id="back_to_top_link" href="#logo">Back to Top</a>
+          </center>
+          <div class="footer-text">
+              <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
+            <br>
+            <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
+              email: katherine.marie.hart @ gmail [dot] com </a>
+            </button>
+          </div>
 
-        <div class="footer-text">
-            <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
-          <br>
-          <button id="btn" data-clipboard-text="katherine.marie.hart@gmail.com">
-            email: katherine.marie.hart @ gmail [dot] com </a>
-          </button>
+          <div class="social_icons_wrapper">
+            <ul id = "social-icon-button-list" class="social-icon-button-list">
+              <li> 
+                <a href=https://www.facebook.com/katherine.marie.735>
+                  <img class="social-icon-button"  src="img/socialIcons/facebook-icon.png">
+                </a>
+              </li>
+            </ul>
+          </div>
+          
 
         </div>
-
       </div>
 
 
@@ -153,6 +178,12 @@ clipboard.on('error', function(e) {
   setTooltip(e.trigger, 'Failed!');
   hideTooltip(e.trigger);
 });
+</script>
+
+<script>
+  $(function(){
+    $('#menu').slicknav();
+  });
 </script>
 
   </body>

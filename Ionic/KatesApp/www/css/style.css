@@ -43,17 +43,6 @@ button:hover
 }
 
 
-.btn
-{
-	border: none;
-}
-.btn-primary {
-    /* color: #fff; */
-    /* background-color: #428bca; */
-    /* border-color: #357ebd; */
-}
-
-
 .right-aligned
 {
 	text-align: right;
@@ -351,6 +340,10 @@ img.social-icon-button:hover
 	color: #ea49b5;
 }
 
+.tooltip
+{
+	pointer-events: none;
+}
 
 .tooltip-inner
 {

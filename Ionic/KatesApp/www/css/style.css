@@ -209,7 +209,7 @@ img.social-icon-button:hover
 
 }
 
-.about_wrapper
+.about_wrapper, .contact_wrapper
 {
 	display: flex;
 }
@@ -596,6 +596,12 @@ section img
 	section
 	{
 		margin-right: 20px;
+	}
+
+	.contact-text
+	{
+		padding-right: 5%;
+		padding-bottom: 20px;
 	}
 
 

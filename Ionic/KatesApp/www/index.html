@@ -28,6 +28,7 @@
   </head>
   <body ng-app="starter">
 
+
       <div class="header">
 
         <ul id="menu" class="mobile_only">
@@ -85,7 +86,7 @@
         <div class="footer_wrapper">
           
           <center class="mobile_only">
-            <a id="back_to_top_link" href="#logo">Back to Top</a>
+            <a href="#" id="back-to-top">Back to Top</a>
           </center>
           <div class="footer-text">
               <a href="https://www.facebook.com/katherine.marie.735">facebook: katherine.marie.735</a>
@@ -111,46 +112,58 @@
 
 
       <script>
+      if ($('#back-to-top').length) {
+              var scrollTop = $(window).scrollTop();
+          $('#back-to-top').on('click', function (e) {
+              e.preventDefault();
+              $('html,body').animate({
+                  scrollTop: 0
+              }, 700);
+          });
+      }
+      </script>
 
-// Tooltip
+      <script>
 
-$('button').tooltip({
-  trigger: 'click',
-  placement: 'top'
-});
+        // Tooltip
 
-function setTooltip(btn, message) {
-  $(btn).tooltip('hide')
-    .attr('data-original-title', message)
-    .tooltip('show');
-}
+        $('button').tooltip({
+          trigger: 'click',
+          placement: 'top'
+        });
 
-function hideTooltip(btn) {
-  setTimeout(function() {
-    $(btn).tooltip('hide');
-  }, 1000);
-}
+        function setTooltip(btn, message) {
+          $(btn).tooltip('hide')
+            .attr('data-original-title', message)
+            .tooltip('show');
+        }
 
-// Clipboard
+        function hideTooltip(btn) {
+          setTimeout(function() {
+            $(btn).tooltip('hide');
+          }, 1000);
+        }
 
-var clipboard = new Clipboard('button');
+        // Clipboard
 
-clipboard.on('success', function(e) {
-  setTooltip(e.trigger, 'Copied to clipboard!');
-  hideTooltip(e.trigger);
-});
+        var clipboard = new Clipboard('button');
 
-clipboard.on('error', function(e) {
-  setTooltip(e.trigger, 'Failed!');
-  hideTooltip(e.trigger);
-});
-</script>
+        clipboard.on('success', function(e) {
+          setTooltip(e.trigger, 'Copied to clipboard!');
+          hideTooltip(e.trigger);
+        });
 
-<script>
-  $(function(){
-    $('#menu').slicknav();
-  });
-</script>
+        clipboard.on('error', function(e) {
+          setTooltip(e.trigger, 'Failed!');
+          hideTooltip(e.trigger);
+        });
+        </script>
+
+        <script>
+          $(function(){
+            $('#menu').slicknav();
+          });
+        </script>
 
   </body>
 </html>

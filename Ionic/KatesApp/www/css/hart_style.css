@@ -4,15 +4,20 @@ html {
 body {
   font-family: Josefin Slab, sans-serif; }
 
+img {
+  /*z-index: -5;*/ }
+
 a {
   color: inherit;
   pointer-events: auto; }
-  a:hover {
-    text-decoration: none;
-    color: #ea49b5; }
-  a:visited, a:focus {
-    color: #ea49b5;
-    text-decoration: none; }
+
+a:hover {
+  text-decoration: none;
+  color: #ea49b5; }
+
+a:visited, a:focus {
+  color: #ea49b5;
+  text-decoration: none; }
 
 button {
   font-family: inherit;
@@ -21,8 +26,9 @@ button {
   border: none;
   background-color: transparent;
   pointer-events: auto; }
-  button:hover {
-    color: #ea49b5; }
+
+button:hover {
+  color: #ea49b5; }
 
 .mobile_only {
   display: none; }
@@ -47,9 +53,10 @@ button {
   margin-bottom: 10px;
   width: 300px;
   height: 150px; }
-  .logo img {
-    width: 300px;
-    height: 150px; }
+
+.logo img {
+  width: 300px;
+  height: 150px; }
 
 .logo-subtitle {
   margin-left: 10px;
@@ -115,7 +122,7 @@ a.nav-button:hover {
   padding: 30px 20px;
   bottom: 0px;
   display: flex;
-  background-color: transparent;
+  background-color: #fff;
   width: 100%;
   height: auto; }
 
@@ -195,14 +202,17 @@ img.social-icon-button:hover {
   padding-top: 0px;
   width: 100%;
   text-align: center; }
-  .resume_download_links li {
-    padding-bottom: 5px; }
-  .resume_download_links a {
-    font-weight: bold;
-    color: #aaa; }
-    .resume_download_links a:hover {
-      font-weight: bold;
-      color: #ea49b5; }
+
+.resume_download_links li {
+  padding-bottom: 5px; }
+
+.resume_download_links a {
+  font-weight: bold;
+  color: #aaa; }
+
+.resume_download_links a:hover {
+  font-weight: bold;
+  color: #ea49b5; }
 
 .resume_image_wrapper img {
   width: 100%; }
@@ -264,16 +274,6 @@ img.social-icon-button:hover {
 
 section img {
   width: 100%; }
-
-.about_subtitle {
-  text-align: left; }
-
-.contact-text {
-  text-align: left; }
-
-.contact_image {
-  width: 100%;
-  padding: 10px; }
 
 /*--------------------------------------------------------- For mobile devices*/
 @media only screen and (max-width: 800px) {
@@ -382,7 +382,8 @@ section img {
     text-transform: none;
     letter-spacing: .04em;
     font-weight: 300;
-    font-style: normal; }
+    font-style: normal;
+    /*margin: 1em 0;*/ }
 
   .resume_download_links {
     padding-top: 0px;
@@ -425,17 +426,10 @@ section img {
     margin-right: 20px; }
 
   .contact-text {
-    width: 100%;
-    margin: 0px auto; }
-
-  .contact_image {
-    width: 100%;
-    padding: 10px 10px 0px 0px; }
-
-  .contact_wrapper {
-    display: block; } }
+    padding-right: 5%;
+    padding-bottom: 20px; } }
 /*--------------------------------------------------------- Overwritten outside styles */
 .featherlight-next:hover, .featherlight-previous:hover {
   background: rgba(255, 255, 255, 0); }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=hart_style.css.map */

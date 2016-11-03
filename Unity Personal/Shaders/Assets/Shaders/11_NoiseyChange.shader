@@ -15,6 +15,8 @@ Shader "Steve/tut/12 - Noisey Change"{
 		_MidThreshold ("Mid Height Threshold", Range(0.0,4.0)) = 2
 		_HighThreshold ("High Height Threshold", Range(0.0,4.0)) = 3
 		_NoiseAmp  ("Noise Amp", Range(0.0,1000.0)) = 50
+		_MorphSpeed ("Morph Speed", Range(0.0,1000.0)) = 50
+
 
 		[Toggle] _isBending("is Bending", Float) = 1
 		_BumpDepth ("Bump Depth", Range(0.0,10.0)) = 1
@@ -25,7 +27,6 @@ Shader "Steve/tut/12 - Noisey Change"{
 		_EmitStrength ("Emission Strength", Range(0.0,2.0)) = 0
 		_CentrePoint ("Centre", Vector) = (0, 0, 0, 0)
 		_BlurFactor ("Blur Factor", Float ) = .01
-		_MorphSpeed ("Morph Speed", Float ) = 2
 	}
 	SubShader {
 		Pass {
@@ -142,11 +143,11 @@ Shader "Steve/tut/12 - Noisey Change"{
 				fixed4 tex;
 				fixed4 texN;
 				float3 testVec;
-//				testVec = i.normalWorld;
-//				testVec = i.binormalWorld;
+				testVec = i.normalWorld;
+				testVec = i.binormalWorld;
 //				testVec = i.lightDirection;
 //				testVec = i.viewDirection;
-				testVec = i.tangentWorld;
+//				testVec = i.tangentWorld;
 //				testVec = i.worldPos;
 //
 //				fixed4 lightDirection : TEXCOORD1;
@@ -159,13 +160,15 @@ Shader "Steve/tut/12 - Noisey Change"{
 
 				if (_isBending)
 				{
-					if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp) + _SinTime.w)//  * lerp (-2, 2, noise(i.worldPos)))
+					if (i.objectDist > _HighThreshold + (_SinTime.w / _MorphSpeed) + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
+
 					{
 						tex = tex2D(_MainTex, i.tex.xy * _MainTex_ST.xy + _MainTex_ST.zw);
 						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
 					} 
-					else if (i.objectDist > _MidThreshold + noise(testVec * _NoiseAmp) + _SinTime.w)//* lerp (-2, 2, noise(i.worldPos)))
+					else if (false)//i.objectDist > _MidThreshold + (_SinTime.w / _MorphSpeed) + noise(testVec * _NoiseAmp))//* lerp (-2, 2, noise(i.worldPos)))
+
 					{
 						tex = tex2D(_MidTex, i.tex.xy * _MidTex_ST.xy + _MidTex_ST.zw);
 						texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);

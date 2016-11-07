@@ -78,6 +78,7 @@
      <Compile Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
      <Compile Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
+     <Compile Include="Assets\Shaders\ShimmerShaderController.cs" />
      <None Include="Assets\Shaders\5a_multipleLights.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\Shaders\2b_Ambient.shader" />

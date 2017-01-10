@@ -5,10 +5,6 @@ Project("{ECEE0A84-AF1B-BE31-D8AE-C4CE303FAD9D}") = "Shaders", "Assembly-CSharp.
 EndProject
 Project("{ECEE0A84-AF1B-BE31-D8AE-C4CE303FAD9D}") = "Shaders", "Assembly-CSharp-Editor.csproj", "{686B15FA-F91C-781C-F0EE-342160EDB390}"
 EndProject
-Project("{ECEE0A84-AF1B-BE31-D8AE-C4CE303FAD9D}") = "Shaders", "Assembly-UnityScript-firstpass.unityproj", "{EE233646-FBBC-9DE4-95E0-FD949D332033}"
-EndProject
-Project("{ECEE0A84-AF1B-BE31-D8AE-C4CE303FAD9D}") = "Shaders", "Assembly-UnityScript.unityproj", "{9B113E28-1D66-09B0-B4D2-695E9154E549}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,19 +19,11 @@ Global
 		{686B15FA-F91C-781C-F0EE-342160EDB390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{686B15FA-F91C-781C-F0EE-342160EDB390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{686B15FA-F91C-781C-F0EE-342160EDB390}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE233646-FBBC-9DE4-95E0-FD949D332033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE233646-FBBC-9DE4-95E0-FD949D332033}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE233646-FBBC-9DE4-95E0-FD949D332033}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE233646-FBBC-9DE4-95E0-FD949D332033}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B113E28-1D66-09B0-B4D2-695E9154E549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B113E28-1D66-09B0-B4D2-695E9154E549}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B113E28-1D66-09B0-B4D2-695E9154E549}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B113E28-1D66-09B0-B4D2-695E9154E549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																																																								GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -54,4 +42,5 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
+
 EndGlobal

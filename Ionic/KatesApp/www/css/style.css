@@ -20,7 +20,11 @@ button {
   text-decoration: none;
   border: none;
   background-color: transparent;
-  pointer-events: auto; }
+  pointer-events: auto; 
+  margin: 0px;
+  padding: 0px;
+
+}
   button:hover {
     color: #ea49b5; }
 
@@ -212,6 +216,18 @@ img.social-icon-button:hover {
 
 .resume_image {
   width: 100%; }
+
+.contact_subtitle {
+  text-align: center;
+  color: #2cb192;
+  font-size: 36px;
+  font-family: Josefin Slab, sans-serif;
+  line-height: 1.4em;
+  text-transform: none;
+  letter-spacing: .04em;
+  font-weight: 300;
+  font-style: normal;
+  /*margin: 1em 0;*/ }
 
 .contact_content {
   width: 50%;
@@ -424,9 +440,11 @@ section img {
   section {
     margin-right: 20px; }
 
-  .contact-text {
+  .contact-text p {
     width: 100%;
-    margin: 0px auto; }
+    margin-left: 20%;
+
+  }
 
   .contact_image {
     width: 100%;

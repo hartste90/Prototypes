@@ -263,8 +263,17 @@ img.social-icon-button:hover {
   padding-top: .5%; }
 
 .contact_content a:hover {
+  position: fixed;
   text-decoration: none;
-  color: #ea49b5; }
+  color: #ea49b5; 
+  right: 20px;
+
+}
+
+.contact_image
+{
+  right: 10px;
+}
 
 .tooltip {
   pointer-events: none; }
@@ -411,7 +420,7 @@ section img {
     width: 100%; }
 
   .contact_content {
-    width: 90%; }
+    width: 100%; }
 
   .photos_subtitle {
     margin-left: 20px; }
@@ -426,8 +435,9 @@ section img {
     margin-right: 20px; }
 
   .contact-text {
-    padding-right: 5%;
-    padding-bottom: 20px; } }
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px; } }
 /*--------------------------------------------------------- Overwritten outside styles */
 .featherlight-next:hover, .featherlight-previous:hover {
   background: rgba(255, 255, 255, 0); }

@@ -38,7 +38,9 @@ Shader "Steve/tut/12 - Noisey Change"{
 	}
 	SubShader {
 		Pass {
-			Tags {"LightMode" = "ForwardBase"}
+			Tags {"LightMode" = "ForwardBase" "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+			ZWrite Off
+        	Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -97,27 +99,25 @@ Shader "Steve/tut/12 - Noisey Change"{
 			};
 			
 			//vertex Function
-			
+			//calculate all the data we need based on the vertex 
 			vertexOutput vert(vertexInput v){
 				vertexOutput o;
-				
-				
 				o.normalWorld = normalize( mul( half4( v.normal, 0.0 ), unity_WorldToObject ).xyz );
 				o.tangentWorld = normalize( mul( unity_ObjectToWorld, v.tangent ).xyz );
 				o.binormalWorld = normalize( cross(o.normalWorld, o.tangentWorld) * v.tangent.w );
-				
-				half4 posWorld = mul(unity_ObjectToWorld, v.vertex);
-				o.worldPos = posWorld;
-				
+
+				//get the position of the object in world
+				o.worldPos = mul(unity_ObjectToWorld, v.vertex);;
+				//get the distance from the object's center to this vertex
 				o.objectDist = length ( v.vertex );
-				
+				//the position of this vert
 				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				//the texcoord of this vertex
 				o.tex = v.texcoord;
-				
-				o.viewDirection = normalize( _WorldSpaceCameraPos.xyz - posWorld.xyz );
-				
-				half3 fragmentToLightSource = _WorldSpaceLightPos0.xyz - posWorld.xyz;
-				
+				//direction of camera
+				o.viewDirection = normalize( _WorldSpaceCameraPos.xyz - o.worldPos.xyz );
+				//direction to light
+				half3 fragmentToLightSource = _WorldSpaceLightPos0.xyz - o.worldPos.xyz;
 				o.lightDirection = fixed4(
 					normalize( lerp(_WorldSpaceLightPos0.xyz , fragmentToLightSource, _WorldSpaceLightPos0.w) ),
 					lerp(1.0 , 1.0/length(fragmentToLightSource), _WorldSpaceLightPos0.w)
@@ -126,6 +126,7 @@ Shader "Steve/tut/12 - Noisey Change"{
 				return o;
 			}
 
+			//helper function for noise calculation
 			float hash( float n )
 			{
 			    return frac(sin(n)*43758.5453);
@@ -134,19 +135,17 @@ Shader "Steve/tut/12 - Noisey Change"{
 			float noise( float3 x )
 			{
 			    // The noise function returns a value in the range -1.0f -> 1.0f
-
 			    float3 p = floor(x);
 			    float3 f = frac(x);
-
-			    f       = f*f*(3.0-2.0*f);
+			    f = f*f*(3.0-2.0*f);
 			    float n = p.x + p.y*57.0 + 113.0*p.z;
-
 			    return lerp(lerp(lerp( hash(n+0.0), hash(n+1.0),f.x),
 			                   lerp( hash(n+57.0), hash(n+58.0),f.x),f.y),
 			               lerp(lerp( hash(n+113.0), hash(n+114.0),f.x),
 			                   lerp( hash(n+170.0), hash(n+171.0),f.x),f.y),f.z);
 			}
 
+			//frag function
 			fixed4 frag(vertexOutput i) : COLOR
 			{
 				
@@ -155,23 +154,10 @@ Shader "Steve/tut/12 - Noisey Change"{
 				fixed4 texN;
 				float3 testVec;
 				testVec = i.normalWorld;
-//				testVec = i.binormalWorld;
-//				testVec = i.lightDirection;
-//				testVec = i.viewDirection;
-//				testVec = i.tangentWorld;
-//				testVec = i.worldPos;
-//
-//				fixed4 lightDirection : TEXCOORD1;
-//				fixed3 viewDirection : TEXCOORD2;
-//				fixed3 normalWorld : TEXCOORD3;
-//				fixed3 tangentWorld : TEXCOORD4;
-//				fixed3 binormalWorld : TEXCOORD5;
-//				half4 worldPos : TEXCOORD6;
-//				float objectDist : TEXCOORD7;
 
 				if (_isBending)
 				{
-					if (i.objectDist > _HighThreshold + (_SinTime.w / _MorphSpeed) + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
+					if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
 
 					{
 						_Color = _Color1;
@@ -246,7 +232,7 @@ Shader "Steve/tut/12 - Noisey Change"{
 				fixed3 lightFinal = UNITY_LIGHTMODEL_AMBIENT.xyz + diffuseReflection + (specularReflection * tex.a) + rimLighting + (texE.xyz * _EmitStrength);
 				
 				
-				return fixed4(tex.xyz * lightFinal * _Color.xyz, 1.0);
+				return fixed4(tex.xyz * lightFinal * _Color.xyz, _Color.a);
 			}
 			
 			

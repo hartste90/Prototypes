@@ -8,6 +8,7 @@ public class ShimmerShaderController : MonoBehaviour {
 	public float noiseAmp = 1f;
 	public Color color1;
 	public Color color2;
+	public Color color3;
 	public Texture texture1;
 	public Texture texture2;
 	public Texture texture3;
@@ -25,5 +26,7 @@ public class ShimmerShaderController : MonoBehaviour {
 		rend.sharedMaterial.SetFloat("_NoiseAmp", this.noiseAmp);
 		rend.sharedMaterial.SetColor ("_Color1", this.color1);
 		rend.sharedMaterial.SetColor ("_Color2", this.color2);
+		rend.sharedMaterial.SetColor ("_Color3", this.color3);
+
 	}
 }

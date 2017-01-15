@@ -6,6 +6,8 @@ public class ShimmerShaderController : MonoBehaviour {
 	private Renderer rend;
 
 	public float noiseAmp = 1f;
+	public Color color1;
+	public Color color2;
 	public Texture texture1;
 	public Texture texture2;
 	public Texture texture3;
@@ -21,7 +23,7 @@ public class ShimmerShaderController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		rend.sharedMaterial.SetFloat("_NoiseAmp", this.noiseAmp);
-
-
+		rend.sharedMaterial.SetColor ("_Color1", this.color1);
+		rend.sharedMaterial.SetColor ("_Color2", this.color2);
 	}
 }

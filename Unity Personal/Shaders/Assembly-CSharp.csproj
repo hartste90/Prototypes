@@ -119,10 +119,8 @@
      <None Include="Assets\ManyWorlds\Matarial Library\Custom Shaders\MOBILE_SuperShader.shader" />
      <None Include="Assets\Shaders\5b_pointLights.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
-     <None Include="Assets\Shaders\15_UpdatedDepthChange.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
-     <None Include="Assets\Shaders\14_NewShader.shader" />
      <None Include="Assets\Shaders\2_Lambert.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
@@ -131,7 +129,6 @@
      <None Include="Assets\ManyWorlds\Stealth Character\StealthChar.txt" />
      <None Include="Assets\Shaders\7_normalMap.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
-     <None Include="Assets\Shaders\13_WaveChange.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Shaders\NewImageEffectShader.shader" />
      <None Include="Assets\ManyWorlds\Matarial Library\Custom Shaders\2SIDEDDisplaceBumpedSpecularRefRimDX11.shader" />

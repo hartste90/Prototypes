@@ -39,7 +39,7 @@ Shader "Steve/tut/11 - Noisey Change"{
 	SubShader {
 		Pass {
 			Tags {"LightMode" = "ForwardBase" "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
-			ZWrite Off
+//			ZWrite Off
         	Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#pragma vertex vert
@@ -155,53 +155,27 @@ Shader "Steve/tut/11 - Noisey Change"{
 				float3 testVec;
 				testVec = i.normalWorld;
 
-				if (_isBending)
+				if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
 				{
-					if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
+					_Color = _Color1;
+					tex = tex2D(_HighTexture, i.tex.xy * _HighTexture_ST.xy + _HighTexture_ST.zw);
+					texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
-					{
-						_Color = _Color1;
-						tex = tex2D(_HighTexture, i.tex.xy * _HighTexture_ST.xy + _HighTexture_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
+				} 
+				else if (i.objectDist > _MidThreshold + noise(testVec * _NoiseAmp))//* lerp (-2, 2, noise(i.worldPos)))
+				{
+					_Color = _Color2;
+					tex = tex2D(_MidTexture, i.tex.xy * _MidTexture_ST.xy + _MidTexture_ST.zw);
+					texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
 
-					} 
-					else if (i.objectDist > _MidThreshold + noise(testVec * _NoiseAmp))//* lerp (-2, 2, noise(i.worldPos)))
-					{
-						_Color = _Color2;
-						tex = tex2D(_MidTexture, i.tex.xy * _MidTexture_ST.xy + _MidTexture_ST.zw);
-						texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
-
-					} 
-					else
-					{				
-						tex = tex2D(_LowTexture, i.tex.xy * _LowTexture_ST.xy + _LowTexture_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
-
-					}
-					
-				}
+				} 
 				else
-				{
-					if (i.objectDist > _MidThreshold + _SinTime.w)// rand(i.objectDist) * _MorphSpeed )
-					{
-						tex = tex2D(_HighTexture, i.tex.xy * _HighTexture_ST.xy + _HighTexture_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
+				{				
+					tex = tex2D(_LowTexture, i.tex.xy * _LowTexture_ST.xy + _LowTexture_ST.zw);
+					texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
-					} 
-					else if (i.objectDist > _HighThreshold + _SinTime.w )/// rand(i.objectDist) * _MorphSpeed)
-					{
-						tex = tex2D(_MidTexture, i.tex.xy * _MidTexture_ST.xy + _MidTexture_ST.zw);
-						texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
-
-					} 
-					else
-					{				
-						tex = tex2D(_LowTexture, i.tex.xy * _LowTexture_ST.xy + _LowTexture_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
-
-					}
-				
 				}
+
 
 				fixed4 texE = tex2D(_EmitMap, i.tex.xy * _EmitMap_ST.xy + _EmitMap_ST.zw);
 				

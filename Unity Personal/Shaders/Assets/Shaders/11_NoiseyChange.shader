@@ -24,7 +24,6 @@ Shader "Steve/tut/11 - Noisey Change"{
 		_MorphSpeed ("Morph Speed", Range(0.0,1000.0)) = 50
 
 
-		[Toggle] _isBending("is Bending", Float) = 1
 		_BumpDepth ("Bump Depth", Range(0.0,10.0)) = 1
 		_SpecColor ("Specular Color", Color) = (1.0,1.0,1.0,1.0)
 		_Shininess ("Shininess", Float) = 10
@@ -72,7 +71,6 @@ Shader "Steve/tut/11 - Noisey Change"{
 			uniform float4 _CentrePoint;
 			uniform float _BlurFactor;
 			uniform float _MorphSpeed;
-			uniform float _isBending;
 			uniform float _NoiseAmp;
 			uniform float _ObjHeight;
 			
@@ -154,15 +152,16 @@ Shader "Steve/tut/11 - Noisey Change"{
 				fixed4 texN;
 				float3 testVec;
 				testVec = i.normalWorld;
+				float noiseQuotient = noise(testVec * _NoiseAmp * _SinTime.y );
 
-				if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
+				if (i.objectDist > _HighThreshold + noiseQuotient )
 				{
 					_Color = _Color1;
 					tex = tex2D(_HighTexture, i.tex.xy * _HighTexture_ST.xy + _HighTexture_ST.zw);
 					texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
 				} 
-				else if (i.objectDist > _MidThreshold + noise(testVec * _NoiseAmp))//* lerp (-2, 2, noise(i.worldPos)))
+				else if (i.objectDist > _MidThreshold + noiseQuotient )
 				{
 					_Color = _Color2;
 					tex = tex2D(_MidTexture, i.tex.xy * _MidTexture_ST.xy + _MidTexture_ST.zw);

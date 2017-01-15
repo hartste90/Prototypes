@@ -21,8 +21,6 @@ Shader "Steve/tut/11 - Noisey Change"{
 		_MidThreshold ("Mid Height Threshold", Range(0.0,4.0)) = 2
 
 		_NoiseAmp  ("Noise Amp", Float) = 3
-		_MorphSpeed ("Morph Speed", Range(0.0,1000.0)) = 50
-
 
 		_BumpDepth ("Bump Depth", Range(0.0,10.0)) = 1
 		_SpecColor ("Specular Color", Color) = (1.0,1.0,1.0,1.0)
@@ -70,7 +68,6 @@ Shader "Steve/tut/11 - Noisey Change"{
 			uniform fixed _EmitStrength;
 			uniform float4 _CentrePoint;
 			uniform float _BlurFactor;
-			uniform float _MorphSpeed;
 			uniform float _NoiseAmp;
 			uniform float _ObjHeight;
 			
@@ -152,7 +149,7 @@ Shader "Steve/tut/11 - Noisey Change"{
 				fixed4 texN;
 				float3 testVec;
 				testVec = i.normalWorld;
-				float noiseQuotient = noise(testVec * _NoiseAmp * _SinTime.y );
+				float noiseQuotient = noise(testVec * _NoiseAmp * _SinTime.z );
 
 				if (i.objectDist > _HighThreshold + noiseQuotient )
 				{

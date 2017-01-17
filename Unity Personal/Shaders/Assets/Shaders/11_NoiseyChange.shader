@@ -1,57 +1,44 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
-Shader "Steve/tut/12 - Noisey Change"{
+Shader "Steve/tut/11 - Noisey Change"{
 	Properties {
-		_Color ("Color Tint", Color) = (1.0,1.0,1.0,1.0)
 		_Color1 ("Color1", Color) = (1.0,1.0,1.0,1.0)
 		_Color2 ("Color2", Color) = (1.0,1.0,1.0,1.0)
-
-		_MainTex ("High Texture", 2D) = "white" {}
-		_MidTex ("Mid Texture", 2D) = "white" {}
-		_LowTex ("Low Texture", 2D) = "white" {}
+		_Color3 ("Color3", Color) = (1.0,1.0,1.0,1.0)
+		_HighTexture ("_HighTexture", 2D) = "white" {}
+		_MidTexture ("_MidTexture", 2D) = "white" {}
+		_LowTexture ("_LowTexture", 2D) = "white" {}
 		_BumpMap ("Normal Texture", 2D) = "bump" {}
 		_BumpMap2 ("Alt Normal Texture", 2D) = "bump" {}
-
-
-
-
 		_EmitMap ("Emission Texture", 2D) = "black" {}
 		_HighThreshold ("High Height Threshold", Range(0.0,4.0)) = 3
 		_MidThreshold ("Mid Height Threshold", Range(0.0,4.0)) = 2
-
-		_NoiseAmp  ("Noise Amp", Range(0.0,50.0)) = 3
-		_MorphSpeed ("Morph Speed", Range(0.0,1000.0)) = 50
-
-
-		[Toggle] _isBending("is Bending", Float) = 1
+		_NoiseAmp  ("Noise Amp", Float) = 3
 		_BumpDepth ("Bump Depth", Range(0.0,10.0)) = 1
 		_SpecColor ("Specular Color", Color) = (1.0,1.0,1.0,1.0)
 		_Shininess ("Shininess", Float) = 10
 		_RimColor ("Rim Color", Color) = (1.0,1.0,1.0,1.0)
 		_RimPower ("Rim Power", Range(0.1,10.0)) = 3.0
 		_EmitStrength ("Emission Strength", Range(0.0,2.0)) = 0
-		_CentrePoint ("Centre", Vector) = (0, 0, 0, 0)
-		_BlurFactor ("Blur Factor", Float ) = .01
-		_ObjHeight ("ObjHeight", Float) = 1
 
 	}
 	SubShader {
 		Pass {
 			Tags {"LightMode" = "ForwardBase" "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
-			ZWrite Off
+//			ZWrite Off
         	Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 			
 			//user defined variables
-			uniform sampler2D _MainTex;
-			uniform half4 _MainTex_ST;
-			uniform sampler2D _MidTex;
-			uniform half4 _MidTex_ST;
-			uniform sampler2D _LowTex;
-			uniform half4 _LowTex_ST;
+			uniform sampler2D _HighTexture;
+			uniform half4 _HighTexture_ST;
+			uniform sampler2D _MidTexture;
+			uniform half4 _MidTexture_ST;
+			uniform sampler2D _LowTexture;
+			uniform half4 _LowTexture_ST;
 			uniform sampler2D _BumpMap;
 			uniform half4 _BumpMap_ST;
 			uniform sampler2D _BumpMap2;
@@ -61,6 +48,7 @@ Shader "Steve/tut/12 - Noisey Change"{
 			uniform fixed4 _Color;
 			uniform fixed4 _Color1;
 			uniform fixed4 _Color2;
+			uniform fixed4 _Color3;
 			uniform fixed4 _SpecColor;
 			uniform fixed4 _RimColor;
 			uniform half _Shininess;
@@ -69,12 +57,8 @@ Shader "Steve/tut/12 - Noisey Change"{
 			uniform fixed _MidThreshold;
 			uniform fixed _HighThreshold;
 			uniform fixed _EmitStrength;
-			uniform float4 _CentrePoint;
-			uniform float _BlurFactor;
-			uniform float _MorphSpeed;
-			uniform float _isBending;
 			uniform float _NoiseAmp;
-			uniform float _ObjHeight;
+
 			
 			//unity defined variables
 			uniform half4 _LightColor0;
@@ -154,54 +138,30 @@ Shader "Steve/tut/12 - Noisey Change"{
 				fixed4 texN;
 				float3 testVec;
 				testVec = i.normalWorld;
+				float noiseQuotient = noise(testVec * _NoiseAmp * _SinTime.z );
 
-				if (_isBending)
+				if (i.objectDist > _HighThreshold + noiseQuotient )
 				{
-					if (i.objectDist > _HighThreshold + noise(testVec * _NoiseAmp))//  * lerp (-2, 2, noise(i.worldPos)))
+					_Color = _Color1;
+					tex = tex2D(_HighTexture, i.tex.xy * _HighTexture_ST.xy + _HighTexture_ST.zw);
+					texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
-					{
-						_Color = _Color1;
-						tex = tex2D(_MainTex, i.tex.xy * _MainTex_ST.xy + _MainTex_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
+				} 
+				else if (i.objectDist > _MidThreshold + noiseQuotient )
+				{
+					_Color = _Color2;
+					tex = tex2D(_MidTexture, i.tex.xy * _MidTexture_ST.xy + _MidTexture_ST.zw);
+					texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
 
-					} 
-					else if (i.objectDist > _MidThreshold + (_SinTime.w / _MorphSpeed) + noise(testVec * _NoiseAmp))//* lerp (-2, 2, noise(i.worldPos)))
-					{
-						_Color = _Color2;
-						tex = tex2D(_MidTex, i.tex.xy * _MidTex_ST.xy + _MidTex_ST.zw);
-						texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
-
-					} 
-					else
-					{				
-						tex = tex2D(_LowTex, i.tex.xy * _LowTex_ST.xy + _LowTex_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
-
-					}
-					
-				}
+				} 
 				else
-				{
-					if (i.objectDist > _MidThreshold + _SinTime.w)// rand(i.objectDist) * _MorphSpeed )
-					{
-						tex = tex2D(_MainTex, i.tex.xy * _MainTex_ST.xy + _MainTex_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
+				{				
+					_Color = _Color3;
+					tex = tex2D(_LowTexture, i.tex.xy * _LowTexture_ST.xy + _LowTexture_ST.zw);
+					texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
 
-					} 
-					else if (i.objectDist > _HighThreshold + _SinTime.w )/// rand(i.objectDist) * _MorphSpeed)
-					{
-						tex = tex2D(_MidTex, i.tex.xy * _MidTex_ST.xy + _MidTex_ST.zw);
-						texN = tex2D(_BumpMap2, i.tex.xy * _BumpMap2_ST.xy + _BumpMap2_ST.zw);
-
-					} 
-					else
-					{				
-						tex = tex2D(_LowTex, i.tex.xy * _LowTex_ST.xy + _LowTex_ST.zw);
-						texN = tex2D(_BumpMap, i.tex.xy * _BumpMap_ST.xy + _BumpMap_ST.zw);
-
-					}
-				
 				}
+
 
 				fixed4 texE = tex2D(_EmitMap, i.tex.xy * _EmitMap_ST.xy + _EmitMap_ST.zw);
 				

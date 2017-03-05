@@ -31,6 +31,7 @@ Shader "Steve/tut/11 - Noisey Change"{
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+//			#include "UnityCG.cginc"
 			
 			//user defined variables
 			uniform sampler2D _HighTexture;

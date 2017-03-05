@@ -144,6 +144,7 @@
      <None Include="Assets\Rocks\Shaders\Stone_moss_lod0.shader" />
      <None Include="Assets\Rocks\Shaders\Stone_moss_lod1.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+     <None Include="Assets\Shaders\Perlin Shader.shader" />
      <None Include="Assets\ManyWorlds\Matarial Library\Custom Shaders\BumpedRimReflective.shader" />
      <None Include="Assets\ManyWorlds\Matarial Library\Custom Shaders\MOBILE_SuperShaderCUTOUT.shader" />
      <None Include="Assets\Rocks\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />

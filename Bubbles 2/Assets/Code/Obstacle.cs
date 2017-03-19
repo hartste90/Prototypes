@@ -5,6 +5,7 @@ public abstract class Obstacle : MonoBehaviour {
 
 	[SerializeField]
 	public Transform upperBoundary;
+	public bool doesShrink;
 	protected float startHeight;
 	protected float activeTime;
 	protected float strength;
@@ -64,7 +65,10 @@ public abstract class Obstacle : MonoBehaviour {
 
 	protected void OnHitBoundary ()
 	{
-		ReduceStrength();
+		if (doesShrink) 
+		{
+			ReduceStrength ();
+		}
 		ResetPosition();
 
 	}

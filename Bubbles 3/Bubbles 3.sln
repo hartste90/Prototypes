@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F600A046-B97D-966C-A2BB-9041D2BAA8E0}") = "Bubbles 3", "Assembly-CSharp.csproj", "{1DEA144B-1DE7-F255-35D6-8B07A2925595}"
+EndProject
+Project("{F600A046-B97D-966C-A2BB-9041D2BAA8E0}") = "Bubbles 3", "Assembly-CSharp-Editor.csproj", "{91C682E2-2187-272D-344A-DB96236CCE27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DEA144B-1DE7-F255-35D6-8B07A2925595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEA144B-1DE7-F255-35D6-8B07A2925595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEA144B-1DE7-F255-35D6-8B07A2925595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEA144B-1DE7-F255-35D6-8B07A2925595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C682E2-2187-272D-344A-DB96236CCE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C682E2-2187-272D-344A-DB96236CCE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C682E2-2187-272D-344A-DB96236CCE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C682E2-2187-272D-344A-DB96236CCE27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

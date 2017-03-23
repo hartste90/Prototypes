@@ -16,7 +16,6 @@ public class Mine : Obstacle
 	{
 		if (activeTime > 3)
 		{
-			player.GetComponent<Player>().ChangeDirection();
 			Debug.Log ("Mine Hit");
 			DestroySelf();
 			Application.LoadLevel("GameOver");

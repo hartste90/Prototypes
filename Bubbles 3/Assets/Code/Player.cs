@@ -1,174 +1,85 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public enum DIRECTIONS
+{
+	NORTH, EAST, SOUTH, WEST
+}
 
-	[SerializeField]
-	protected GameManager gameManager;
+/// <summary>
+/// Every X seconds the Player moves Y distance in the direction it is facing
+/// When the user taps left or right side of the screen, the player should drop an obstalce in it's current box, and update its direction
+/// When the player hits a wall, the player is moved back one space and that wall should move 1 step towards the center of the map
+/// When the player hits an obstacle, it ends the game
+/// </summary>
 
-	public float horizSpeed;
-	public string direction = "left";
-	public float dampen = 10.0f;
-	protected float timeSinceLastDropped;
+public class Player : MonoBehaviour 
+{
 
-	protected float currentVelocity = 0f;
-	// Use this for initialization
-	void Start () {
-		Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2,Screen.height/4,1));
-		transform.position = screenPos;
-		timeSinceLastDropped = 0f;
-		gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-		horizSpeed = GameMaster.fallSpeed * 1.5f;
-	
+	public GameManager gameManager;
+
+	public DIRECTIONS direction;
+
+	void Start() {
+		InvokeRepeating("MoveInCurrentDirection", 1.0f, 0.3f);
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+
+	public void MoveInCurrentDirection ()
 	{
-		// Move();
+
 	}
 
-	// protected void CheckDropSpike()
-	// {
-	// 	if (Time.time - timeSinceLastDropped > dropSpeed)
-	// 	{
-	// 		DropStillMine();
-	// 		timeSinceLastDropped = Time.time;
-	// 	}
-	// }
 
-	protected void CheckBounce()
+	public void UpdateDirection (int turnDirection)
 	{
-//		Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x);
-		//at left
-		if (transform.position.x <= Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x && direction == "left")
+		if (turnDirection < 0) 
 		{
 
-			GetComponent<Rigidbody2D>().velocity = new Vector2 ( GetComponent<Rigidbody2D>().velocity.x * -1, 0f);
-			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x, transform.position.y );
-			direction = "right";
-			DropStillMine();
-
+			switch (direction) 
+			{
+			case DIRECTIONS.NORTH:
+				direction = DIRECTIONS.WEST;  
+				break;
+			case DIRECTIONS.EAST:
+				direction = DIRECTIONS.NORTH;  
+				break;
+			case DIRECTIONS.SOUTH:
+				direction = DIRECTIONS.EAST;  
+				break;
+			case DIRECTIONS.WEST:
+				direction = DIRECTIONS.SOUTH; 
+				break;
+			default:
+				Debug.Log ("DIRECTION NOT SET ON PLAYER");
+				break;
+			}
 		}
-		else if (transform.position.x >= Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x && direction == "right")
+		else if (turnDirection > 0) 
 		{
-			GetComponent<Rigidbody2D>().velocity = new Vector2 ( GetComponent<Rigidbody2D>().velocity.x * -1, 0f);
-			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x, transform.position.y );
-			direction = "left";
-			DropStillMine();
-
-		}
-	}
-
-	protected void CheckStop()
-	{
-		//		Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x);
-		//at left
-		if (transform.position.x <= Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x && direction == "left")
-		{
-			ChangeDirection();
-//			//			Debug.Log("STOPPED AT LEFT");
-//			//			currentVelocity = 0f;
-//			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-//			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(0,0,1)).x, transform.position.y );
-		}
-		else if (transform.position.x >= Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x && direction == "right")
-		{
-			ChangeDirection();
-//			//			currentVelocity = 0f;
-//			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-//			transform.position = new Vector2( Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,1)).x, transform.position.y );
-		}
-	}
-
-	protected void CheckJump()
-	{
-		if (Input.GetKeyDown("space") || (Input.GetMouseButtonDown(0)))
-		{
-			Jump();
-		}
-	}
-
-	protected void Jump()
-	{
-		ChangeDirection();
-		DropMine();
-
-	}
-
-	public void ChangeDirection()
-	{
-		GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-
-		if (direction == "left")
-		{
-			direction = "right";
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (1000, 0, 0));
-			currentVelocity = horizSpeed;
-		}
-		else if (direction == "right")
-		{
-			direction = "left";
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-1000, 0, 0));
-			currentVelocity = -horizSpeed;
-		}
-		gameManager.direction = direction;
-		Debug.Log("New direction: " + direction);
-	}
-
-	protected GameObject DropMine()
-	{
-		GameObject bubble = Instantiate (gameManager.obstaclePrefab);
-		bubble.transform.position = transform.position;
-		bubble.GetComponent<Obstacle>().upperBoundary = gameManager.upperBoundary;
-		return bubble;
-	}
-
-	protected void DropStillMine()
-	{
-		GameObject bubble = Instantiate (gameManager.stillObstaclePrefab);
-		bubble.transform.position = transform.position;
-		bubble.GetComponent<Obstacle>().upperBoundary = gameManager.upperBoundary;
-	}
-
-	protected void ReduceVelocity ()
-	{
-//		GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-		if (direction == "left")
-		{
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (dampen, 0, 0));
-		}
-		else
-		{
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-dampen, 0, 0));
-
-		}
-	}
-
-	protected void IncreaseVelocity ()
-	{
-		//		GetComponent<Rigidbody2D>().velocity = new Vector3 (0,0,0);
-		if (direction == "left")
-		{
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (-dampen, 0, 0));
-		}
-		else
-		{
-			GetComponent<Rigidbody2D>().AddForce (new Vector3 (dampen, 0, 0));
-			
+			switch (direction) 
+			{
+			case DIRECTIONS.NORTH:
+				direction = DIRECTIONS.EAST;  
+				break;
+			case DIRECTIONS.EAST:
+				direction = DIRECTIONS.SOUTH;  
+				break;
+			case DIRECTIONS.SOUTH:
+				direction = DIRECTIONS.WEST;  
+				break;
+			case DIRECTIONS.WEST:
+				direction = DIRECTIONS.NORTH;  
+				break;
+			default:
+				Debug.Log ("DIRECTION NOT SET ON PLAYER");
+				break;
+			}
 		}
 	}
 
 
-	protected void CheckMove()
-	{
-		if (currentVelocity != 0f)
-		{
-			Vector2 pos = transform.position;
-			pos.x += currentVelocity;
-			transform.position = pos;
-		}
-	}
+
 
 
 

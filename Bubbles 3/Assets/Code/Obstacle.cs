@@ -51,8 +51,7 @@ public abstract class Obstacle : MonoBehaviour {
 	
 	protected void DestroySelf ()
 	{
-		GameObject effect = Instantiate (UIManager.instance.bubblePopEffectPrefab, transform.position, Quaternion.identity) as GameObject;
-		effect.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
+//		effect.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
 		Destroy (gameObject);
 	}
 

@@ -25,8 +25,22 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		//display where 
-		Start here
+		//setup gameBoard
+		SetupGameBoard();
+	}
+
+	public void SetupGameBoard()
+	{
+		gameBoard[0] = new GridSpace[10];
+		gameBoard[1] = new GridSpace[10];
+		gameBoard[2] = new GridSpace[10];
+		gameBoard[3] = new GridSpace[10];
+		gameBoard[4] = new GridSpace[10];
+		gameBoard[5] = new GridSpace[10];
+		gameBoard[6] = new GridSpace[10];
+		gameBoard[7] = new GridSpace[10];
+		gameBoard[8] = new GridSpace[10];
+		gameBoard[9] = new GridSpace[10];
 	}
 	
 

@@ -12,7 +12,7 @@ public class MiniGestureRecognizer : MonoBehaviour
          if (Input.touchCount == 0) 
              return;
  
-         if (Input.GetTouch(0))
+         if (Input.GetTouch(0).deltaPosition.magnitude < 20f)
 		 {
 			 Debug.Log("Somethin");
              if (swiping == false)

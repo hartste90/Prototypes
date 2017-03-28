@@ -20,14 +20,34 @@ public class Player : MonoBehaviour
 
 	public DIRECTIONS direction;
 
+	public float speed;
+
 	void Start() {
-		InvokeRepeating("MoveInCurrentDirection", 1.0f, 0.3f);
+		
+		speed = 12f;
+		InvokeRepeating("MoveInCurrentDirection", 0.0f, 1f);
 	}
 
 
 	public void MoveInCurrentDirection ()
 	{
-
+		Vector2 pos = transform.position;
+		switch(direction)
+		{
+			case DIRECTIONS.NORTH:
+				pos.y += speed;
+				break;
+			case DIRECTIONS.EAST:
+				pos.x += speed;
+				break;
+			case DIRECTIONS.SOUTH:
+				pos.y -= speed;
+				break;
+			case DIRECTIONS.WEST:
+				pos.x -= speed;
+				break;
+		}
+		transform.position = pos;
 	}
 
 

@@ -51,7 +51,12 @@ public class Player : MonoBehaviour
 	}
 
 
-	public void UpdateDirection (int turnDirection)
+	public void UpdateDirection(int turnDirection)
+	{
+		direction = (DIRECTIONS) turnDirection;
+	}
+
+	public void Turn (int turnDirection)
 	{
 		if (turnDirection < 0) 
 		{

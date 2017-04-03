@@ -14,12 +14,8 @@ public class Mine : Obstacle
 	
 	protected void OnHitPlayer( GameObject player)
 	{
-		if (activeTime > 3)
-		{
-			Debug.Log ("Mine Hit");
-			DestroySelf();
-			Application.LoadLevel("GameOver");
-		}
+		Debug.Log ("Mine Hit");
+
 
 	}
 

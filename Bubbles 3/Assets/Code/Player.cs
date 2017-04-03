@@ -17,13 +17,17 @@ public class Player : MonoBehaviour
 {
 
 	public GameManager gameManager;
+	public GameObject mine;
 
 	public DIRECTIONS direction;
 
 	public float speed;
 
+	protected bool shouldDrop;
+
 	void Start() {
 		
+		shouldDrop = false;
 		speed = 12f;
 		InvokeRepeating("MoveInCurrentDirection", 0.0f, 1f);
 	}
@@ -31,6 +35,13 @@ public class Player : MonoBehaviour
 
 	public void MoveInCurrentDirection ()
 	{
+		//check if needs to drop mine
+		if (shouldDrop) 
+		{
+			shouldDrop = false;
+			Instantiate (mine, transform.position, Quaternion.identity);
+		}
+
 		Vector2 pos = transform.position;
 		switch(direction)
 		{
@@ -54,6 +65,7 @@ public class Player : MonoBehaviour
 	public void UpdateDirection(int turnDirection)
 	{
 		direction = (DIRECTIONS) turnDirection;
+		shouldDrop = true;
 	}
 
 	public void Turn (int turnDirection)

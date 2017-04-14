@@ -4,7 +4,9 @@ using System.Collections.Generic;       //Allows us to use Lists.
 	
 public class GameManager : MonoBehaviour
 {	
-	public static GameManager instance = null;              
+	public static GameManager instance = null;  
+
+	public float gameSpeed = 1f;
 
 	public Player player;
 	public GridSpace[][] gameBoard = new GridSpace[10][];

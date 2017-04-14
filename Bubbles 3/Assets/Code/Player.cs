@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
 	public void MoveInCurrentDirection ()
 	{
+		var speed = this.speed * gameManager.gameSpeed;
 		//check if needs to drop mine
 		if (shouldDrop != MineTypes.None) {
 			GameObject newMine;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
 		switch(direction)
 		{
 			case DIRECTIONS.NORTH:
-				pos.y += speed;
+			pos.y += speed;
 				break;
 			case DIRECTIONS.EAST:
 				pos.x += speed;

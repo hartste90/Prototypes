@@ -47,8 +47,8 @@ public class Player : MonoBehaviour
 				break;
 			case MineTypes.Bounce:
 				newMine = Instantiate (bounceMine, transform.position, Quaternion.identity);
-				newMine.GetComponent<Mine> ().direction = direction;
-				newMine.GetComponent<Mine> ().ReverseDirection ();
+				newMine.GetComponent<BounceMine> ().direction = direction;
+				newMine.GetComponent<BounceMine> ().ReverseDirection ();
 				break;
 			}
 			shouldDrop = MineTypes.None;
@@ -82,7 +82,6 @@ public class Player : MonoBehaviour
 			(direction == DIRECTIONS.SOUTH && (DIRECTIONS) turnDirection ==  DIRECTIONS.NORTH) ||
 			(direction == DIRECTIONS.WEST && (DIRECTIONS) turnDirection ==  DIRECTIONS.EAST) )
 		{
-			Debug.Log (("uuiiuu"));
 			shouldDrop = MineTypes.Bounce;
 		}
 		else
@@ -140,4 +139,11 @@ public class Player : MonoBehaviour
 //			}
 //		}
 //	}
+
+	public void OnCollisionEnter2D(Collision2D coll) 
+	{
+		if (coll.gameObject.tag == "Obstacle")
+			Debug.Log ("Player hit obstacle");
+
+	}
 }

@@ -74,3 +74,4 @@
 /Users/steveh/Documents/extra/Games/Bubbles 3/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/steveh/Documents/extra/Games/Bubbles 3/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/steveh/Documents/extra/Games/Bubbles 3/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/hartste90/Documents/GameWorkspace/Bubbles 3/Temp/bin/Debug/UnityEditor.Android.Extensions.dll

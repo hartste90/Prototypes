@@ -8,6 +8,11 @@ public class BounceMine : Mine
 
 
 
+	void Start()
+	{
+		InvokeRepeating("MoveInCurrentDirection", 0.0f, 1f);
+	}
+
 	public void MoveInCurrentDirection ()
 	{
 		Vector2 pos = transform.position;
@@ -48,8 +53,17 @@ public class BounceMine : Mine
 		}
 	}
 
-	//flips direction when it hits an obstacle
-	public void OnHitObstacle()
+	protected override void OnHit ( Collider2D coll)
+	{
+		Debug.Log ("BOUNCE HIT SOMETHING");
+		if ( coll.gameObject.tag == "Obstacle")
+		{
+			Debug.Log ("Bounce hit an obs");
+			OnHitObstacle( coll.gameObject );
+		}
+	}
+
+	protected void OnHitObstacle ( GameObject obstacle)
 	{
 		ReverseDirection ();
 	}

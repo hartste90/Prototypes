@@ -19,10 +19,10 @@ public abstract class Obstacle : MonoBehaviour {
 	
 	void OnTriggerEnter2D (Collider2D coll)
 	{
-		OnCollide( coll );
+		OnHit( coll );
 	}
 
-	protected abstract void OnCollide( Collider2D coll);
+	protected abstract void OnHit( Collider2D coll);
 	
 	protected void DestroySelf ()
 	{

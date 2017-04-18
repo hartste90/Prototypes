@@ -14,11 +14,11 @@ public class Mine : Obstacle
 
 
 	void Start() {
-		InvokeRepeating("MoveInCurrentDirection", 0.0f, 1f);
 	}
 
-	protected override void OnCollide( Collider2D coll)
+	protected override void OnHit( Collider2D coll)
 	{
+		Debug.Log ("Mine hit something");
 		if ( coll.gameObject.tag == "Player")
 		{
 			OnHitPlayer( coll.gameObject );

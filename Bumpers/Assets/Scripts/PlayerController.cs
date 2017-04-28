@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.VersionControl;
 
 public class PlayerController : MonoBehaviour {
 
 	public GameController gameController;
 	public Vector3 direction = Vector3.forward;
+	public GameObject explosionPrefab;
 	protected CharacterController characterController;
+
 
 	// Use this for initialization
 	void Start () {
@@ -48,4 +51,18 @@ public class PlayerController : MonoBehaviour {
 	                direction = Vector3.back;
 	        }
 	}
+
+	public void OnHitMine()
+	{
+		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
+		Destroy(gameObject);
+	}
+
+	public void OnCollisionEnter(Collision collision)
+         {
+                if (collision.gameObject.tag == "Mine")
+                {
+			OnHitMine ();
+                }
+         }
 }

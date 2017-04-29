@@ -8,24 +8,26 @@ public class PlayerController : MonoBehaviour {
 	public GameController gameController;
 	public Vector3 direction = Vector3.forward;
 	public GameObject explosionPrefab;
+	public Rigidbody rigidbody;
 	protected CharacterController characterController;
+
 
 
 	// Use this for initialization
 	void Start () {
+	        rigidbody = GetComponent <Rigidbody>();
 	        characterController = GetComponent <CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		MoveInCurrentDirection();
+//		MoveInCurrentDirection();
 		DetermineDirectionChange();
 	}
 
 	public void MoveInCurrentDirection()
 	{
-	        characterController.Move (direction * gameController.gameSpeed);
-//		characterController.Move((transform.rotation * motion) * Time.deltaTime);
+	        characterController. Move (direction * gameController.gameSpeed);
 
 	}
 
@@ -34,22 +36,34 @@ public class PlayerController : MonoBehaviour {
 //	Debug.Log (Input.GetAxis ("Vertical"));
 //		Debug.Log (Input.GetAxis ("Horizontal"));
 //
+		Vector3 tempDirection = direction;
 	        if(Input.GetKey ("left"))
 	        {
-	                direction = Vector3.left;
+			tempDirection = Vector3.left;
 	        }
 		else if(Input.GetKey ("right"))
 	        {
-	                direction = Vector3.right;
+			tempDirection = Vector3.right;
 	        }
 		else if(Input.GetKey ("up"))
 	        {
-	                direction = Vector3.forward;
+			tempDirection = Vector3.forward;
 	        }
 		else if (Input.GetKey ("down"))
 	        {
-	                direction = Vector3.back;
+			tempDirection = Vector3.back;
 	        }
+
+	        if(tempDirection != direction)
+	        {
+			SetDirection (tempDirection);
+	        }
+	}
+
+	protected void SetDirection (Vector3 tempDirection )
+	{
+		direction = tempDirection;
+	       rigidbody.velocity = direction * 10;
 	}
 
 	public void OnHitMine()
@@ -58,11 +72,35 @@ public class PlayerController : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
+
+	public void OnHitBumper()
+	{
+	        Vector3 oppositeDirection = GetOppositeDirection(direction);
+		SetDirection (oppositeDirection);
+	}
+
 	public void OnCollisionEnter(Collision collision)
          {
                 if (collision.gameObject.tag == "Mine")
                 {
 			OnHitMine ();
                 }
+                else if (collision.gameObject.tag == "Bumper")
+                {
+                        OnHitBumper();
+                }
          }
+
+	protected Vector3 GetOppositeDirection(Vector3 direction)
+	{
+	        if(direction == Vector3.forward)
+	                return Vector3.back;
+	       else if (direction == Vector3.back)
+	                return Vector3.forward;
+		else if (direction == Vector3.left)
+	                return Vector3.right;
+		else
+	                return Vector3.left;
+
+	}
 }

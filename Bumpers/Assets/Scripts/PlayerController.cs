@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public GameController gameController;
 	public Vector3 direction = Vector3.forward;
 	public GameObject explosionPrefab;
+	public GameObject minePrefab;
 	public Rigidbody rigidbody;
 	protected CharacterController characterController;
 
@@ -56,10 +57,16 @@ public class PlayerController : MonoBehaviour {
 
 	        if(tempDirection != direction)
 	        {
-			SetDirection (tempDirection);
+	                OnChangeDirection(tempDirection);
 	        }
 	}
 
+	protected void OnChangeDirection( Vector3 tempDirection)
+	{
+		Instantiate (minePrefab, transform.position, Quaternion.identity);
+		SetDirection (tempDirection);
+
+	}
 	protected void SetDirection (Vector3 tempDirection )
 	{
 		direction = tempDirection;

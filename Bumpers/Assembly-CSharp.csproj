@@ -50,6 +50,7 @@
      <Compile Include="Assets\Explosion System\Scripts\GraphicExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\PhysicalExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\light_control.cs" />
+     <Compile Include="Assets\MineController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HiResScreenShots.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

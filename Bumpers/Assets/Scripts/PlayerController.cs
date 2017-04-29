@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.VersionControl;
+using System.CodeDom.Compiler;
 
 public class PlayerController : MonoBehaviour {
 
@@ -86,6 +87,18 @@ public class PlayerController : MonoBehaviour {
 		SetDirection (oppositeDirection);
 	}
 
+	public void OnHitCoin(GameObject coin)
+	{
+	        Destroy(coin);
+	}
+
+	public void OnTriggerEnter(Collider collider) 
+	{
+		if (collider.gameObject.tag == "Coin")
+                {
+                        OnHitCoin(collider.gameObject);
+                }
+        }
 	public void OnCollisionEnter(Collision collision)
          {
                 if (collision.gameObject.tag == "Mine")
@@ -96,6 +109,8 @@ public class PlayerController : MonoBehaviour {
                 {
                         OnHitBumper();
                 }
+
+               
          }
 
 	protected Vector3 GetOppositeDirection(Vector3 direction)

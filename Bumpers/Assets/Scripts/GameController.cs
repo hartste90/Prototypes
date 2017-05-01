@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour {
 	public float gameSpeed;
 	public GameObject coinPrefab;
 	public GameObject minePrefab;
+	public GameObject bumperPrefab;
+
+	protected List<GameObject> coinList;
 
 	public void Awake()
 	{
@@ -21,10 +24,13 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
+		coinList = new List<GameObject> ();
 		//spawn starting coin
-		SpawnMultiple(1, coinPrefab);
+		SpawnMultiple(numStartingCoins, coinPrefab);
 		//spawn starting mines
-		SpawnMultiple(5, minePrefab);
+		SpawnMultiple(numStartingMines, minePrefab);
+		//spawn starting bumpers
+		SpawnMultiple(numStartingBumpers, bumperPrefab);
 	}
 
 	public void SpawnMultiple (int numToSpawn, GameObject gameObject)
@@ -33,13 +39,28 @@ public class GameController : MonoBehaviour {
 		{
 			Debug.Log (i);
 			SpawnGameObject (gameObject);
+
 		}
 	}
 
 	public void SpawnGameObject (GameObject gameObject)
 	{
 		Vector3 screenPosition = (new Vector3(Random.Range(-15,15), 0, Random.Range(-15,15)));
-		Instantiate(gameObject,screenPosition,Quaternion.identity);
+		GameObject obj = Instantiate(gameObject,screenPosition,Quaternion.identity);
+		if (gameObject == coinPrefab) 
+		{
+			coinList.Add (obj);
+		}
 	}
+
+	public void CheckCoinsCollected()
+	{
+		if (coinList.Count == 1) 
+		{
+			Debug.Log ("Victory: collected final coin");
+		}
+
+	}
+
 
 }

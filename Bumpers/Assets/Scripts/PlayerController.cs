@@ -89,7 +89,8 @@ public class PlayerController : MonoBehaviour {
 
 	public void OnHitCoin(GameObject coin)
 	{
-	        Destroy(coin);
+		Destroy(coin);
+		gameController.CheckCoinsCollected ();
 	}
 
 	public void OnTriggerEnter(Collider collider) 

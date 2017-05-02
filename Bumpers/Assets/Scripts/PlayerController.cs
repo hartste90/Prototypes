@@ -7,7 +7,7 @@ using System.CodeDom.Compiler;
 public class PlayerController : MonoBehaviour {
 
 	public GameController gameController;
-	public Vector3 direction = Vector3.forward;
+	public Vector3 direction = Vector3.zero;
 	public GameObject explosionPrefab;
 	public GameObject minePrefab;
 	public Rigidbody rigidbody;
@@ -17,13 +17,19 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	        direction = Vector3.zero;
 	        rigidbody = GetComponent <Rigidbody>();
+	        rigidbody.velocity =Vector3.zero;
 	        characterController = GetComponent <CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 //		MoveInCurrentDirection();
+		if (direction == Vector3.zero)
+		{
+		        rigidbody.velocity = direction;
+		}
 		DetermineDirectionChange();
 	}
 

@@ -99,8 +99,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void OnHitCoin(GameObject coin)
 	{
-		Destroy(coin);
-		gameController.CheckCoinsCollected ();
+		gameController.CheckCoinsCollected (coin);
 	}
 
 	public void OnTriggerEnter(Collider collider) 

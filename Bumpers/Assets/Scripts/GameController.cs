@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+	public int userLevel;
+
 	public int numStartingMines;
 	public int numStartingBumpers; 
 	public int numStartingCoins; 
@@ -65,7 +67,6 @@ public class GameController : MonoBehaviour {
 	{
 		for (int i = 0; i < numToSpawn; i++) 
 		{
-			Debug.Log (i);
 			SpawnGameObject (gameObject);
 
 		}
@@ -94,13 +95,26 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void CheckCoinsCollected()
+	public void CheckCoinsCollected(GameObject coin)
 	{
-		if (coinList.Count == 1) 
+	        coinList.Remove (coin);
+	        Destroy(coin);
+		if (coinList.Count == 0) 
 		{
 			Debug.Log ("Victory: collected final coin");
+			CompleteLevel();
 		}
 
+	}
+
+	public void CompleteLevel()
+	{
+		userLevel++;
+		CreateCoinsForLevel(userLevel);
+	}
+	public void CreateCoinsForLevel(int level)
+	{
+		SpawnMultiple (level, coinPrefab);
 	}
 
 	public void DestroyAllItemsOnscreen()

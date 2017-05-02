@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour {
 	protected CharacterController characterController;
 
 
+	public void Init(GameController controller)
+	{
+	        this.gameController = controller;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -70,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 
 	protected void OnChangeDirection( Vector3 tempDirection)
 	{
-		Instantiate (minePrefab, transform.position, Quaternion.identity);
+		gameController.SpawnGameObjectAtPosition (minePrefab, transform.position);
 		SetDirection (tempDirection);
 
 	}

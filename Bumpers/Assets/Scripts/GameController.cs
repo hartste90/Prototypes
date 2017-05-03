@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
+
+		userLevel = 1;
 		coinList = new List<GameObject> ();
 		bumperList = new List<GameObject> ();
 		mineList = new List<GameObject> ();

@@ -87,13 +87,28 @@ public class PlayerController : MonoBehaviour {
 	public void OnHitMine()
 	{
 		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
+		CreatePhysicalExplosion ();
 		Destroy(gameObject);
 	}
+
+	public void CreatePhysicalExplosion()
+	{
+		Vector3 explosionPos = transform.position;
+		Collider[] colliders = Physics.OverlapSphere(explosionPos, 100f);
+		foreach (Collider hit in colliders)
+		{
+			Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+			if (rb != null)
+				rb.AddExplosionForce(10f, explosionPos, 100f, 3.0F);
+		}
+	}
+		
 
 
 	public void OnHitBumper()
 	{
-	        Vector3 oppositeDirection = GetOppositeDirection(direction);
+	    Vector3 oppositeDirection = GetOppositeDirection(direction);
 		SetDirection (oppositeDirection);
 	}
 

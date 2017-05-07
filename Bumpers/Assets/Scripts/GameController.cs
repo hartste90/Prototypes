@@ -76,9 +76,15 @@ public class GameController : MonoBehaviour {
 
 	public void SpawnGameObject (GameObject gameObject)
 	{
-		Vector3 screenPosition = (new Vector3(Random.Range(-15,15), 0, Random.Range(-15,15)));
+		Vector3 screenPosition = GetRandomLocationOnscreen ();
 		SpawnGameObjectAtPosition (gameObject, screenPosition);
 	}
+
+	public static Vector3 GetRandomLocationOnscreen()
+	{
+		return new Vector3(Random.Range(-15,15), 0, Random.Range(-15,15));
+	}
+
 
 	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
@@ -86,6 +92,7 @@ public class GameController : MonoBehaviour {
 		if (gameObject == coinPrefab) 
 		{
 			coinList.Add (obj);
+
 		}
 		else if (gameObject == minePrefab)
 		{

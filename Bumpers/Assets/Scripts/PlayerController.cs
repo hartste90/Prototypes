@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 direction = Vector3.zero;
 	public GameObject explosionPrefab;
 	public GameObject minePrefab;
-	public Rigidbody rigidbody;
+	public Rigidbody2D rigidbody;
 	protected CharacterController characterController;
 
 
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	        direction = Vector3.zero;
-	        rigidbody = GetComponent <Rigidbody>();
+	        rigidbody = GetComponent <Rigidbody2D>();
 	        rigidbody.velocity =Vector3.zero;
 	        characterController = GetComponent <CharacterController>();
 	}
@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour {
 	        }
 		else if(Input.GetKey ("up"))
 	        {
-			tempDirection = Vector3.forward;
+			tempDirection = Vector3.up;
 	        }
 		else if (Input.GetKey ("down"))
 	        {
-			tempDirection = Vector3.back;
+			tempDirection = Vector3.down;
 	        }
 
 	        if(tempDirection != direction)
@@ -117,24 +117,24 @@ public class PlayerController : MonoBehaviour {
 		gameController.CheckCoinsCollected (coin);
 	}
 
-	public void OnTriggerEnter(Collider collider) 
+	public void OnTriggerEnter2D(Collider2D collider) 
 	{
 		if (collider.gameObject.tag == "Coin")
                 {
                         OnHitCoin(collider.gameObject);
                 }
         }
-	public void OnCollisionEnter(Collision collision)
+	public void OnCollisionEnter2D(Collision2D collision)
          {
-                if (collision.gameObject.tag == "Mine")
-                {
-			OnHitMine ();
-                }
-                else if (collision.gameObject.tag == "Bumper")
-                {
-                        OnHitBumper();
-                }
-
+		Debug.Log ("COllision: " + collision.gameObject.tag);
+            if (collision.gameObject.tag == "Mine")
+            {
+					OnHitMine ();
+            }
+            else if (collision.gameObject.tag == "Bumper")
+            {
+                    OnHitBumper();
+            }
                
          }
 

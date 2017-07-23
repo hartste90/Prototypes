@@ -46,16 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CoinController.cs" />
      <Compile Include="Assets\Explosion System\Demo\Script (for Demo)\ExplosionControl.cs" />
      <Compile Include="Assets\Explosion System\Scripts\GraphicExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\PhysicalExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\light_control.cs" />
-     <Compile Include="Assets\MineController.cs" />
-     <Compile Include="Assets\Rotate.cs" />
+     <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HiResScreenShots.cs" />
+     <Compile Include="Assets\Scripts\MineController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\Tools.cs" />
      <None Include="Assets\Explosion System\Shader\Exposion.shader" />
  <Reference Include="UnityEngine.UI">

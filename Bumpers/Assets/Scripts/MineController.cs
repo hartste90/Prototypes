@@ -13,6 +13,6 @@ public class MineController : MonoBehaviour {
 	IEnumerator ActivateAfterSeconds(int waitTime) 
 	{
 	        yield return new WaitForSeconds(waitTime);
-	        GetComponent <Collider>().enabled = true;
+	        GetComponent <CircleCollider2D>().enabled = true;
 	}
 }

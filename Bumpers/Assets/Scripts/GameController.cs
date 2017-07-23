@@ -82,7 +82,8 @@ public class GameController : MonoBehaviour {
 
 	public static Vector3 GetRandomLocationOnscreen()
 	{
-		return new Vector3(Random.Range(-15,15), 0, Random.Range(-15,15));
+		return new Vector3(Random.Range(-5,5), Random.Range(-9,9), 0);
+
 	}
 
 

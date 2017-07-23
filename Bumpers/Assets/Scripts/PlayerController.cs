@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 	protected void SetDirection (Vector3 tempDirection )
 	{
 		direction = tempDirection;
-	       rigidbody.velocity = direction * 10;
+		rigidbody.velocity = direction * gameController.gameSpeed;
 	}
 
 	public void OnHitMine()

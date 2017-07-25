@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{DDEF4352-BB4D-BDAD-D735-1A0B0722F571}") = "Bumpers", "Assembly-CSharp.csproj", "{57D23245-8C9C-996C-8859-8ED189446571}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bumpers", "Assembly-CSharp.csproj", "{57D23245-8C9C-996C-8859-8ED189446571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

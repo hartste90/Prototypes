@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour {
 	public int numStartingBumpers; 
 	public int numStartingCoins; 
 
+	public float minimumSwipeDistance;
+
 	public PlayerController playerController;
 	public GameObject playerObject;
 

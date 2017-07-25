@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject minePrefab;
 	public Rigidbody2D rigidbody;
 	protected CharacterController characterController;
+	protected Vector2 startSwipePosition;
 
 
 	public void Init(GameController controller)
@@ -34,7 +35,56 @@ public class PlayerController : MonoBehaviour {
 		{
 		        rigidbody.velocity = direction;
 		}
+#if UNITY_EDITOR
 		DetermineDirectionChange();
+#elif UNITY_ANDROID
+		DetermineSwipeDirection();
+#endif
+	}
+
+	public void DetermineSwipeDirection ()
+	{
+	        Vector3 tempDirection = direction;
+		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
+			startSwipePosition = Input.GetTouch (0).position;
+		} else if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) {
+			Vector2 deltaPosition = Input.GetTouch (0).position - startSwipePosition;
+			if (deltaPosition.magnitude >= gameController.minimumSwipeDistance) {
+				if (Mathf.Abs (deltaPosition.x) > Mathf.Abs (deltaPosition.y)) {
+					if (deltaPosition.x > 0) 
+					{
+					        Debug.Log ("Swiping: RIGHT");
+					        tempDirection = Vector3.right;
+					}
+					else
+					{
+						Debug.Log ("Swiping: LEFT");
+
+					        tempDirection = Vector3.left;
+					}
+			        }
+			        else
+			        {
+					if (deltaPosition.y > 0) 
+					{
+						Debug.Log ("Swiping: UP");
+
+					        tempDirection = Vector3.up;
+					}
+					else
+					{
+						Debug.Log ("Swiping: DOWN");
+
+					        tempDirection = Vector3.down;
+					}
+			        }
+			}
+			if(tempDirection != direction)
+		        {
+		                OnChangeDirection(tempDirection);
+		        }
+		}
+
 	}
 
 	public void MoveInCurrentDirection()

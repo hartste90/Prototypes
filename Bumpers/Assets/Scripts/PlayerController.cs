@@ -38,13 +38,61 @@ public class PlayerController : MonoBehaviour {
 #if UNITY_EDITOR
 		DetermineDirectionChange();
 #elif UNITY_ANDROID
-		DetermineSwipeDirection();
+//		DetermineSwipeDirection();
+		DetermineTapDirection();
 #endif
+	}
+
+	public void DetermineTapDirection()
+	{
+		Vector3 tempDirection = direction;
+		Vector3 touchPosition = Vector3.zero;
+		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) 
+		{
+			touchPosition = Input.GetTouch (0).position;
+		} 
+
+		//If backwards, reverse the minus variables
+		Vector3 deltaPosition = new Vector3 (transform.position.x - touchPosition.x, transform.position.y - touchPosition.y, transform.position.z);
+		if (Mathf.Abs (deltaPosition.x) > Mathf.Abs (deltaPosition.y)) 
+		{
+			if (deltaPosition.x > 0) 
+			{
+				Debug.Log ("Swiping: RIGHT");
+				tempDirection = Vector3.right;
+			}
+			else
+			{
+				Debug.Log ("Swiping: LEFT");
+
+				tempDirection = Vector3.left;
+			}
+		}
+		else
+		{
+			if (deltaPosition.y > 0) 
+			{
+				Debug.Log ("Swiping: UP");
+
+				tempDirection = Vector3.up;
+			}
+			else
+			{
+				Debug.Log ("Swiping: DOWN");
+
+				tempDirection = Vector3.down;
+			}
+		}
+			
+		if(tempDirection != direction)
+		{
+			OnChangeDirection(tempDirection);
+		}
 	}
 
 	public void DetermineSwipeDirection ()
 	{
-	        Vector3 tempDirection = direction;
+		Vector3 tempDirection = direction;
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
 			startSwipePosition = Input.GetTouch (0).position;
 		} else if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) {

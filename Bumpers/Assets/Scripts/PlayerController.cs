@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.VersionControl;
-using System.CodeDom.Compiler;
 
 public class PlayerController : MonoBehaviour {
 
@@ -35,59 +33,86 @@ public class PlayerController : MonoBehaviour {
 		{
 		        rigidbody.velocity = direction;
 		}
-#if UNITY_EDITOR
-		DetermineDirectionChange();
-#elif UNITY_ANDROID
+//#if UNITY_EDITOR
+//		DetermineDirectionChange();
+//#elif UNITY_ANDROID
 //		DetermineSwipeDirection();
 		DetermineTapDirection();
-#endif
+//#endif
 	}
 
 	public void DetermineTapDirection()
 	{
 		Vector3 tempDirection = direction;
 		Vector3 touchPosition = Vector3.zero;
+		//mimic touch
+
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) 
 		{
 			touchPosition = Input.GetTouch (0).position;
 		} 
 
-		//If backwards, reverse the minus variables
-		Vector3 deltaPosition = new Vector3 (transform.position.x - touchPosition.x, transform.position.y - touchPosition.y, transform.position.z);
-		if (Mathf.Abs (deltaPosition.x) > Mathf.Abs (deltaPosition.y)) 
+		if (Input.GetKeyDown ("left"))
 		{
-			if (deltaPosition.x > 0) 
+		        touchPosition = new Vector3 (-1000, 0, 0);
+		}
+		else if (Input.GetKeyDown ("right"))
+		{
+			touchPosition = new Vector3 (1000, 0, 0);
+		}
+		else if (Input.GetKeyDown ("up"))
+		{
+			touchPosition = new Vector3 (0, 1000, 0);
+		}
+		else if (Input.GetKeyDown ("down"))
+		{
+			touchPosition = new Vector3 (0, -1000, 0);
+		}
+
+		if (touchPosition != Vector3.zero)
+		{
+			//If backwards, reverse the minus variables
+			Vector3 deltaPosition = new Vector3 (touchPosition.x - transform.position.x, touchPosition.y - transform.position.y, transform.position.z);
+			Debug.Log("Delta Pos: "  + deltaPosition);
+			if (Mathf.Abs (deltaPosition.x) > Mathf.Abs (deltaPosition.y)) 
 			{
-				Debug.Log ("Swiping: RIGHT");
-				tempDirection = Vector3.right;
+				if (deltaPosition.x > 0) 
+				{
+					Debug.Log ("Swiping: RIGHT");
+					tempDirection = Vector3.right;
+				}
+				else
+				{
+					Debug.Log ("Swiping: LEFT");
+
+					tempDirection = Vector3.left;
+				}
 			}
 			else
 			{
-				Debug.Log ("Swiping: LEFT");
+				if (deltaPosition.y > 0) 
+				{
+					Debug.Log ("Swiping: UP");
 
-				tempDirection = Vector3.left;
+					tempDirection = Vector3.up;
+				}
+				else
+				{
+					Debug.Log ("Swiping: DOWN");
+
+					tempDirection = Vector3.down;
+				}
 			}
-		}
-		else
-		{
-			if (deltaPosition.y > 0) 
+				
+			if(tempDirection != direction)
 			{
-				Debug.Log ("Swiping: UP");
-
-				tempDirection = Vector3.up;
-			}
-			else
-			{
-				Debug.Log ("Swiping: DOWN");
-
-				tempDirection = Vector3.down;
+				OnChangeDirection(tempDirection);
 			}
 		}
-			
-		if(tempDirection != direction)
-		{
-			OnChangeDirection(tempDirection);
-		}
+
+
+//
+		
 	}
 
 	public void DetermineSwipeDirection ()

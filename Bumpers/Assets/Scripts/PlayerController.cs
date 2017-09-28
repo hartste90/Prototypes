@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,6 +13,16 @@ public class PlayerController : MonoBehaviour {
 	protected CharacterController characterController;
 	protected Vector2 startSwipePosition;
 
+	protected Vector3 lastTouchVector;
+
+
+	void OnDrawGizmos() 
+	{
+	        if (lastTouchVector != Vector3.zero)
+	        {
+	                Gizmos.DrawLine (transform.position, lastTouchVector);
+	        }
+     }
 
 	public void Init(GameController controller)
 	{
@@ -24,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 	        rigidbody = GetComponent <Rigidbody2D>();
 	        rigidbody.velocity =Vector3.zero;
 	        characterController = GetComponent <CharacterController>();
+	        lastTouchVector = Vector3.zero;
 	}
 	
 	// Update is called once per frame
@@ -33,12 +45,8 @@ public class PlayerController : MonoBehaviour {
 		{
 		        rigidbody.velocity = direction;
 		}
-//#if UNITY_EDITOR
-//		DetermineDirectionChange();
-//#elif UNITY_ANDROID
-//		DetermineSwipeDirection();
+
 		DetermineTapDirection();
-//#endif
 	}
 
 	public void DetermineTapDirection()
@@ -49,7 +57,9 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) 
 		{
-			touchPosition = Input.GetTouch (0).position;
+			Vector2 touchPos = Input.GetTouch(0).position;
+			Vector3 worldpos = Camera.main.ScreenToWorldPoint(touchPos); 
+			touchPosition = new Vector3 (worldpos.x, worldpos.y, 0);
 		} 
 
 		if (Input.GetKeyDown ("left"))
@@ -71,34 +81,41 @@ public class PlayerController : MonoBehaviour {
 
 		if (touchPosition != Vector3.zero)
 		{
-			//If backwards, reverse the minus variables
+			Vector3 difference =  touchPosition - transform.position;
+//		        difference.Normalize ();
+		        lastTouchVector = touchPosition;
+		        Debug.Log ("Difference: " + difference);
+			float xDiffMag = Mathf.Abs (touchPosition.x - transform.position.x);
+			float yDiffMag = Mathf.Abs (touchPosition.y - transform.position.y);
 			Vector3 deltaPosition = new Vector3 (touchPosition.x - transform.position.x, touchPosition.y - transform.position.y, transform.position.z);
-			Debug.Log("Delta Pos: "  + deltaPosition);
-			if (Mathf.Abs (deltaPosition.x) > Mathf.Abs (deltaPosition.y)) 
+//			Debug.Log("Delta Pos: "  + deltaPosition+ " XDiff: " + xDiffMag + " YDiff: " + yDiffMag);
+			//HORIZONTAL CHANGE
+			if (Mathf.Abs (difference.x) >= Mathf.Abs (difference.y)) 
 			{
-				if (deltaPosition.x > 0) 
+				if (difference.x > 0) 
 				{
-					Debug.Log ("Swiping: RIGHT");
+					Debug.Log ("Tapping: RIGHT");
 					tempDirection = Vector3.right;
 				}
 				else
 				{
-					Debug.Log ("Swiping: LEFT");
+					Debug.Log ("Tapping: LEFT");
 
 					tempDirection = Vector3.left;
 				}
 			}
+			//VERTICAL CHANGE
 			else
 			{
-				if (deltaPosition.y > 0) 
+				if (difference.y > 0) 
 				{
-					Debug.Log ("Swiping: UP");
+					Debug.Log ("Tapping: UP");
 
 					tempDirection = Vector3.up;
 				}
 				else
 				{
-					Debug.Log ("Swiping: DOWN");
+					Debug.Log ("Tapping: DOWN");
 
 					tempDirection = Vector3.down;
 				}
@@ -114,6 +131,8 @@ public class PlayerController : MonoBehaviour {
 //
 		
 	}
+
+
 
 	public void DetermineSwipeDirection ()
 	{
@@ -197,7 +216,8 @@ public class PlayerController : MonoBehaviour {
 
 	protected void OnChangeDirection( Vector3 tempDirection)
 	{
-		gameController.SpawnGameObjectAtPosition (minePrefab, transform.position);
+	        //TODO: take out
+		//gameController.SpawnGameObjectAtPosition (minePrefab, transform.position);
 		SetDirection (tempDirection);
 
 	}

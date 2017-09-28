@@ -216,8 +216,7 @@ public class PlayerController : MonoBehaviour {
 
 	protected void OnChangeDirection( Vector3 tempDirection)
 	{
-	        //TODO: take out
-		//gameController.SpawnGameObjectAtPosition (minePrefab, transform.position);
+		gameController.SpawnGameObjectAtPosition (minePrefab, transform.position);
 		SetDirection (tempDirection);
 
 	}

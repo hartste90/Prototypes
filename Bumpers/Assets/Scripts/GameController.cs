@@ -84,7 +84,11 @@ public class GameController : MonoBehaviour {
 
 	public static Vector3 GetRandomLocationOnscreen()
 	{
-		return new Vector3(Random.Range(-5,5), Random.Range(-9,9), 0);
+		Vector2 topRightCorner = new Vector2(1, 1);
+                Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
+                float halfheight = edgeVector.y;
+                float halfwidth = edgeVector.x;
+		return new Vector3(Random.Range(-halfwidth,halfwidth), Random.Range(-halfheight,halfheight), 0);
 
 	}
 

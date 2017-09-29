@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 			Vector3 difference =  touchPosition - transform.position;
 //		        difference.Normalize ();
 		        lastTouchVector = touchPosition;
-		        Debug.Log ("Difference: " + difference);
+//		        Debug.Log ("Difference: " + difference);
 			float xDiffMag = Mathf.Abs (touchPosition.x - transform.position.x);
 			float yDiffMag = Mathf.Abs (touchPosition.y - transform.position.y);
 			Vector3 deltaPosition = new Vector3 (touchPosition.x - transform.position.x, touchPosition.y - transform.position.y, transform.position.z);
@@ -94,12 +94,12 @@ public class PlayerController : MonoBehaviour {
 			{
 				if (difference.x > 0) 
 				{
-					Debug.Log ("Tapping: RIGHT");
+//					Debug.Log ("Tapping: RIGHT");
 					tempDirection = Vector3.right;
 				}
 				else
 				{
-					Debug.Log ("Tapping: LEFT");
+//					Debug.Log ("Tapping: LEFT");
 
 					tempDirection = Vector3.left;
 				}
@@ -109,13 +109,13 @@ public class PlayerController : MonoBehaviour {
 			{
 				if (difference.y > 0) 
 				{
-					Debug.Log ("Tapping: UP");
+//					Debug.Log ("Tapping: UP");
 
 					tempDirection = Vector3.up;
 				}
 				else
 				{
-					Debug.Log ("Tapping: DOWN");
+//					Debug.Log ("Tapping: DOWN");
 
 					tempDirection = Vector3.down;
 				}

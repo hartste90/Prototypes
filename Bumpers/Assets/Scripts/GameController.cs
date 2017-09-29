@@ -82,20 +82,21 @@ public class GameController : MonoBehaviour {
 		SpawnGameObjectAtPosition (gameObject, screenPosition);
 	}
 
-	public static Vector3 GetRandomLocationOnscreen()
+	public static Vector3 GetRandomLocationOnscreen ()
 	{
-		Vector2 topRightCorner = new Vector2(1, 1);
-                Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
-                float halfheight = edgeVector.y;
-                float halfwidth = edgeVector.x;
-		return new Vector3(Random.Range(-halfwidth,halfwidth), Random.Range(-halfheight,halfheight), 0);
+		Vector2 topRightCorner = new Vector2 (1, 1);
+		Vector2 edgeVector = Camera.main.ViewportToWorldPoint (topRightCorner);
+		float halfheight = edgeVector.y;
+		float halfwidth = edgeVector.x;
+		Vector3 position = new Vector3 (Random.Range (-halfwidth, halfwidth), Random.Range (-halfheight, halfheight * .9f), 0);
+		return position;
 
 	}
-
 
 	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
 		GameObject obj = Instantiate(gameObject, position, Quaternion.identity);
+
 		if (gameObject == coinPrefab) 
 		{
 			coinList.Add (obj);
@@ -117,7 +118,7 @@ public class GameController : MonoBehaviour {
 	        Destroy(coin);
 		if (coinList.Count == 0) 
 		{
-			Debug.Log ("Victory: collected final coin");
+//			Debug.Log ("Victory: collected final coin");
 			CompleteLevel();
 		}
 

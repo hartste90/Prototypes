@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour {
 
-	void OnTriggerEnter(Collider collider) 
+	void OnCollisionEnter2D(Collision2D collider) 
 	{
-		if (collider.tag == "Player") {
+	        Debug.Log("Coin ENTER: " + collider.gameObject.tag);
+		if (collider.gameObject.tag == "Player") {
 			return;
 		} 
 		else 
@@ -15,6 +16,17 @@ public class CoinController : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay2D(Collider2D collider) 
+	{
+	        Debug.Log("Coin STAY: " + collider.gameObject.tag);
+		if (collider.gameObject.tag == "Player") {
+			return;
+		} 
+		else 
+		{
+			MoveToUnoccupiedSpace ();
+		}
+	}
 	public void MoveToUnoccupiedSpace()
 	{
 		Debug.Log ("Moved to new location");

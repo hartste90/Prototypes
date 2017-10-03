@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	public int userLevel;
+	public Transform gameStageParent;
 
 	public int numStartingMines;
 	public int numStartingBumpers; 
@@ -46,7 +47,7 @@ public class GameController : MonoBehaviour {
 		SpawnMultiple(numStartingMines, minePrefab);
 		//spawn starting bumpers
 		SpawnMultiple(numStartingBumpers, bumperPrefab);
-		playerObject = Instantiate (playerPrefab);
+		playerObject = Instantiate (playerPrefab, gameStageParent);
 	        playerController = playerObject.GetComponent<PlayerController>();
 	        playerController.Init (this);
 	        playerController.rigidbody.velocity = Vector3.zero;	
@@ -95,7 +96,7 @@ public class GameController : MonoBehaviour {
 
 	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
-		GameObject obj = Instantiate(gameObject, position, Quaternion.identity);
+		GameObject obj = Instantiate(gameObject, position, Quaternion.identity, gameStageParent);
 
 		if (gameObject == coinPrefab) 
 		{

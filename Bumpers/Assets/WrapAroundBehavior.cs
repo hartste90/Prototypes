@@ -34,7 +34,7 @@ public class WrapAroundBehavior : MonoBehaviour {
 	{
 	    for(int i = 0; i < 8; i++)
 	    {
-	        ghosts[i] = Instantiate(transform, Vector3.zero, Quaternion.identity) as Transform;
+	        ghosts[i] = Instantiate(transform, Vector3.zero, Quaternion.identity, GetComponent <PlayerController>().gameController.gameStageParent) as Transform;
 
 	        ghosts[i].GetComponent<PlayerController>().dropsMines = false;
 	        DestroyImmediate(ghosts[i].GetComponent<WrapAroundBehavior>());

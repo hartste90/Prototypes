@@ -276,6 +276,10 @@ public class PlayerController : MonoBehaviour {
             {
 					OnHitMine ();
             }
+            else if (collision.gameObject.tag == "Explosion")
+            {
+			OnHitMine ();
+            }
             else if (collision.gameObject.tag == "Bumper")
             {
                     OnHitBumper();

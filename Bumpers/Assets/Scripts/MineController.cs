@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class MineController : MonoBehaviour {
 
+	public GameObject explosionPrefab;
 	public Text countDownLabel;
 	public int countDownNumber = 3;
+
 
 	public Animator animator;
 	// Use this for initialization
@@ -48,6 +50,8 @@ public class MineController : MonoBehaviour {
 
 	public void DestroySelf()
 	{
+	        GameObject explostionObject = Instantiate(explosionPrefab, transform.parent);
+		explostionObject.transform.localScale = Vector3.one;
 	        Destroy(gameObject);
 	}
 

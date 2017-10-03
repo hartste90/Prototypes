@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\Tools.cs" />
+     <Compile Include="Assets\WrapAroundBehavior.cs" />
      <None Include="Assets\Explosion System\Shader\Exposion.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

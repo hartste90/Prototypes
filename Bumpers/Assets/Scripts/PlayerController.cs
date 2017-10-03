@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
 
 	protected Vector3 lastTouchVector;
 
+	public bool dropsMines;
+
 
 	void OnDrawGizmos() 
 	{
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 	        rigidbody.velocity =Vector3.zero;
 	        characterController = GetComponent <CharacterController>();
 	        lastTouchVector = Vector3.zero;
+	        dropsMines = true;
 	}
 	
 	// Update is called once per frame

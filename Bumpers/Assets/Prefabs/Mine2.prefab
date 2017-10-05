@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 58406492539591300}
   - component: {fileID: 212387307881012378}
   - component: {fileID: 50835112065343612}
+  - component: {fileID: 95642781311513064}
   m_Layer: 0
   m_Name: Mine2
   m_TagString: Mine
@@ -100,6 +101,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95642781311513064
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969627338554662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a102d82fd6cb643b79a8d97c2b1a99ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114332245799381402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,8 +132,9 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1199903913866718, guid: 4e58d5a12017541a7a70c3dd3f8b0db8,
     type: 2}
   countDownLabel: {fileID: 114749226001629402}
-  countDownNumber: 10
-  animator: {fileID: 0}
+  countDownNumber: 2
+  mineAnimator: {fileID: 95642781311513064}
+  countdownAnimator: {fileID: 95101325511564808}
 --- !u!114 &114749226001629402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.81724143, g: 0.08412778, b: 0.08412778, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!222 &222165629642968566

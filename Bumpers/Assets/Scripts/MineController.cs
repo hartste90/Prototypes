@@ -9,12 +9,12 @@ public class MineController : MonoBehaviour {
 	public Text countDownLabel;
 	public int countDownNumber = 3;
 
-
-	public Animator animator;
+	public Animator mineAnimator;
+	public Animator countdownAnimator;
 	// Use this for initialization
 	void Start()
 	{
-	        animator = GetComponentInChildren <Animator>();
+		countdownAnimator = GetComponentInChildren <Animator>();
 		StartCoroutine( ActivateAfterSeconds (1));
 	}
 
@@ -29,7 +29,11 @@ public class MineController : MonoBehaviour {
 	{
 	        yield return new WaitForSeconds(timerSpeed);
 		CountdownTick ();
-		animator.SetTrigger ("CTA");
+		countdownAnimator.SetTrigger ("CTA");
+		if (countDownNumber == 1)
+		{
+		        mineAnimator.SetTrigger ("TurnRed");
+		}
 		if (countDownNumber <= 0)
 		{
 			DestroySelf ();
@@ -49,9 +53,9 @@ public class MineController : MonoBehaviour {
 	}
 
 	public void DestroySelf()
-	{
-	        GameObject explostionObject = Instantiate(explosionPrefab, transform.parent);
-		explostionObject.transform.localScale = Vector3.one;
+	{;
+	        GameObject explosionObject = Instantiate(explosionPrefab, transform.parent);
+		explosionObject.transform.localPosition = transform.localPosition;
 	        Destroy(gameObject);
 	}
 

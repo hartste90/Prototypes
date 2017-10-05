@@ -51,6 +51,8 @@
      <Compile Include="Assets\Explosion System\Scripts\GraphicExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\PhysicalExplosion.cs" />
      <Compile Include="Assets\Explosion System\Scripts\light_control.cs" />
+     <Compile Include="Assets\ExplosionController.cs" />
+     <Compile Include="Assets\ExplosionPuffController.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HiResScreenShots.cs" />

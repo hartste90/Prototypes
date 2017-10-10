@@ -66,9 +66,11 @@ public class GameController : MonoBehaviour {
 
 	public void ResetScene()
 	{
-	        Time.timeScale = 1.0f;
-		DestroyAllItemsOnscreen();
-	        Start();
+	        SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+//	        Time.timeScale = 1.0f;
+//	        uiController.ResetUI();
+//		DestroyAllItemsOnscreen();
+//	        Start();
 	}
 
 	public void SpawnMultiple (int numToSpawn, GameObject gameObject)

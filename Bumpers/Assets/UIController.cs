@@ -8,11 +8,25 @@ public class UIController : MonoBehaviour {
 	public Text coinCountUILabel;
 	public int coinCountNum;
 
+	public Text timerUILabel;
+	public float timerSecondsPlayed;
+
 	// Use this for initialization
 	void Start () {
 	        coinCountNum = 0;
 		SetCoinText (0);
+		timerSecondsPlayed = 0;
+	}
 
+	public void ResetUI()
+	{
+	        Start();
+	}
+
+	void Update()
+	{
+	        timerSecondsPlayed += Time.deltaTime;
+		SetTimerText (timerSecondsPlayed);
 	}
 	
 	public void AddCoinsCollected (int numCoins)
@@ -24,6 +38,11 @@ public class UIController : MonoBehaviour {
 	public void SetCoinText (int numCoins)
 	{
 	        coinCountUILabel.text = numCoins + "";
+	}
+
+	public void SetTimerText (float seconds)
+	{
+	        timerUILabel.text = Mathf.Floor(seconds) + "";
 	}
 
 }

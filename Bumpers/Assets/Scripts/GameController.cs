@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour {
 	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
 		GameObject obj = Instantiate(gameObject, position, Quaternion.identity, gameStageParent);
-
+		obj.transform.localScale = new Vector3(384, 384, 1);
 		if (gameObject == coinPrefab) 
 		{
 			coinList.Add (obj);

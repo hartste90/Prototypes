@@ -233,6 +233,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
 		CreatePhysicalExplosion ();
+
+		Time.timeScale = 0.7F;
 		Destroy(gameObject);
 	}
 

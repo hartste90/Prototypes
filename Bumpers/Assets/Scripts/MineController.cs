@@ -14,7 +14,6 @@ public class MineController : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		countdownAnimator = GetComponentInChildren <Animator>();
 		StartCoroutine( ActivateAfterSeconds (1));
 	}
 

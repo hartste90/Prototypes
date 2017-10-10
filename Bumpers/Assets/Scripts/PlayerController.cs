@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public GameController gameController;
 	public Vector3 direction = Vector3.zero;
 	public GameObject explosionPrefab;
+	public GameObject playerExplosionPrefab;
 	public GameObject minePrefab;
 	public Rigidbody2D rigidbody;
 	protected CharacterController characterController;
@@ -231,7 +232,13 @@ public class PlayerController : MonoBehaviour {
 
 	public void OnHitMine()
 	{
-		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
+		GameObject playerExplosion1 = Instantiate (playerExplosionPrefab, transform.parent);
+		GameObject playerExplosion2 = Instantiate (playerExplosionPrefab, transform.parent);
+
+		playerExplosion1.transform.localPosition = transform.localPosition;
+		playerExplosion2.transform.localPosition = transform.localPosition;
+		playerExplosion2.transform.Rotate (0,0,45);
+
 		CreatePhysicalExplosion ();
 
 		Time.timeScale = 0.2f;

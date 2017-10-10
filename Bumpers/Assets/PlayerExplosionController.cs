@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionController : MonoBehaviour {
+public class PlayerExplosionController : ExplosionController {
 
-	public GameObject explosionPuffPrefab;
-	public GameObject[] explosionPuffObjectList;
-	public float explosionStrength;
 	// Use this for initialization
 	void Start () {
 		//instantiate explosionPuffs
 		explosionPuffObjectList = new GameObject[4];
 		for(int i = 0; i < 4; i++)
 		{
-		        GameObject explosionPuffObject = Instantiate (explosionPuffPrefab, transform.parent, true);
+		        GameObject explosionPuffObject = Instantiate (explosionPuffPrefab, transform, true);
 		        explosionPuffObject.transform.localPosition = transform.localPosition;
 		        explosionPuffObject.transform.localScale = Vector3.one;
 		        explosionPuffObjectList[i] = explosionPuffObject;

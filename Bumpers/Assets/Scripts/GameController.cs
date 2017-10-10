@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
 	public int userLevel;
 	public Transform gameStageParent;
+	public UIController uiController;
 
 	public int numStartingMines;
 	public int numStartingBumpers; 
@@ -64,6 +66,7 @@ public class GameController : MonoBehaviour {
 
 	public void ResetScene()
 	{
+	        Time.timeScale = 1.0f;
 		DestroyAllItemsOnscreen();
 	        Start();
 	}
@@ -115,6 +118,7 @@ public class GameController : MonoBehaviour {
 
 	public void CheckCoinsCollected(GameObject coin)
 	{
+	        uiController.AddCoinsCollected(1);
 	        coinList.Remove (coin);
 	        Destroy(coin);
 		if (coinList.Count == 0) 

@@ -53,6 +53,7 @@
      <Compile Include="Assets\Explosion System\Scripts\light_control.cs" />
      <Compile Include="Assets\ExplosionController.cs" />
      <Compile Include="Assets\ExplosionPuffController.cs" />
+     <Compile Include="Assets\PlayerExplosionController.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HiResScreenShots.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\Tools.cs" />
+     <Compile Include="Assets\UIController.cs" />
      <Compile Include="Assets\WrapAroundBehavior.cs" />
      <None Include="Assets\Explosion System\Shader\Exposion.shader" />
  <Reference Include="UnityEngine.UI">

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 	public int userLevel;
 	public Transform gameStageParent;
 	public UIController uiController;
+	public EndgameScreenController endgameScreenController;
 
 	public int numStartingMines;
 	public int numStartingBumpers; 
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour {
 	void Start()
 	{
 
+		endgameScreenController.gameObject.SetActive (false);
 		userLevel = 1;
 		coinList = new List<GameObject> ();
 		bumperList = new List<GameObject> ();
@@ -66,8 +68,8 @@ public class GameController : MonoBehaviour {
 
 	public void ResetScene()
 	{
-	        SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-//	        Time.timeScale = 1.0f;
+		Time.timeScale = 1.0f;
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 //	        uiController.ResetUI();
 //		DestroyAllItemsOnscreen();
 //	        Start();
@@ -159,6 +161,19 @@ public class GameController : MonoBehaviour {
 			Destroy (mineList[i].gameObject);
 	        }
 		Destroy (playerObject);
+	}
+
+	public void handlePlayerDestroyed()
+	{
+	        uiController.PauseTimer ();
+		StartCoroutine (ShowEndgameScreenAfterSeconds (1));
+	}
+
+	IEnumerator ShowEndgameScreenAfterSeconds (int waitTime) 
+	{
+	        yield return new WaitForSeconds(waitTime);
+	        endgameScreenController.populateEndgameScreenContent (uiController.coinCountUILabel.text, uiController.timerUILabel.text);
+		endgameScreenController.gameObject.SetActive (true);
 	}
 
 

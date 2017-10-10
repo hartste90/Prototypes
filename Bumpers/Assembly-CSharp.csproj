@@ -47,10 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DestroyAfterTime.cs" />
-     <Compile Include="Assets\Explosion System\Demo\Script (for Demo)\ExplosionControl.cs" />
-     <Compile Include="Assets\Explosion System\Scripts\GraphicExplosion.cs" />
-     <Compile Include="Assets\Explosion System\Scripts\PhysicalExplosion.cs" />
-     <Compile Include="Assets\Explosion System\Scripts\light_control.cs" />
+     <Compile Include="Assets\EndgameScreenController.cs" />
      <Compile Include="Assets\ExplosionController.cs" />
      <Compile Include="Assets\ExplosionPuffController.cs" />
      <Compile Include="Assets\PlayerExplosionController.cs" />
@@ -63,7 +60,6 @@
      <Compile Include="Assets\Scripts\Tools.cs" />
      <Compile Include="Assets\UIController.cs" />
      <Compile Include="Assets\WrapAroundBehavior.cs" />
-     <None Include="Assets\Explosion System\Shader\Exposion.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+	public bool isTimerCounting;
 	public Text coinCountUILabel;
 	public int coinCountNum;
 
@@ -13,6 +14,7 @@ public class UIController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	        isTimerCounting = true;
 	        coinCountNum = 0;
 		SetCoinText (0);
 		timerSecondsPlayed = 0;
@@ -23,10 +25,13 @@ public class UIController : MonoBehaviour {
 	        Start();
 	}
 
-	void Update()
+	void Update ()
 	{
-	        timerSecondsPlayed += Time.deltaTime;
-		SetTimerText (timerSecondsPlayed);
+		if (isTimerCounting) 
+		{
+			timerSecondsPlayed += Time.deltaTime;
+			SetTimerText (timerSecondsPlayed);
+		}
 	}
 	
 	public void AddCoinsCollected (int numCoins)
@@ -44,5 +49,11 @@ public class UIController : MonoBehaviour {
 	{
 	        timerUILabel.text = Mathf.Floor(seconds) + "";
 	}
+
+	public void PauseTimer()
+	{
+	        isTimerCounting = false;
+	}
+
 
 }

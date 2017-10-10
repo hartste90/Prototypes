@@ -241,9 +241,14 @@ public class PlayerController : MonoBehaviour {
 
 		CreatePhysicalExplosion ();
 
+		gameController.handlePlayerDestroyed();
 		Time.timeScale = 0.2f;
 		Destroy(gameObject);
+
+
 	}
+
+
 
 	public void CreatePhysicalExplosion()
 	{

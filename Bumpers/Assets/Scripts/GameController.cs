@@ -52,6 +52,8 @@ public class GameController : MonoBehaviour {
 		//spawn starting bumpers
 		SpawnMultiple(numStartingBumpers, bumperPrefab);
 		playerObject = Instantiate (playerPrefab, gameStageParent);
+		playerObject.transform.localScale = new Vector3(384, 384, 1);
+		playerObject.transform.localPosition = Vector3.zero;
 	        playerController = playerObject.GetComponent<PlayerController>();
 	        playerController.Init (this);
 	        playerController.rigidbody.velocity = Vector3.zero;	

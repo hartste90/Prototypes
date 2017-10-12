@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 212482727903262996}
   - component: {fileID: 58245486717288262}
   - component: {fileID: 50374311676571324}
+  - component: {fileID: 114448140576896056}
+  - component: {fileID: 95538662618466776}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Coin
@@ -64,7 +66,24 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.12
+--- !u!95 &95538662618466776
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115446076801792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc2298e32710242e39e0d64ef61de7f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114440502935297098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +95,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1eb2c1e796047a4910104826d34a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateBy: {x: 0, y: 0, z: 0}
+  speed: 0
+--- !u!114 &114448140576896056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115446076801792}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1eb2c1e796047a4910104826d34a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateBy: {x: 0, y: 1, z: 0}
+  speed: 1
 --- !u!114 &114814290759779048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,8 +152,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9137931, g: 0.80945, b: 0.026876293, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 155dbe12d969c453ba6cf87e98f37224, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!224 &224255888020372042

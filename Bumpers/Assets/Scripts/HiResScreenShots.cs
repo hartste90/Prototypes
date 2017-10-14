@@ -17,6 +17,13 @@
      public void TakeHiResShot() {
          takeHiResShot = true;
      }
+
+	void Start()
+	{
+		resWidth = Screen.width;
+		resHeight = Screen.height;
+	}
+
  
      void LateUpdate() {
          takeHiResShot |= Input.GetKeyDown("k");

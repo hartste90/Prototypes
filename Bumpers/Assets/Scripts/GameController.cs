@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Director;
 
 public class GameController : MonoBehaviour {
 
@@ -168,7 +169,12 @@ public class GameController : MonoBehaviour {
 	public void handlePlayerDestroyed()
 	{
 	        uiController.PauseTimer ();
-	        PlayerPrefs.SetInt ("bestScore", userLevel);
+
+	        PlayerPrefs.SetInt ("lastScore", userLevel);
+	        if (PlayerPrefs.GetInt ("bestScore") < userLevel)
+	        {
+	                PlayerPrefs.SetInt ("bestScore", userLevel);
+	        }
 		StartCoroutine (ShowEndgameScreenAfterSeconds (1));
 	}
 

@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
 
-	public Text lastRecordText;
+	public Text bestScoreText;
+	public Text lastScoreText;
 
 
 	// Use this for initialization
 	void Start () {
-		lastRecordText.text = PlayerPrefs.GetInt ("bestScore", 0).ToString ();
+		bestScoreText.text = PlayerPrefs.GetInt ("bestScore", 0).ToString ();
+		lastScoreText.text = PlayerPrefs.GetInt ("lastScore", 0).ToString ();
 	}
 	
 	// Update is called once per frame

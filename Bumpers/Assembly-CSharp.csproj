@@ -46,6 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CloudController.cs" />
+     <Compile Include="Assets\CloudGenerator.cs" />
+     <Compile Include="Assets\Floater.cs" />
+     <Compile Include="Assets\MenuController.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\EndgameScreenController.cs" />
@@ -60,6 +64,10 @@
      <Compile Include="Assets\Scripts\Tools.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Scripts\WrapAroundBehavior.cs" />
+     <Compile Include="Assets\Simple Scene Fade Load System\Demo (You don&apos;t have to import this folder)\DemoScript.cs" />
+     <Compile Include="Assets\Simple Scene Fade Load System\Scripts\Fader.cs" />
+     <Compile Include="Assets\Simple Scene Fade Load System\Scripts\Initiate.cs" />
+     <None Include="Assets\Simple Scene Fade Load System\ReadMeFirst.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

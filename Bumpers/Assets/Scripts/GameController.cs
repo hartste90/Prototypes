@@ -168,6 +168,7 @@ public class GameController : MonoBehaviour {
 	public void handlePlayerDestroyed()
 	{
 	        uiController.PauseTimer ();
+	        PlayerPrefs.SetInt ("bestScore", userLevel);
 		StartCoroutine (ShowEndgameScreenAfterSeconds (1));
 	}
 

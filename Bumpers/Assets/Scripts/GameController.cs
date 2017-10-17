@@ -7,6 +7,7 @@ using UnityEngine.Experimental.Director;
 
 public class GameController : MonoBehaviour {
 
+	public float delayBeforeEndGameScreenAppears;
 	public int userLevel;
 	public Transform gameStageParent;
 	public UIController uiController;
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject coinPrefab;
 	public GameObject minePrefab;
+	public GameObject safePrefab;
 	public GameObject bumperPrefab;
 
 	protected List<GameObject> coinList;
@@ -46,8 +48,15 @@ public class GameController : MonoBehaviour {
 		coinList = new List<GameObject> ();
 		bumperList = new List<GameObject> ();
 		mineList = new List<GameObject> ();
+
+	}
+
+	public void beginGameplay()
+	{
 		//spawn starting coin
-		SpawnMultiple(numStartingCoins, coinPrefab);
+//		SpawnMultiple(numStartingCoins, coinPrefab);
+		//spawn starting safes
+		SpawnMultiple(1, safePrefab);
 		//spawn starting mines
 		SpawnMultiple(numStartingMines, minePrefab);
 		//spawn starting bumpers
@@ -60,7 +69,6 @@ public class GameController : MonoBehaviour {
 	        playerController.rigidbody.velocity = Vector3.zero;	
 		playerObject.transform.position = Vector3.zero;
 	}
-
 	void Update ()
 	{
 		if(Input.GetKeyDown ("space"))
@@ -107,7 +115,10 @@ public class GameController : MonoBehaviour {
 	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
 		GameObject obj = Instantiate(gameObject, position, Quaternion.identity, gameStageParent);
-		obj.transform.localScale = new Vector3(384, 384, 1);
+		if (gameObject.tag != "Safe")
+		{
+			obj.transform.localScale = new Vector3(384, 384, 1);
+		}
 		if (gameObject == coinPrefab) 
 		{
 			coinList.Add (obj);
@@ -139,12 +150,16 @@ public class GameController : MonoBehaviour {
 	public void CompleteLevel()
 	{
 		userLevel++;
-		CreateCoinsForLevel(userLevel);
+//		CreateCoinsForLevel(userLevel);
 	}
 	public void CreateCoinsForLevel(int level)
 	{
 		SpawnMultiple (level, coinPrefab);
 	}
+	public void CreateSafeForLevel()
+	{
+		SpawnMultiple (1, safePrefab);
+	} 
 
 	public void DestroyAllItemsOnscreen()
 	{
@@ -170,15 +185,15 @@ public class GameController : MonoBehaviour {
 	{
 	        uiController.PauseTimer ();
 
-	        PlayerPrefs.SetInt ("lastScore", userLevel);
-	        if (PlayerPrefs.GetInt ("bestScore") < userLevel)
+	        PlayerPrefs.SetInt ("lastScore", uiController.coinCountNum);
+		if (PlayerPrefs.GetInt ("bestScore") < uiController.coinCountNum)
 	        {
-	                PlayerPrefs.SetInt ("bestScore", userLevel);
+			PlayerPrefs.SetInt ("bestScore", uiController.coinCountNum);
 	        }
-		StartCoroutine (ShowEndgameScreenAfterSeconds (1));
+		StartCoroutine (ShowEndgameScreenAfterSeconds (delayBeforeEndGameScreenAppears));
 	}
 
-	IEnumerator ShowEndgameScreenAfterSeconds (int waitTime) 
+	IEnumerator ShowEndgameScreenAfterSeconds (float waitTime) 
 	{
 	        yield return new WaitForSeconds(waitTime);
 	        endgameScreenController.populateEndgameScreenContent (uiController.coinCountUILabel.text, uiController.timerUILabel.text);

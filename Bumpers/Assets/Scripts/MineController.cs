@@ -28,7 +28,7 @@ public class MineController : MonoBehaviour {
 	{
 	        yield return new WaitForSeconds(timerSpeed);
 		CountdownTick ();
-		countdownAnimator.SetTrigger ("CTA");
+//		countdownAnimator.SetTrigger ("CTA");
 		if (countDownNumber == 1)
 		{
 		        mineAnimator.SetTrigger ("TurnRed");

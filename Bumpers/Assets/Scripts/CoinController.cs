@@ -6,7 +6,7 @@ public class CoinController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collider) 
 	{
-	        Debug.Log("Coin ENTER: " + collider.gameObject.tag);
+//	        Debug.Log("Coin ENTER: " + collider.gameObject.tag);
 		if (collider.gameObject.tag == "Player") {
 			return;
 		} 
@@ -18,7 +18,7 @@ public class CoinController : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D collider) 
 	{
-	        Debug.Log("Coin STAY: " + collider.gameObject.tag);
+//	        Debug.Log("Coin STAY: " + collider.gameObject.tag);
 		if (collider.gameObject.tag == "Player") {
 			return;
 		} 

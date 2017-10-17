@@ -48,8 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\CloudController.cs" />
      <Compile Include="Assets\CloudGenerator.cs" />
+     <Compile Include="Assets\CountdownController.cs" />
      <Compile Include="Assets\Floater.cs" />
      <Compile Include="Assets\MenuController.cs" />
+     <Compile Include="Assets\SafeController.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\EndgameScreenController.cs" />

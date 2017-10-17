@@ -13,4 +13,9 @@ public class ExplosionPuffController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public void DestroySelf()
+	{
+		Destroy (gameObject);
+	}
 }

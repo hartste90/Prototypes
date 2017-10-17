@@ -305,6 +305,10 @@ public class PlayerController : MonoBehaviour {
             {
 			OnHitMine ();
             }
+            else if (collision.gameObject.tag == "Safe")
+            {
+                OnHitMine();
+            }
             else if (collision.gameObject.tag == "Bumper")
             {
                     OnHitBumper();

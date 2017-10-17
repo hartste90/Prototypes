@@ -26,7 +26,10 @@ public class CloudController : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-		
-		
+	}
+
+	public void DestroySelf()
+	{
+	        Destroy(gameObject);
 	}
 }

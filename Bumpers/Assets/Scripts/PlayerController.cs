@@ -296,7 +296,7 @@ public class PlayerController : MonoBehaviour {
         }
 	public void OnCollisionEnter2D(Collision2D collision)
          {
-		Debug.Log ("COllision: " + collision.gameObject.tag);
+//		Debug.Log ("COllision: " + collision.gameObject.tag);
             if (collision.gameObject.tag == "Mine")
             {
 					OnHitMine ();

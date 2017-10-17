@@ -57,8 +57,8 @@ GameObject:
   - component: {fileID: 212410493123745314}
   - component: {fileID: 50289181189617772}
   - component: {fileID: 95104143982893258}
-  - component: {fileID: 61686995758276484}
   - component: {fileID: 114784170986398840}
+  - component: {fileID: 60943170665069616}
   m_Layer: 11
   m_Name: Safe
   m_TagString: Safe
@@ -104,20 +104,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61686995758276484
-BoxCollider2D:
+--- !u!60 &60943170665069616
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717595767532530}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 149, y: 182.2}
+  m_Points:
+    m_Paths:
+    - - {x: 47.858517, y: 89.48181}
+      - {x: -64.320526, y: 85.28729}
+      - {x: -73.60446, y: 45.330444}
+      - {x: -76.187744, y: -0.8192444}
+      - {x: -66.357056, y: -77.77142}
+      - {x: -54.383835, y: -86.33032}
+      - {x: -32.668564, y: -84.62021}
+      - {x: -29.284876, y: -77.07251}
+      - {x: 28.495407, y: -75.136444}
+      - {x: 31.113682, y: -82.49417}
+      - {x: 54.679443, y: -80.1647}
+      - {x: 59.509197, y: -70.304474}
+      - {x: 65.6924, y: -71.00116}
+      - {x: 67.231094, y: 7.372925}
+      - {x: 66.411865, y: 38.55829}
 --- !u!95 &95104143982893258
 Animator:
   serializedVersion: 3
@@ -127,7 +142,7 @@ Animator:
   m_GameObject: {fileID: 1717595767532530}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e6a44f6b50af492a9b58c346c58efe7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -226,6 +241,7 @@ MonoBehaviour:
   startingHealth: 2
   currentHealth: 2
   coinPrefab: {fileID: 1115446076801792, guid: 6f2d6d602140943cdb586d0d8c64cd79, type: 2}
+  gameController: {fileID: 0}
   coinValue: 3
   keyCostText: {fileID: 114384849660862054}
   keyCost: 5
@@ -335,7 +351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -409}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224164190462064908

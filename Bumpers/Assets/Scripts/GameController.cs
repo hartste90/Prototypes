@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 	public GameObject safePrefab;
 	public GameObject bumperPrefab;
 
-	protected List<GameObject> coinList;
+	public List<GameObject> coinList;
 	protected List<GameObject> bumperList;
 	protected List<GameObject> mineList;
 
@@ -56,7 +56,8 @@ public class GameController : MonoBehaviour {
 		//spawn starting coin
 //		SpawnMultiple(numStartingCoins, coinPrefab);
 		//spawn starting safes
-		SpawnMultiple(1, safePrefab);
+		List<GameObject> safeList = SpawnMultiple(1, safePrefab);
+		safeList[0].GetComponent<SafeController>().init (3, 3, 5, this);
 		//spawn starting mines
 		SpawnMultiple(numStartingMines, minePrefab);
 		//spawn starting bumpers
@@ -86,19 +87,23 @@ public class GameController : MonoBehaviour {
 //	        Start();
 	}
 
-	public void SpawnMultiple (int numToSpawn, GameObject gameObject)
+	public List<GameObject> SpawnMultiple (int numToSpawn, GameObject gameObject)
 	{
+	        List<GameObject> objectList = new List<GameObject>();
 		for (int i = 0; i < numToSpawn; i++) 
 		{
-			SpawnGameObject (gameObject);
-
+			GameObject obj = SpawnGameObject (gameObject);
+			objectList.Add(obj);
 		}
+		return objectList;
 	}
 
-	public void SpawnGameObject (GameObject gameObject)
+
+
+	public GameObject SpawnGameObject (GameObject gameObject)
 	{
 		Vector3 screenPosition = GetRandomLocationOnscreen ();
-		SpawnGameObjectAtPosition (gameObject, screenPosition);
+		return SpawnGameObjectAtPosition (gameObject, screenPosition);
 	}
 
 	public static Vector3 GetRandomLocationOnscreen ()
@@ -112,7 +117,7 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	public void SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
+	public GameObject SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
 		GameObject obj = Instantiate(gameObject, position, Quaternion.identity, gameStageParent);
 		if (gameObject.tag != "Safe")
@@ -122,7 +127,6 @@ public class GameController : MonoBehaviour {
 		if (gameObject == coinPrefab) 
 		{
 			coinList.Add (obj);
-
 		}
 		else if (gameObject == minePrefab)
 		{
@@ -132,6 +136,7 @@ public class GameController : MonoBehaviour {
 		{
 		        bumperList.Add (obj);
 		}
+		return obj;
 	}
 
 	public void CheckCoinsCollected(GameObject coin)
@@ -151,11 +156,21 @@ public class GameController : MonoBehaviour {
 	{
 		userLevel++;
 //		CreateCoinsForLevel(userLevel);
+		CreateSafeForLevel(userLevel);
 	}
 	public void CreateCoinsForLevel(int level)
 	{
 		SpawnMultiple (level, coinPrefab);
 	}
+	public void CreateSafeForLevel(int userLevel)
+	{
+	        List<GameObject> safeList = SpawnMultiple (1, safePrefab);
+	        int health = 3;
+		int coinValue =  Random.Range (1, userLevel)+1;
+		int keyCost = Random.Range (coinValue, coinValue + 3);
+	        safeList[0].GetComponent<SafeController>().init (health, coinValue, keyCost, this);
+	}
+
 	public void CreateSafeForLevel()
 	{
 		SpawnMultiple (1, safePrefab);

@@ -33,4 +33,16 @@ public class CoinController : MonoBehaviour {
 		transform.position = GameController.GetRandomLocationOnscreen ();
 	}
 
+	void FixedUpdate()
+	{
+	        if (transform.position.x <= -Screen.width/2
+	        || transform.position.x >= Screen.width/2
+	        || transform.position.y <= -Screen.height/2
+	        || transform.position.y >= Screen.height/2)
+	        {
+	                Debug.Log ("Turning around: " + transform.position.ToString ());
+			GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * -1;
+	        }
+	}
+
 }

@@ -9,6 +9,8 @@ public class SafeController : MonoBehaviour {
 	public int currentHealth;
 	public GameObject coinPrefab;
 
+	public GameController gameController;
+
 	public int coinValue;
 
 	public Text keyCostText;
@@ -22,13 +24,21 @@ public class SafeController : MonoBehaviour {
 	void Start () {
 		keyCostText.text = keyCost.ToString ();
 		currentHealth = startingHealth;
+		animator = GetComponent<Animator>();
 	}
 
-	public void init (int startingHealth, int coinValue, int keyCost)
+	public void init (int startingHealth, int coinValue, int keyCost, GameController gameController)
 	{
 	        this.startingHealth = startingHealth;
 	        this.coinValue = coinValue;
 	        this.keyCost = keyCost;
+	        this.gameController = gameController;
+	}
+
+	public void handleAppearAnimationComplete()
+	{
+	        Debug.Log ("handleAppearAnimationComplete");
+		GetComponent <PolygonCollider2D>().enabled = true;
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision)
@@ -50,7 +60,7 @@ public class SafeController : MonoBehaviour {
 	        currentHealth = currentHealth - 1;
 	        if (currentHealth <= 0)
 	        {
-			transform.GetComponent<BoxCollider2D>().enabled = false;
+			transform.GetComponent<PolygonCollider2D>().enabled = false;
 	                GenerateCoins(coinValue);
 	                //TODO: create explosion
 	                Destroy(gameObject);
@@ -66,8 +76,9 @@ public class SafeController : MonoBehaviour {
 	                Debug.Log("Generating coin");
 	                GameObject coin = Instantiate (coinPrefab, transform.parent);
 	                coin.transform.localScale = new Vector3 (384, 384, 1);
-	                coin.transform.localPosition = transform.position;
+	                coin.transform.localPosition = transform.localPosition;
 	                coin.GetComponent<Rigidbody2D>().velocity = GetRandom2DDirection();
+	                gameController.coinList.Add (coin);
 	        }
 	}
 

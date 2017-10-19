@@ -46,27 +46,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CloudController.cs" />
-     <Compile Include="Assets\CloudGenerator.cs" />
-     <Compile Include="Assets\CountdownController.cs" />
-     <Compile Include="Assets\Floater.cs" />
-     <Compile Include="Assets\MenuController.cs" />
-     <Compile Include="Assets\SafeController.cs" />
+     <Compile Include="Assets\Scripts\CloudController.cs" />
+     <Compile Include="Assets\Scripts\CloudGenerator.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />
+     <Compile Include="Assets\Scripts\CountdownController.cs" />
      <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\EndgameScreenController.cs" />
      <Compile Include="Assets\Scripts\ExplosionController.cs" />
      <Compile Include="Assets\Scripts\ExplosionPuffController.cs" />
+     <Compile Include="Assets\Scripts\Floater.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HiResScreenShots.cs" />
+     <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MineController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerExplosionController.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
+     <Compile Include="Assets\Scripts\SafeController.cs" />
      <Compile Include="Assets\Scripts\Tools.cs" />
+     <Compile Include="Assets\Scripts\TooltipController.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Scripts\WrapAroundBehavior.cs" />
-     <Compile Include="Assets\Simple Scene Fade Load System\Demo (You don&apos;t have to import this folder)\DemoScript.cs" />
      <Compile Include="Assets\Simple Scene Fade Load System\Scripts\Fader.cs" />
      <Compile Include="Assets\Simple Scene Fade Load System\Scripts\Initiate.cs" />
      <None Include="Assets\Simple Scene Fade Load System\ReadMeFirst.txt" />

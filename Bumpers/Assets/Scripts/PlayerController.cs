@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour {
 		{
 		        rigidbody.velocity = direction;
 		}
+		if (direction != Vector3.zero && gameController.swipeTooltipObject.activeSelf)
+		{
+			gameController.tooltipController.Hide();
+		}
 
 		DetermineTapDirection();
 	}

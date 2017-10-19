@@ -7,6 +7,7 @@ public class SafeController : MonoBehaviour {
 
 	public int startingHealth;
 	public int currentHealth;
+
 	public GameObject coinPrefab;
 
 	public GameController gameController;

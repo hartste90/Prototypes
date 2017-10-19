@@ -9,6 +9,10 @@ public class GameController : MonoBehaviour {
 
 	public float delayBeforeEndGameScreenAppears;
 	public int userLevel;
+
+	public GameObject swipeTooltipObject;
+	public SafeController initialSafeController;
+	public TooltipController tooltipController;
 	public Transform gameStageParent;
 	public UIController uiController;
 	public EndgameScreenController endgameScreenController;
@@ -51,13 +55,21 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	public void beginTooltip()
+	{
+		swipeTooltipObject.SetActive (true);
+		tooltipController.Show();
+		initialSafeController.init(1,3,5, this);
+		beginGameplay ();
+	}
+
 	public void beginGameplay()
 	{
 		//spawn starting coin
 //		SpawnMultiple(numStartingCoins, coinPrefab);
 		//spawn starting safes
-		List<GameObject> safeList = SpawnMultiple(1, safePrefab);
-		safeList[0].GetComponent<SafeController>().init (3, 3, 5, this);
+//		List<GameObject> safeList = SpawnMultiple(1, safePrefab);
+//		safeList[0].GetComponent<SafeController>().init (3, 3, 5, this);
 		//spawn starting mines
 		SpawnMultiple(numStartingMines, minePrefab);
 		//spawn starting bumpers

@@ -8,7 +8,7 @@ public class CountdownController : MonoBehaviour {
 
 	public void handleCountdownAnimationComplete()
 	{
-	        gameController.beginGameplay ();
+	        gameController.beginTooltip ();
 	}
 
 

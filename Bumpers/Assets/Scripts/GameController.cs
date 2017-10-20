@@ -123,13 +123,26 @@ public class GameController : MonoBehaviour {
 	{
 		Vector2 topRightCorner = new Vector2 (1, 1);
 		Vector2 edgeVector = Camera.main.ViewportToWorldPoint (topRightCorner);
+//		Debug.Log("EDge Vector: " + edgeVector.ToString ());
+//		Debug.Log("w/h: " + Screen.currentResolution.width + "," + Screen.currentResolution.height);
+
 		float halfheight = edgeVector.y;
 		float halfwidth = edgeVector.x;
-		Vector3 position = new Vector3 (Random.Range (-halfwidth, halfwidth), Random.Range (-halfheight, halfheight * .9f), 0);
+		Vector3 position = new Vector3 (Random.Range (-halfwidth, halfwidth), Random.Range (-halfheight, halfheight), 0);
+		Debug.Log("Random Position: " + position.ToString ());
 		return position;
 
 	}
 
+	public void HandleSafeDestroyed(int numCoins, Transform safeLocation)
+	{
+		for (int i = 0; i < numCoins; i++)
+	        {
+	                GameObject coin = SpawnGameObjectAtPosition (coinPrefab, safeLocation.position);
+	                CoinController coinController = coin.GetComponent<CoinController>();
+	                coinController.LerpToPosition (GetRandomLocationOnscreen (), .5f);
+	        }
+	}
 	public GameObject SpawnGameObjectAtPosition (GameObject gameObject, Vector3 position)
 	{
 		GameObject obj = Instantiate(gameObject, position, Quaternion.identity, gameStageParent);
@@ -139,6 +152,7 @@ public class GameController : MonoBehaviour {
 		}
 		if (gameObject == coinPrefab) 
 		{
+			obj.transform.localScale = new Vector3 (384, 384, 1);
 			coinList.Add (obj);
 		}
 		else if (gameObject == minePrefab)

@@ -62,7 +62,7 @@ public class SafeController : MonoBehaviour {
 	        if (currentHealth <= 0)
 	        {
 			transform.GetComponent<PolygonCollider2D>().enabled = false;
-	                GenerateCoins(coinValue);
+	                gameController.HandleSafeDestroyed (coinValue, transform);
 	                //TODO: create explosion
 	                Destroy(gameObject);
 	        }

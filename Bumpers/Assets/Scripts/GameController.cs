@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour {
 	{
 		swipeTooltipObject.SetActive (true);
 		tooltipController.Show();
+		initialSafeController.gameObject.SetActive (true);
 		initialSafeController.init(1,3,5, this);
 		beginGameplay ();
 	}

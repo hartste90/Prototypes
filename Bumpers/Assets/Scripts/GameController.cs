@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 	public Transform gameStageParent;
 	public UIController uiController;
 	public EndgameScreenController endgameScreenController;
+	public ContinueScreenController continueScreenController;
+	public float lastTimePlayerWatchedVideo;
 
 	public int numStartingMines;
 	public int numStartingBumpers; 
@@ -52,6 +54,7 @@ public class GameController : MonoBehaviour {
 		coinList = new List<GameObject> ();
 		bumperList = new List<GameObject> ();
 		mineList = new List<GameObject> ();
+		lastTimePlayerWatchedVideo = -3000f;
 
 	}
 

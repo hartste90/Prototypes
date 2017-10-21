@@ -67,7 +67,7 @@ public class SafeController : MonoBehaviour {
 	                Destroy(gameObject);
 	        }
 	        healthBarImage.fillAmount = ((float)currentHealth/(float)startingHealth);
-		healthBarImage.color = Color.Lerp(Color.green, Color.red,healthBarImage.fillAmount );
+		healthBarImage.color = Color.Lerp(Color.red, Color.green,healthBarImage.fillAmount );
 	}
 
 	public void GenerateCoins (int numCoins)

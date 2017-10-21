@@ -49,6 +49,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 822275261
+    locked: 0
+  - name: Doodad
+    uniqueID: 4047458387
+    locked: 0
   - name: UI
     uniqueID: 662844747
     locked: 0

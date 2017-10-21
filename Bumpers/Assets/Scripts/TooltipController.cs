@@ -24,4 +24,9 @@ public class TooltipController : MonoBehaviour {
 	{
 	       animator.SetTrigger ("hide");
 	}
+
+	public void DisableTooltipObject()
+	{
+	        gameObject.SetActive (false);
+	}
 }

@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ContinueScreenController.cs" />
      <Compile Include="Assets\Scripts\CloudController.cs" />
      <Compile Include="Assets\Scripts\CloudGenerator.cs" />
      <Compile Include="Assets\Scripts\CoinController.cs" />

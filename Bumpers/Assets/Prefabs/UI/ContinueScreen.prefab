@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222618548049461378}
   - component: {fileID: 114958629905966774}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DontGiveUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 224969901496998876}
   - component: {fileID: 222885803496270404}
   - component: {fileID: 114658803021484364}
-  - component: {fileID: 114920989615885518}
+  - component: {fileID: 114339398430545826}
   m_Layer: 5
   m_Name: ContinueScreen
   m_TagString: Untagged
@@ -482,6 +482,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114339398430545826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802336598632162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e87cc5063d24bcaa68a337bec36101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  continueByCoinButton: {fileID: 1278334963216566}
+  continueByGemButton: {fileID: 1114555749457676}
+  continueByVideoButton: {fileID: 1472907697339052}
+  coinCostText: {fileID: 114472733395847758}
+  videoFreeText: {fileID: 114217623891481156}
+  videoTimerText: {fileID: 114547222723042586}
 --- !u!114 &114447853251270278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,18 +538,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114286168160815686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResetScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114472733395847758
@@ -747,19 +754,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 13.3, y: -10.78}
   m_UseGraphicAlpha: 1
---- !u!114 &114920989615885518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1802336598632162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4af519c1b5674a879b2a18f3ea17b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinCountLabel: {fileID: 0}
-  timerLabel: {fileID: 0}
 --- !u!114 &114958629905966774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,7 +786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: alright!
+  m_Text: Alright!
 --- !u!114 &114962534384347240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -831,18 +825,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114733668857515470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResetScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114977575528708040
@@ -883,18 +866,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114627558539370346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResetScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114993658412047248

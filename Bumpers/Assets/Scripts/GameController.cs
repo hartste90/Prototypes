@@ -132,7 +132,7 @@ public class GameController : MonoBehaviour {
 		float halfheight = edgeVector.y;
 		float halfwidth = edgeVector.x;
 		Vector3 position = new Vector3 (Random.Range (-halfwidth, halfwidth), Random.Range (-halfheight, halfheight), 0);
-		Debug.Log("Random Position: " + position.ToString ());
+//		Debug.Log("Random Position: " + position.ToString ());
 		return position;
 
 	}

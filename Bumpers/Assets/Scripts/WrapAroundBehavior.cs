@@ -103,7 +103,7 @@ public class WrapAroundBehavior : MonoBehaviour {
 		        if (ghost.position.x < screenWidth/2 && ghost.position.x > -screenWidth/2 & ghost.position.y < screenHeight/2 && ghost.position.y > -screenHeight/2)
 		        {
 		                
-		                Debug.Log ("Swapping Ships: " + ghost.position.x + ", " + ghost.position.y);
+//		                Debug.Log ("Swapping Ships: " + ghost.position.x + ", " + ghost.position.y);
 		                transform.position = ghost.position;
 				PositionGhostShips();
 //				Debug.Break ();
